@@ -51,7 +51,7 @@
 
                 // if we've scrolled more than the navigation, change its position to fixed to stick to top, otherwise change it back to relative
                 if (scroll_top > sticky_navigation_offset_top) {
-                    $('.menu').css({ 'position': 'fixed', 'top': 0, 'left': 120 });
+                    $('.menu').css({ 'position': 'fixed', 'top': 0, 'left': 'auto' });
                     $('#logoUP').css({ 'display': 'block' });
                 } else {
                     $('.menu').css({ 'position': 'relative', 'left': 0 });
@@ -77,34 +77,38 @@
     </script>
 </head>
 <body>
-    <div class="upheader">
-        <div id="logo">
+    <div class="mainWrapper">
+        <div class="upheader">
+            <div id="logo">
+            </div>
+            <div id="slogan">
+            </div>
+            <div id="register">
+                <a href="@Url.Action("Register", "Account")" target="_self">
+                    <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png"
+                        alt="Imagen" /></a>
+                <p>@Html.Partial("_LogOnPartial")</p>
+            </div>
+            @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@
         </div>
-        <div id="slogan">
+        <div class="menu">
+            <ul>
+                <li><a href="#section1">What's UP</a></li>
+                <li>
+                    <img src="../../Content/images/Bbolita-blanca.png" /></li>
+                <li><a href="#section2">Antros y Bares</a></li>
+                <li>
+                    <div id="logoUP">
+                    </div>
+                </li>
+                <li><a href="#section3">Blog</a></li>
+                <li>
+                    <img src="../../Content/images/Bbolita-blanca.png" /></li>
+                <li><a href="#section4">Contacto</a></li>
+            </ul>
         </div>
-        <div id="register">
-            <a href="@Url.Action("Register","Account")" target="_self"><img style="margin:40px 40px 10px 40px" src="../../Content/images/registerbutton.png" alt="Imagen" /></a>
-            
-            <p>@Html.Partial("_LogOnPartial")</p>
-        </div>
-        @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@
-    </div>
-    <div class="menu">
-        <ul>
-            <li><a href="#section1">What's UP</a></li>
-            <li>
-                <img src="../../Content/images/Bbolita-blanca.png" /></li>
-            <li><a href="#section2">Antros y Bares</a></li>
-            <li>
-                <div id="logoUP"></div></li>
-            <li><a href="#section3">Blog</a></li>
-            <li>
-                <img src="../../Content/images/Bbolita-blanca.png" /></li>
-            <li><a href="#section4">Contacto</a></li>
-        </ul>
-    </div>
-    @RenderBody()
-    @*<div class="page">
+        @RenderBody()
+        @*<div class="page">
         <header>
             <div id="title">
                 <h1>My MVC Application</h1>
@@ -125,5 +129,6 @@
         <footer>
         </footer>
     </div>*@
+    </div>
 </body>
 </html>
