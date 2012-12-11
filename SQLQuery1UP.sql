@@ -10,7 +10,7 @@ select *
 from bars
 
 --update StayUPs
---Set EventDate = '2012-10-12'
+--Set EventDate = '2012-12-11'
 --where StayUPID = 6
 
 Select *

@@ -97,5 +97,12 @@ namespace UpdatedParty.Controllers
             Bar users = _db.Bars.Find(id);
             return View(users);
         }
+
+        //[HttpPost]
+        public ActionResult Rate(string rate)
+        {
+            
+                return View();
+        }
     }
 }

@@ -75,6 +75,20 @@
 
         });
     </script>
+    <!-- Rating Bar -->
+    <script type="text/JavaScript">
+        $(document).ready(function () {
+            $('#ratingdiv .undone').click(function () {
+                var div = '#ratingdiv';
+                $(div).html('<img src="load.gif" />');
+                var postdata = "rate=" + $(this).attr('rel');
+                $.ajax({ type: "POST", url: "Home/Rate", data: postdata, success: function (msg) { $(div).html(msg) }, error: function () { alert('error !!') } });
+            });
+            $('#ratingdiv .voted').live('click', function () {
+                alert('Already Done!');
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="mainWrapper">
