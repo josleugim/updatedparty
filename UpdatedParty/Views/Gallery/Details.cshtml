@@ -1,0 +1,30 @@
+﻿@model UpdatedParty.Models.Gallery
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Gallery</legend>
+
+    <div class="display-label">UPUser</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UPUser.upUserName)
+    </div>
+
+    <div class="display-label">UrlImage</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UrlImage)
+    </div>
+
+    <div class="display-label">RegisterDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegisterDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.GalleryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,40 @@
+﻿@model UpdatedParty.Models.StayUP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>StayUP</legend>
+
+    <div class="display-label">Bar</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bar.BarName)
+    </div>
+
+    <div class="display-label">Promotion</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Promotion)
+    </div>
+
+    <div class="display-label">BarEvent</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BarEvent)
+    </div>
+
+    <div class="display-label">EventDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EventDate)
+    </div>
+
+    <div class="display-label">RegisterDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegisterDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.StayUPID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

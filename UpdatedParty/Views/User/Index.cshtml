@@ -1,0 +1,146 @@
+﻿@model IEnumerable<UpdatedParty.Models.UPUser>
+           
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Interior.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table>
+    <tr>
+        <th>
+            UpUserTypeId
+        </th>
+        <th>
+            StatusTypeId
+        </th>
+        <th>
+            upUserName
+        </th>
+        <th>
+            upUserEmail
+        </th>
+        <th>
+            upUserPass
+        </th>
+        <th>
+            Promotion
+        </th>
+        <th>
+            Event
+        </th>
+        <th>
+            upSchedule
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Service
+        </th>
+        <th>
+            WebSite
+        </th>
+        <th>
+            MusicGender
+        </th>
+        <th>
+            Payment
+        </th>
+        <th>
+            Review
+        </th>
+        <th>
+            Street
+        </th>
+        <th>
+            Cologne
+        </th>
+        <th>
+            Township
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            RegisterDate
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusType.StatusTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.upUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.upUserEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.upUserPass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.upSchedule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WebSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MusicGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cologne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Township)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserType.UserTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UPUserID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UPUserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UPUserID })
+        </td>
+    </tr>
+}
+
+</table>

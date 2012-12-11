@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/upfrontend.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <link href="../../Content/upfrontend.css" type="text/css" rel="Stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../../Scripts/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../../Scripts/jsonScript.js"></script>
+    <script type="text/javascript" src="../../Scripts/jQuery.tmpl.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+            $('a[href*=#]').click(function () {
+
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+         && location.hostname == this.hostname) {
+
+                    var $target = $(this.hash);
+
+                    $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+
+                    if ($target.length) {
+
+                        var targetOffset = $target.offset().top;
+
+                        $('html,body').animate({ scrollTop: targetOffset - 50 }, 1000);
+
+                        return false;
+
+                    }
+
+                }
+
+            });
+
+        });
+    </script>
+    
+    <script type="text/javascript">
+        $(function () {
+
+            // grab the initial top offset of the navigation 
+            var sticky_navigation_offset_top = $('.menu').offset().top;
+
+            // our function that decides weather the navigation bar should have "fixed" css position or not.
+            var sticky_navigation = function () {
+                var scroll_top = $(window).scrollTop(); // our current vertical position from the top
+
+                // if we've scrolled more than the navigation, change its position to fixed to stick to top, otherwise change it back to relative
+                if (scroll_top > sticky_navigation_offset_top) {
+                    $('.menu').css({ 'position': 'fixed', 'top': 0, 'left': 0 });
+                } else {
+                    $('.menu').css({ 'position': 'relative' });
+                }
+            };
+
+            // run our function on load
+            sticky_navigation();
+
+            // and run it again every time you scroll
+            $(window).scroll(function () {
+                sticky_navigation();
+            });
+
+            // NOT required:
+            // for this demo disable all links that point to "#"
+            $('a[href="#"]').click(function (event) {
+                event.preventDefault();
+            });
+
+        });
+</script>
+</head>
+<body>
+ <div style="width:100%; height:250px; background-color:Orange; margin:0 auto;" id="section1">
+  <h1 style="margin:0;">Updated Party !</h1>
+  @Html.Partial("_LogOnPartial")
+ </div>
+ <div style="width:100%;">
+  <div class="menu">
+   <ul>
+    <li><a href="../../Home/Index#section1">What's UP</a></li>
+    <li><a href="../../Home/Index#section2">Antros y Bares</a></li>
+    <li><a href="../../Home/Index#section3">Blog</a></li>
+    <li><a href="../../Home/Index#section4">Contacto</a></li>    
+   </ul>
+  </div>
+    
+  <div style="margin:0; width:100%">
+   <div class="asideMenu">
+    <ul>
+     <li>@Html.ActionLink("StayUP", "Index", "User")</li>
+     <li>@Html.ActionLink("Info. general", "General", "User")</li>
+     <li>@Html.ActionLink("Galería", "Create","Gallery")</li>
+    </ul>
+   </div>
+   <div style="float:left; width:800px">
+    @RenderBody()
+   </div>
+  </div>
+ </div>
+</body>
+</html>

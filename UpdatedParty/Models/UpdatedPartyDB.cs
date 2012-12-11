@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+
+namespace UpdatedParty.Models
+{
+    /// <summary>
+    /// ORM to SQL Server
+    /// </summary>
+    public class UpdatedPartyDB:DbContext
+    {
+        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<TState> TStates { get; set; }
+        public DbSet<ComplainType> ComplainTypes { get; set; }
+        public DbSet<StatusType> StatusTypes { get; set; }
+        //public DbSet<Photo> Photos { get; set; }
+        public DbSet<Complain> Complains { get; set; }
+        public DbSet<SocialMedia> Socialmedia { get; set; }
+        public DbSet<Bar> Bars { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<StayUP> stayUP { get; set; }
+    }
+}

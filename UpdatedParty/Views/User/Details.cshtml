@@ -1,0 +1,96 @@
+﻿@model UpdatedParty.Models.UPUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Interior.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.upUserName)</h2>
+
+<fieldset>
+    <legend>UPUser</legend>
+
+    <div class="display-label">Tipo de bar</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserType.UserTypeName)
+    </div>
+
+    <div class="display-label">upUserName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upUserName)
+    </div>
+
+    <div class="display-label">upUserEmail</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upUserEmail)
+    </div>
+
+    <div class="display-label">upUserPass</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upUserPass)
+    </div>
+
+    <div class="display-label">upSchedule</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.upSchedule)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">Service</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Service)
+    </div>
+
+    <div class="display-label">WebSite</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WebSite)
+    </div>
+
+    <div class="display-label">MusicGender</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MusicGender)
+    </div>
+
+    <div class="display-label">Payment</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Payment)
+    </div>
+
+    <div class="display-label">Review</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Review)
+    </div>
+
+    <div class="display-label">Street</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Street)
+    </div>
+
+    <div class="display-label">Cologne</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cologne)
+    </div>
+
+    <div class="display-label">Township</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Township)
+    </div>
+
+    <div class="display-label">Country</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Country)
+    </div>
+
+    <div class="display-label">RegisterDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RegisterDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UPUserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

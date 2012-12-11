@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UpdatedParty.Models.StayUP>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Bar
+        </th>
+        <th>
+            Promotion
+        </th>
+        <th>
+            BarEvent
+        </th>
+        <th>
+            EventDate
+        </th>
+        <th>
+            RegisterDate
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bar.BarName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promotion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BarEvent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StayUPID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StayUPID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StayUPID })
+        </td>
+    </tr>
+}
+
+</table>

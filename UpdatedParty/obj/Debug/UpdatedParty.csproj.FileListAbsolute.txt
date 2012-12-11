@@ -1,0 +1,25 @@
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\bin\UpdatedParty.dll
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\bin\UpdatedParty.pdb
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\bin\EntityFramework.dll
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\bin\EntityFramework.xml
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\ResolveAssemblyReference.cache
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.dll
+c:\users\josleugim\documents\visual studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.pdb
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\UpdatedParty.dll
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\UpdatedParty.pdb
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\EntityFramework.dll
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\EntityFramework.xml
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.dll
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.pdb
+E:\UpdatedParty\UpdatedParty\bin\UpdatedParty.dll
+E:\UpdatedParty\UpdatedParty\bin\UpdatedParty.pdb
+E:\UpdatedParty\UpdatedParty\bin\EntityFramework.dll
+E:\UpdatedParty\UpdatedParty\bin\EntityFramework.xml
+E:\UpdatedParty\UpdatedParty\obj\Debug\ResolveAssemblyReference.cache
+E:\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.dll
+E:\UpdatedParty\UpdatedParty\obj\Debug\UpdatedParty.pdb
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\PagedList.dll
+C:\Documents and Settings\MEGA\Mis documentos\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\PagedList.xml
+C:\Users\josleugim\Documents\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\PagedList.dll
+C:\Users\josleugim\Documents\Visual Studio 2010\Projects\UpdatedParty\UpdatedParty\bin\PagedList.xml

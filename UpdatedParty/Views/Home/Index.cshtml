@@ -1,0 +1,164 @@
+﻿@model PagedList.IPagedList<UpdatedParty.Models.StayUP>
+@{
+    ViewBag.Title = "Home Page";
+    
+}
+@*<h2>@ViewBag.Message</h2>*@
+<div class="mainWrapper">
+    <div id="section1">
+        <br />
+        <br />
+        <br />
+        <div style="float: left; width: 350px">
+            <div id="whatsup">
+            </div>
+            <div class="tweetWrapp">
+                <script type="text/javascript" charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                <script type="text/javascript">
+                    new TWTR.Widget({
+                        version: 2,
+                        type: 'profile',
+                        rpp: 8,
+                        interval: 30000,
+                        width: 300,
+                        height: 300,
+                        theme: {
+                            shell: {
+                                background: 'transparent',
+                                color: '#000'
+                            },
+                            tweets: {
+                                background: 'transparent',
+                                color: '#FFF',
+                                links: '#FFFF00'
+                            }
+                        },
+                        features: {
+                            scrollbar: false,
+                            loop: true,
+                            live: true,
+                            hashtags: true,
+                            timestamp: true,
+                            avatars: false,
+                            behavior: 'all'
+                        }
+                    }).render().setUser('josleugim').start();
+                </script>
+            </div>
+        </div>
+        <div style="float: left; margin: 0 auto; width: 674px; height: 300px;">
+            @using (Html.BeginForm())
+            {
+@*<p>
+        Find by name: @Html.TextBox("SearchString")  
+        <input type="submit" value="Search" />
+        </p>*@
+                <div style="width: 100%; border: none">
+                    <div style="float:left">
+                        <p>
+                            Delegación:
+                        </p>
+                    </div>
+                    <div class="styled-select" style="float:left">
+                        @Html.DropDownList("delegacion")
+                    </div>
+                    <div style="float:left">
+                        <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
+                </div>
+                <br />
+            }
+            <table class="supSearch">
+                <tr>
+                    <th>
+                    </th>
+                    <th>@Html.ActionLink("Evento", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { style = "color:#FFFF00;" })
+                    </th>
+                    <th>
+                        Promoción
+                    </th>
+                    @*<th>@Html.ActionLink("Fecha del evento", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>*@
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UPUserID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UPUserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UPUserID })
+        </td>*@
+                        <th>@Html.ActionLink(item.Bar.BarName, "Details", new { id = item.BarId }, new { style = "color:#FFFF00;" })
+                        </th>
+                        <td>
+                            <p>@Html.DisplayFor(modelItem => item.BarEvent)</p>
+                        </td>
+                        <td>
+                            <p>@Html.DisplayFor(modelItem => item.Promotion)</p>
+                        </td>
+                        @*<td>@Html.DisplayFor(modelItem => item.EventDate)
+                        </td>*@
+                    </tr>
+                }
+            </table>
+            <div>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                of @Model.PageCount
+                @if (Model.HasPreviousPage)
+                {
+                    @Html.ActionLink("<<", "Index", new { page = 1 })
+                    @Html.Raw(" ");
+                    @Html.ActionLink("< Anterior", "Index", new { page = Model.PageNumber - 1 })
+                }
+                else
+                {
+                    @:<<
+        @Html.Raw(" ");
+                    @:< Prev
+                                                                                                                                                                                                                    }
+                @if (Model.HasNextPage)
+                {
+                    @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
+                    @Html.Raw(" ");
+                    @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+                }
+                else
+                {
+                    @:Next >
+        @Html.Raw(" ")
+                    @:>>
+                                                                                                                                                                                                                    }
+            </div>
+        </div>
+        @*<div style="float:left; margin:0 auto; width:450px; height:300px;" >
+    <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
+    <input type="text" name="promotion" />
+    <input type="submit" value="Search" />
+   </form>
+
+   <table>
+     <thead>
+      <th>Evento</th>
+      <th>Promoción</th>
+      <th>Web</th>
+     </thead>
+     <tbody id="searchResults">
+      
+     </tbody>
+    </table>
+    <script id="searchTemplate" type="text/x-jquery-tmpl">
+     <tr>
+      <td>${Event}</td>
+      <td>${Promotion}</td>
+      <td>@Url.Action("BarId")</td>
+     </tr>
+    </script>
+
+   </div>*@
+    </div>
+    <div id="section2" style="width: 100%; height: 4000px; background-color: #FF6666;">
+    </div>
+    <div id="section3" style="width: 100%; height: 4000px; background-color: #B4FCE9;">
+    </div>
+    <div id="section4" style="width: 100%; height: 4000px; background-color: #E3B8FF;">
+    </div>
+</div>
