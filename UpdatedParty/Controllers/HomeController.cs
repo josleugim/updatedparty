@@ -69,6 +69,23 @@ namespace UpdatedParty.Controllers
             return View(stayup.ToPagedList(pageNumber,pageSize));
         }
 
+        public ViewResult AdvancedSearch(int? page)
+        {
+            DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            if (Request.HttpMethod != "GET")
+                page = 1;
+
+            var stayup = from u in _db.stayUP
+                         where EntityFunctions.TruncateTime(u.EventDate) == datenow
+                         select u;
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(stayup.ToPagedList(pageNumber, pageSize));
+        }
+
         public ActionResult About()
         {
             return View();

@@ -122,7 +122,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:< Prev
-                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                        }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
@@ -134,7 +134,7 @@
                 @:Next >
         @Html.Raw(" ")
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                        }
         </div>
     </div>
     @*<div style="float:left; margin:0 auto; width:450px; height:300px;" >
@@ -168,7 +168,59 @@
     <br />
     <br />
     <br />
-    <div id="antrosbares">
+    <div style="float: left;">
+        <div id="antrosbares">
+        </div>
+        <div style="float: left; width: 724px;">
+            @using (Html.BeginForm("AdvancedSearch", "Home", FormMethod.Post))
+            {
+                <table class="supSearch">
+                    <tr>
+                        <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
+                            <span style="font-size: 22px; font-family: 'Intro'; color: White;">Resultados</span>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <p>@Html.ActionLink(item.Bar.BarName, "Details", new { id = item.BarId }, new { style = "color:#FF3234;" }):
+                                    @Html.DisplayFor(modelItem => item.Bar.Review)</p>
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                    of @Model.PageCount
+                    @if (Model.HasPreviousPage)
+                    {
+                        @Html.ActionLink("<<", "Index", new { page = 1 })
+                        @Html.Raw(" ");
+                        @Html.ActionLink("< Anterior", "Index", new { page = Model.PageNumber - 1 })
+                    }
+                    else
+                    {
+                        @:<<
+        @Html.Raw(" ");
+                        @:< Prev
+                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                    @if (Model.HasNextPage)
+                    {
+                        @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
+                        @Html.Raw(" ");
+                        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
+                    }
+                    else
+                    {
+                        @:Next >
+        @Html.Raw(" ")
+                        @:>>
+                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                </div>
+                <input type="image" src="../../Content/images/boton-enviar.png" value="Suscribirse" />
+            }
+        </div>
     </div>
     <div id="advancedSearch">
     </div>
