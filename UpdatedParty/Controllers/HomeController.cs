@@ -91,16 +91,15 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
-        public ActionResult JsonSearch(string promotion)
+        public ActionResult JsonSearch(string delegacion, string bar, string gaybar)
         {
-            var bars = _db.stayUP
-                .Where(u => u.Promotion.ToUpper().Contains(promotion.ToUpper())
-                || u.BarEvent.ToUpper().Contains(promotion.ToUpper()))
+            var bars = _db.Bars
+                .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper()))
                 .Select(r => new
                 {
-                    r.BarEvent,
-                    r.Promotion,
-                    r.BarId
+                    r.BarName,
+                    r.Email,
+                    r.BarID
                 });
 
             return Json(bars, JsonRequestBehavior.AllowGet);
