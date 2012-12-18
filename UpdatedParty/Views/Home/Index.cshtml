@@ -122,7 +122,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:< Prev
-                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
@@ -134,34 +134,9 @@
                 @:Next >
         @Html.Raw(" ")
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
         </div>
     </div>
-    @*<div style="float:left; margin:0 auto; width:450px; height:300px;" >
-    <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
-    <input type="text" name="promotion" />
-    <input type="submit" value="Search" />
-   </form>
-
-   <table>
-     <thead>
-      <th>Evento</th>
-      <th>Promoción</th>
-      <th>Web</th>
-     </thead>
-     <tbody id="searchResults">
-      
-     </tbody>
-    </table>
-    <script id="searchTemplate" type="text/x-jquery-tmpl">
-     <tr>
-      <td>${Event}</td>
-      <td>${Promotion}</td>
-      <td>@Url.Action("BarId")</td>
-     </tr>
-    </script>
-
-   </div>*@
 </div>
 <div id="section2" style="width: 100%; height: 4000px;">
     <br />
@@ -169,60 +144,38 @@
     <br />
     <br />
     <div style="float: left;">
+        <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
         <div id="antrosbares">
         </div>
         <div style="float: left; width: 724px;">
-            @using (Html.BeginForm("AdvancedSearch", "Home", FormMethod.Post))
-            {
-                <table class="supSearch">
-                    <tr>
-                        <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
-                            <span style="font-size: 22px; font-family: 'Intro'; color: White;">Resultados</span>
-                        </th>
-                    </tr>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                <p>@Html.ActionLink(item.Bar.BarName, "Details", new { id = item.BarId }, new { style = "color:#FF3234;" }):
-                                    @Html.DisplayFor(modelItem => item.Bar.Review)</p>
-                            </td>
-                        </tr>
-                    }
-                </table>
-                <div>
-                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-                    of @Model.PageCount
-                    @if (Model.HasPreviousPage)
-                    {
-                        @Html.ActionLink("<<", "Index", new { page = 1 })
-                        @Html.Raw(" ");
-                        @Html.ActionLink("< Anterior", "Index", new { page = Model.PageNumber - 1 })
-                    }
-                    else
-                    {
-                        @:<<
-        @Html.Raw(" ");
-                        @:< Prev
-                                                                                                                                                                                                                                                                                                                                                                                                                    }
-                    @if (Model.HasNextPage)
-                    {
-                        @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
-                        @Html.Raw(" ");
-                        @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
-                    }
-                    else
-                    {
-                        @:Next >
-        @Html.Raw(" ")
-                        @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                    }
+            <div style="clear: both; height: 200px">
+                <div style="clear: both; width: 100%; text-align: center">
+                    <p>
+                        Resultados</p>
                 </div>
-                <input type="image" src="../../Content/images/boton-enviar.png" value="Suscribirse" />
-            }
+                <div id="searchResults" style="float: left;">
+                </div>
+            </div>
+            <script id="searchTemplate" type="text/x-jquery-tmpl">
+             
+                <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><p style='margin-left:14px'>@Html.ActionLink("${BarName}", "Details", new { id = "BarID" }, new { style = "color:#FF3430;" })</p></div>
+             
+            </script>
         </div>
     </div>
     <div id="advancedSearch">
+    </div>
+    <div style="width: 100%; border: none">
+        <div style="float: left">
+            <p>
+                Delegación:
+            </p>
+        </div>
+        <div id="antrosbares-select" style="float: left">
+            @Html.DropDownList("delegacion")
+        </div>
+        <div style="float: left">
+            <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
     </div>
     <table class="tAdvancedSearch" style="border-spacing: 10px 0">
         <tr>
@@ -231,31 +184,38 @@
                     ¿DE QUÉ TRAES GANAS?</p>
             </td>
             <td>
-                <div style="width: 200px; height: 20px;">
+                <div style="width: 200px; height: 20px; position: relative">
                     <p>
                         After</p>
+                    @Html.RadioButton("after", "after", new { style = "position:absolute; right:0" })
                 </div>
             </td>
             <td>
                 <div style="width: 200px; height: 20px;">
                     <p>
                         Gay Bar</p>
+
+                    <input type="checkbox" id="checkbox_1_1" class="regular-checkbox" name="gaybar" />
+                    <label for="checkbox_1_1">
+                    </label>
                 </div>
             </td>
             <td>
                 <div style="width: 200px; height: 20px;">
                     <p>
-                        Torva
+                        Trova
                     </p>
+                    @*@Html.CheckBox("Trova", false)*@
                 </div>
             </td>
         </tr>
         <tr>
             <td>
-                <div style="width: 200px; height: 20px;">
+                <div style="width: 200px; height: 20px; position: relative;">
                     <p>
                         Bar
                     </p>
+                    @Html.RadioButton("bar", "bar", new { style = "position:absolute; right:0" })
                 </div>
             </td>
             <td>
@@ -417,6 +377,7 @@
             </td>
         </tr>
     </table>
+    </form>
 </div>
 <div id="section3" style="width: 100%; height: 4000px; background-color: #B4FCE9;">
 </div>
