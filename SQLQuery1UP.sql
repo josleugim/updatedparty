@@ -10,8 +10,8 @@ select *
 from bars
 
 --update StayUPs
---Set EventDate = '2012-12-13'
---where StayUPID = 10
+--Set EventDate = '2012-18-12'
+--where StayUPID = 7
 
 --update Bars
 --Set Township = 'Cuauhtémoc'
