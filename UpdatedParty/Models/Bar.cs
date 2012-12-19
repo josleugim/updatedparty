@@ -37,16 +37,13 @@ namespace UpdatedParty.Models
         public string BarSchedule { get; set; }
 
         [DisplayName("Precio")]
-        public Decimal? Price { get; set; }
+        public int? Price { get; set; }
 
         [DisplayName("Servicios")]
         public string BarService { get; set; }
 
         [DisplayName("Sitio Web")]
         public string WebSite { get; set; }
-
-        [DisplayName("Género Musical")]
-        public string MusicGender { get; set; }
 
         [DisplayName("Forma de pago")]
         public string Payment { get; set; }
@@ -69,6 +66,78 @@ namespace UpdatedParty.Models
 
         [DisplayName("País")]
         public string Country { get; set; }
+
+        //
+        //Criterios
+        //
+        [DisplayName("Bar")]
+        public bool BarType { get; set; }
+
+        [DisplayName("Antro")]
+        public bool Antro { get; set; }
+
+        [DisplayName("Estacionamiento")]
+        public bool Parking { get; set; }
+
+        [DisplayName("After")]
+        public bool After { get; set; }
+
+        [DisplayName("Pub")]
+        public bool Pub { get; set; }
+
+        [DisplayName("Karaoke")]
+        public bool Karaoke { get; set; }
+
+        [DisplayName("Botanero")]
+        public bool Botanero { get; set; }
+
+        [DisplayName("Gaybar")]
+        public bool GayBar { get; set; }
+
+        [DisplayName("Mezcalería")]
+        public bool Mezcaleria { get; set; }
+
+        [DisplayName("Cervecería")]
+        public bool Cerveceria { get; set; }
+
+        //
+        //Género musical
+        //
+        [DisplayName("Alternativo")]
+        public bool Alternative { get; set; }
+
+        [DisplayName("Rock")]
+        public bool Rock { get; set; }
+
+        [DisplayName("Electrónica")]
+        public bool Electronic { get; set; }
+
+        [DisplayName("Hip - Hop")]
+        public bool HipHop { get; set; }
+
+        [DisplayName("Jazz / Blues")]
+        public bool JazzBlues { get; set; }
+
+        [DisplayName("Reggae")]
+        public bool Reggae { get; set; }
+
+        [DisplayName("Trova")]
+        public bool Trova { get; set; }
+
+        [DisplayName("Lounge")]
+        public bool Lounge { get; set; }
+
+        [DisplayName("Banda")]
+        public bool Banda { get; set; }
+
+        [DisplayName("Pop")]
+        public bool Pop { get; set; }
+
+        [DisplayName("Disco")]
+        public bool Disco { get; set; }
+
+        [DisplayName("Tropical")]
+        public bool Tropical { get; set; }
 
         [DisplayName("Fecha de registro")]
         [DisplayFormat(DataFormatString = "{0:d}")]

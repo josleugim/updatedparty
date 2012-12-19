@@ -91,8 +91,15 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
-        public ActionResult JsonSearch(string delegacion, string bar, string gaybar)
+        public ActionResult JsonSearch(string delegacion, string bar, string antro, string promocion, string evento,
+            string estacionamiento, string after, string pub, string karaoke, string botanero, string gaybar, string mezcaleria,
+            string cerveceria, string alternativo, string rock, string electro, string hiphop, string jazzblues, string reggae,
+            string trova, string lounge, string banda, string pop, string disco, string tropical)
         {
+            if (bar != null)
+            { 
+
+            }
             var bars = _db.Bars
                 .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper()))
                 .Select(r => new
