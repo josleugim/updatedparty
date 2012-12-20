@@ -247,6 +247,8 @@ table td
     font-weight: lighter;
 }
 
+.criterion {width: 200px; height: 20px; position:relative;}
+
 /*Whats up township*/
 .styled-select select
 {
@@ -371,6 +373,8 @@ table td
 label
 {
     display: inline;
+    position:absolute;
+    right:0;
 }
 
 .regular-checkbox
@@ -386,7 +390,7 @@ label
     padding: 9px;
     border-radius: 3px;
     display: inline-block;
-    position: relative;
+    /*position: relative;*/
 }
 
 .regular-checkbox + label:active, .regular-checkbox:checked + label:active
@@ -396,7 +400,7 @@ label
 
 .regular-checkbox:checked + label
 {
-    background-color: #e9ecee;
+    background-color: #FF3430;
     border: 1px solid #adb8c0;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
     color: #99a1a7;
@@ -409,7 +413,7 @@ label
     position: absolute;
     top: 0px;
     left: 3px;
-    color: #99a1a7;
+    color: #FFF;
 }
 .tag {
 	font-family: Arial, sans-serif;
