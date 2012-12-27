@@ -91,15 +91,70 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
-        public ActionResult JsonSearch(string delegacion, string bar, string antro, string promocion, string evento,
+        public ActionResult JsonSearch(string delegacion, string colonia, string bar, string antro, string promocion, string evento,
             string estacionamiento, string after, string pub, string karaoke, string botanero, string gaybar, string mezcaleria,
             string cerveceria, string alternativo, string rock, string electro, string hiphop, string jazzblues, string reggae,
             string trova, string lounge, string banda, string pop, string disco, string tropical)
         {
-            if (bar != null)
-            { 
+            if (!String.IsNullOrEmpty(colonia))
+            {
+                if (bar != null && antro == null && promocion == null && evento == null && estacionamiento == null && after == null && pub == null && karaoke == null
+                    && botanero == null && gaybar == null && mezcaleria == null && cerveceria == null && alternativo == null && rock == null && electro == null
+                    && hiphop == null && jazzblues == null && reggae == null && trova == null && lounge == null && banda == null && pop == null && disco == null
+                    && tropical == null)
+                {
+                    var barResult = _db.Bars
+                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                    && u.BarType.Equals(true)
+                    && u.Cologne.Contains(colonia))
+                    .Select(r => new
+                    {
+                        r.BarName,
+                        r.Email,
+                        r.BarID
+                    });
 
+                    return Json(barResult, JsonRequestBehavior.AllowGet);
+                }
+                else if (bar == null && antro != null && promocion == null && evento == null && estacionamiento == null && after == null && pub == null && karaoke == null
+                    && botanero == null && gaybar == null && mezcaleria == null && cerveceria == null && alternativo == null && rock == null && electro == null
+                    && hiphop == null && jazzblues == null && reggae == null && trova == null && lounge == null && banda == null && pop == null && disco == null
+                    && tropical == null)
+                {
+                    var barResult = _db.Bars
+                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                    && u.Antro.Equals(true)
+                    && u.Cologne.Contains(colonia))
+                    .Select(r => new
+                    {
+                        r.BarName,
+                        r.Email,
+                        r.BarID
+                    });
+
+                    return Json(barResult, JsonRequestBehavior.AllowGet);
+                }
+                else if (bar == null && antro == null && promocion != null && evento == null && estacionamiento == null && after == null && pub == null && karaoke == null
+                    && botanero == null && gaybar == null && mezcaleria == null && cerveceria == null && alternativo == null && rock == null && electro == null
+                    && hiphop == null && jazzblues == null && reggae == null && trova == null && lounge == null && banda == null && pop == null && disco == null
+                    && tropical == null)
+                {
+                    //Searchs if the bar has promotion today
+                    DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                    var barResult = from u in _db.Bars
+                                    join s in _db.stayUP
+                                    on u.BarID equals s.BarId
+                                    where s.Promotion != null
+                                    && u.Cologne.Contains(colonia)
+                                    && u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                    && EntityFunctions.TruncateTime(s.EventDate) == datenow
+                                    select new { u.BarName, u.BarID};
+
+                    return Json(barResult, JsonRequestBehavior.AllowGet);
+                }
             }
+            
+
             var bars = _db.Bars
                 .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper()))
                 .Select(r => new

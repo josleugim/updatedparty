@@ -174,6 +174,9 @@
         <div id="antrosbares-select" style="float: left">
             @Html.DropDownList("delegacion")
         </div>
+        <div style="float:left">
+        @Html.TextBox("colonia")
+        </div>
         <div style="float: left">
             <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
     </div>
@@ -186,15 +189,16 @@
             <td>
                 <div class="criterion">
                     <p>
-                        After</p>
-                    <input type="checkbox" id="checkbox_1_6" class="regular-checkbox" name="after" />
-                    <label for="checkbox_1_6"></label>
+                        Estacionamiento
+                    </p>
+                    <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento" />
+                    <label for="checkbox_1_5"></label>
                 </div>
             </td>
             <td style="background-color: transparent">
                 <div style="width: 200px; height: 20px;">
                     <p style="color: White; margin: 5px 1px 5px 1px;">
-                        --------------Género musical---------------
+                        -------------Género musical--------------
                     </p>
                 </div>
             </td>
@@ -285,11 +289,12 @@
             </td>
         </tr>
         <tr>
-            <td style="background-color: transparent">
-                <div style="width: 200px; height: 20px;">
-                    <p style="color: White; margin: 5px 1px 5px 1px;">
-                        -------------------------------------------------
-                    </p>
+            <td>
+                <div class="criterion">
+                    <p>
+                        After</p>
+                    <input type="checkbox" id="checkbox_1_6" class="regular-checkbox" name="after" />
+                    <label for="checkbox_1_6"></label>
                 </div>
             </td>
             <td>
@@ -321,13 +326,11 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <div class="criterion">
-                    <p>
-                        Promoción
+            <td style="background-color: transparent">
+                <div style="width: 200px; height: 20px;">
+                    <p style="color: White; margin: 5px 1px 5px 1px;">
+                        -----------------------------------------------
                     </p>
-                    <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion" />
-                    <label for="checkbox_1_3"></label>
                 </div>
             </td>
             <td>
@@ -399,10 +402,10 @@
             <td>
                 <div class="criterion">
                     <p>
-                        Estacionamiento
+                        Promoción
                     </p>
-                    <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento" />
-                    <label for="checkbox_1_5"></label>
+                    <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion" />
+                    <label for="checkbox_1_3"></label>
                 </div>
             </td>
             <td>
