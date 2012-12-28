@@ -8,6 +8,10 @@ select * from Tstates
 
 select *
 from bars
+Where Township = 'Benito Juárez'
+AND Cologne = 'Condesa'
+AND BarType = 1
+AND Antro = 0
 
 --update StayUPs
 --Set EventDate = '2012-27-12'
