@@ -38,7 +38,7 @@ namespace UpdatedParty.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Bar");
                     }
                 }
                 else

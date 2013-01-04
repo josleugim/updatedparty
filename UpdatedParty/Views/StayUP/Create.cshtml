@@ -1,66 +1,77 @@
 ﻿@model UpdatedParty.Models.StayUP
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Stay Updated";
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
-
-<h2>Create</h2>
-
+<h2 style="color: yellow">
+    Stay UP</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
+<!-- DatePicker -->
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.ui.core.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.ui.widget.js" type="text/javascript"></script>
+        <!-- DatePicker -->
+    <script type="text/javascript">
+        $(function () {
+            $("#from").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 2,
+                onSelect: function (selectedDate) {
+                    $("#to").datepicker("option", "minDate", selectedDate);
+                }
+            });
+        });
+    </script>
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>StayUP</legend>
-
-        @*<div class="editor-label">
+    <div class="LogInWrapper">
+        <fieldset>
+            <legend>Información</legend>@*<div class="editor-label">
             @Html.LabelFor(model => model.BarId, "Bar")
         </div>
         <div class="editor-field">
             @Html.DropDownList("BarId", String.Empty)
             @Html.ValidationMessageFor(model => model.BarId)
         </div>*@
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Promotion)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Promotion)
-            @Html.ValidationMessageFor(model => model.Promotion)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.BarEvent)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.BarEvent)
-            @Html.ValidationMessageFor(model => model.BarEvent)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EventDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EventDate)
-            @Html.ValidationMessageFor(model => model.EventDate)
-        </div>
-
-        @*<div class="editor-label">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EventDate)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.EventDate, new { id = "from", style="width: 90px" })
+                @Html.ValidationMessageFor(model => model.EventDate)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Promotion)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Promotion, new {style="width: 230px"})
+                @Html.ValidationMessageFor(model => model.Promotion)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BarEvent)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.BarEvent, new { style = "width: 230px" })
+                @Html.ValidationMessageFor(model => model.BarEvent)
+            </div>
+            @*<div class="editor-label">
             @Html.LabelFor(model => model.RegisterDate)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.RegisterDate)
             @Html.ValidationMessageFor(model => model.RegisterDate)
         </div>*@
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+            <p>
+                <input type="submit" value="Actualizar" />
+            </p>
+        </fieldset>
+    </div>
 }
-
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@

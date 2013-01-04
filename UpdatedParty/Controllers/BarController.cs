@@ -10,7 +10,7 @@ using UpdatedParty.Models;
 namespace UpdatedParty.Controllers
 {
     [Authorize]
-    public class UserController : Controller
+    public class BarController : Controller
     {
         private UpdatedPartyDB db = new UpdatedPartyDB();
         //
@@ -47,7 +47,7 @@ namespace UpdatedParty.Controllers
                          where u.Email == User.Identity.Name
                          select u.BarID;
             int id = userid.First();
-            return RedirectToAction("Edit", "User", new { id });
+            return RedirectToAction("Edit", "Bar", new { id });
 
         }
 

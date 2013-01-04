@@ -70,7 +70,7 @@
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StayUPController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\BarController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -106,6 +106,8 @@
     <Content Include="Content\images\stressed_linen.png" />
     <Content Include="Content\images\up-logo_small.png" />
     <Content Include="Content\images\star.gif" />
+    <Content Include="Content\jquery-ui-1.8.22.custom.css" />
+    <Content Include="Content\jquery.ui.datepicker.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -138,11 +140,16 @@
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.custom.min.js" />
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jQuery.tmpl.js" />
     <Content Include="Scripts\jQuery.tmpl.min.js" />
+    <Content Include="Scripts\jquery.ui.core.js" />
+    <Content Include="Scripts\jquery.ui.datepicker.js" />
+    <Content Include="Scripts\jquery.ui.widget.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -200,16 +207,17 @@
     <Content Include="Views\UserType\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Bar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\font\bebasneue-webfont.ttf" />
     <None Include="Content\font\BebasNeue.otf" />
+    <None Include="Content\font\HelveticaNeueLTStd-Md.otf" />
     <None Include="Content\font\Intro.otf" />
     <Content Include="Views\Shared\_Interior.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\StayUP.cshtml" />
+    <Content Include="Views\Bar\Edit.cshtml" />
+    <Content Include="Views\Bar\Details.cshtml" />
+    <Content Include="Views\Bar\StayUP.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\Details.cshtml" />
     <Content Include="Views\Gallery\Create.cshtml" />
