@@ -73,7 +73,9 @@ namespace UpdatedParty.Controllers
 
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
             ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
-
+            var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
+            "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
+            ViewBag.delegacion = new SelectList(del);
 
             return View(upusers);
         }
@@ -83,7 +85,7 @@ namespace UpdatedParty.Controllers
 
         [HttpPost]
         //public ActionResult Edit(UPUser upusers)
-        public ActionResult Edit(int id, FormCollection formValues)
+        public ActionResult Edit(int id, FormCollection formValues, string delegacion)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +104,7 @@ namespace UpdatedParty.Controllers
                 //db.SaveChanges();
                 Bar upuser = db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
                 UpdateModel(upuser);
+                if (upuser != null) upuser.Township = delegacion;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

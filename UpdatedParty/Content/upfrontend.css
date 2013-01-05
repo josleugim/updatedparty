@@ -179,7 +179,6 @@ table td
 
 .menu a:hover
 {
-    color: #FFFF00;
     text-decoration: none;
 }
 
@@ -222,7 +221,7 @@ table td
 
 .asideMenu a
 {
-    color: #fff;
+    color: #0458BC;
     text-decoration: none;
     padding: 5px;
 }
