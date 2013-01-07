@@ -13,7 +13,7 @@ namespace UpdatedParty.Controllers
         private UpdatedPartyDB _db = new UpdatedPartyDB();
 
 
-        public ViewResult Index(string sortOrder, string searchString, string delegacion, int? page)
+        public ViewResult Index(string sortOrder, string coloniaUP, string delegacion, int? page)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             //ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";

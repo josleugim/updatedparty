@@ -1,6 +1,6 @@
 ﻿body
 {
-    font-family: 'bebasneue';
+    font-family: 'HelveticaNeue_Regular';
     margin: 0;
     background-color: #000;
 }
@@ -107,6 +107,21 @@ table td
     display: inline-block;
 }
 
+#contacto
+{
+    float: left;
+    width: 300px;
+    height: 195px;
+    background: #000 url('images/sprites-header.png') no-repeat 0px -1148px !important;
+}
+
+#contactoTitle
+{
+    float: left;
+    width: 107px;
+    height: 58px;
+    background: #000 url('images/sprites-contact.png') no-repeat 0px 0px !important;
+}
 
 #advancedSearch
 {
@@ -161,6 +176,7 @@ table td
     color: White;
     font-size: 30px;
     text-align: center;
+    font-family: bebasneue;
 }
 .menu ul
 {
@@ -180,6 +196,7 @@ table td
 .menu a:hover
 {
     text-decoration: none;
+    color: yellow;
 }
 
 .asideMenu
@@ -314,7 +331,10 @@ table td
     color: white;
 }
 
-.LogInWrapper label{ position: relative;}
+.LogInWrapper label
+{
+    position: relative;
+}
 
 /*Twitter Customization*/
 

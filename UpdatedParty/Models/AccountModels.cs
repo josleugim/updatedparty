@@ -50,7 +50,7 @@ namespace UpdatedParty.Models
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Display(Name = "Tu correo electrónico")]
+        [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 
         [Required]
