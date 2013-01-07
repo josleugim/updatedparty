@@ -30,15 +30,16 @@ namespace UpdatedParty.Controllers
             if (!String.IsNullOrEmpty(delegacion))
             {
                 stayup = stayup.Where(s => s.Bar.Township == delegacion);
+                //stayup = stayup.Join(_db.Bars, s => s.Bar.Township == delegacion, )
             }
 
             //var quote = _db.UPUsers.OrderBy(q => _db.GetNewId()).First();
 
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
-            //                           || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
-            //}
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
+            }
 
             switch (sortOrder)
             {

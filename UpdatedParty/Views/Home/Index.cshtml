@@ -70,7 +70,7 @@
                         Colonia:
                     </p>
                 </div>
-                <div class="styled-select" style="float: left">
+                <div style="float: left">
                     @Html.TextBox("coloniaUP")
                 </div>
                 <div style="float: left">
@@ -81,7 +81,7 @@
         <table class="supSearch">
             <tr>
                 <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
-                    <span style="font-weight: lighter; font-family: 'Intro'; color: White;">@DateTime.Now.DayOfWeek / @DateTime.Now.Month / @DateTime.Now.Year</span>
+                    <span style="font-weight: lighter; font-family: 'bebasneue'; color: White;">@DateTime.Now.DayOfWeek / @DateTime.Now.Month / @DateTime.Now.Year</span>
                 </th>
             </tr>
             <tr>
@@ -151,8 +151,8 @@
     <br />
     <br />
     <br />
+    <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
     <div style="float: left;">
-        <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
         <div id="antrosbares">
         </div>
         <div style="float: left; width: 724px;">
