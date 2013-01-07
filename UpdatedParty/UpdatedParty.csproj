@@ -101,6 +101,7 @@
     <Content Include="Content\images\corazon-prendido.png" />
     <Content Include="Content\images\menuribbon.png" />
     <Content Include="Content\images\registerbutton.png" />
+    <Content Include="Content\images\sprites-contact.png" />
     <Content Include="Content\images\sprites-header.png" />
     <Content Include="Content\images\sprites-menu.png" />
     <Content Include="Content\images\stressed_linen.png" />

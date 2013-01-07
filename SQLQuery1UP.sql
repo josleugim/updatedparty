@@ -12,8 +12,8 @@ Where Township = 'Benito Juárez'
 AND Cologne = 'Condesa'
 AND(BarType = 1 OR [After] = 1)
 
---update StayUPs
---Set EventDate = '2013-02-01'
+update StayUPs
+Set EventDate = '2013-06-01'
 --where StayUPID = 7
 
 --update Bars

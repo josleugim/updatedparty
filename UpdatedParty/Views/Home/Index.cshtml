@@ -57,13 +57,21 @@
         <input type="submit" value="Search" />
         </p>*@
             <div style="width: 100%; border: none">
-                <div style="float: left">
-                    <p>
+                <div style="float: left;">
+                    <p style="color: #5C5C5C">
                         Delegación:
                     </p>
                 </div>
                 <div class="styled-select" style="float: left">
                     @Html.DropDownList("delegacion")
+                </div>
+                <div style="float: left;">
+                    <p style="color: #5C5C5C">
+                        Colonia:
+                    </p>
+                </div>
+                <div class="styled-select" style="float: left">
+                    @Html.TextBox("coloniaUP")
                 </div>
                 <div style="float: left">
                     <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
@@ -73,7 +81,7 @@
         <table class="supSearch">
             <tr>
                 <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
-                    <span style="font-size: 22px; font-family: 'Intro'; color: White;">What's UP</span>
+                    <span style="font-weight: lighter; font-family: 'Intro'; color: White;">@DateTime.Now.DayOfWeek / @DateTime.Now.Month / @DateTime.Now.Year</span>
                 </th>
             </tr>
             <tr>
@@ -122,7 +130,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:< Prev
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
@@ -134,7 +142,7 @@
                 @:Next >
         @Html.Raw(" ")
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -174,8 +182,8 @@
         <div id="antrosbares-select" style="float: left">
             @Html.DropDownList("delegacion")
         </div>
-        <div style="float:left">
-        @Html.TextBox("colonia")
+        <div style="float: left">
+            @Html.TextBox("colonia")
         </div>
         <div style="float: left">
             <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
@@ -183,7 +191,7 @@
     <table class="tAdvancedSearch" style="border-spacing: 10px 0">
         <tr>
             <td style="background-color: transparent; text-align: center;">
-                <p style="color: White; font-size: 20px; margin: 0;">
+                <p style="color: White; font-size: 20px; margin: 0; font-family: bebasneue">
                     ¿DE QUÉ TRAES GANAS?</p>
             </td>
             <td>
@@ -192,13 +200,14 @@
                         Estacionamiento
                     </p>
                     <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento" />
-                    <label for="checkbox_1_5"></label>
+                    <label for="checkbox_1_5">
+                    </label>
                 </div>
             </td>
             <td style="background-color: transparent">
                 <div style="width: 200px; height: 20px;">
                     <p style="color: White; margin: 5px 1px 5px 1px;">
-                        -------------Género musical--------------
+                        ------Género musical-------
                     </p>
                 </div>
             </td>
@@ -208,7 +217,8 @@
                         Trova
                     </p>
                     <input type="checkbox" id="checkbox_1_19" class="regular-checkbox" name="trova" />
-                    <label for="checkbox_1_19"></label>
+                    <label for="checkbox_1_19">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -219,7 +229,8 @@
                         Bar
                     </p>
                     <input type="checkbox" id="checkbox_1_1" class="regular-checkbox" name="bar" />
-                    <label for="checkbox_1_1"></label>
+                    <label for="checkbox_1_1">
+                    </label>
                 </div>
             </td>
             <td>
@@ -228,7 +239,8 @@
                         Pub
                     </p>
                     <input type="checkbox" id="checkbox_1_7" class="regular-checkbox" name="pub" />
-                    <label for="checkbox_1_7"></label>
+                    <label for="checkbox_1_7">
+                    </label>
                 </div>
             </td>
             <td>
@@ -237,7 +249,8 @@
                         Alternativo
                     </p>
                     <input type="checkbox" id="checkbox_1_13" class="regular-checkbox" name="alternativo" />
-                    <label for="checkbox_1_13"></label>
+                    <label for="checkbox_1_13">
+                    </label>
                 </div>
             </td>
             <td>
@@ -246,7 +259,8 @@
                         Lounge
                     </p>
                     <input type="checkbox" id="checkbox_1_20" class="regular-checkbox" name="lounge" />
-                    <label for="checkbox_1_20"></label>
+                    <label for="checkbox_1_20">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -257,7 +271,8 @@
                         Antro
                     </p>
                     <input type="checkbox" id="checkbox_1_2" class="regular-checkbox" name="antro" />
-                    <label for="checkbox_1_2"></label>
+                    <label for="checkbox_1_2">
+                    </label>
                 </div>
             </td>
             <td>
@@ -266,7 +281,8 @@
                         Karaoke
                     </p>
                     <input type="checkbox" id="checkbox_1_8" class="regular-checkbox" name="karaoke" />
-                    <label for="checkbox_1_8"></label>
+                    <label for="checkbox_1_8">
+                    </label>
                 </div>
             </td>
             <td>
@@ -275,7 +291,8 @@
                         Rock
                     </p>
                     <input type="checkbox" id="checkbox_1_14" class="regular-checkbox" name="rock" />
-                    <label for="checkbox_1_14"></label>
+                    <label for="checkbox_1_14">
+                    </label>
                 </div>
             </td>
             <td>
@@ -284,7 +301,8 @@
                         Banda
                     </p>
                     <input type="checkbox" id="checkbox_1_21" class="regular-checkbox" name="banda" />
-                    <label for="checkbox_1_21"></label>
+                    <label for="checkbox_1_21">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -294,7 +312,8 @@
                     <p>
                         After</p>
                     <input type="checkbox" id="checkbox_1_6" class="regular-checkbox" name="after" />
-                    <label for="checkbox_1_6"></label>
+                    <label for="checkbox_1_6">
+                    </label>
                 </div>
             </td>
             <td>
@@ -303,7 +322,8 @@
                         Botanero
                     </p>
                     <input type="checkbox" id="checkbox_1_9" class="regular-checkbox" name="botanero" />
-                    <label for="checkbox_1_9"></label>
+                    <label for="checkbox_1_9">
+                    </label>
                 </div>
             </td>
             <td>
@@ -312,7 +332,8 @@
                         Electrónica
                     </p>
                     <input type="checkbox" id="checkbox_1_15" class="regular-checkbox" name="electro" />
-                    <label for="checkbox_1_15"></label>
+                    <label for="checkbox_1_15">
+                    </label>
                 </div>
             </td>
             <td>
@@ -321,7 +342,8 @@
                         Pop
                     </p>
                     <input type="checkbox" id="checkbox_1_22" class="regular-checkbox" name="pop" />
-                    <label for="checkbox_1_22"></label>
+                    <label for="checkbox_1_22">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -329,7 +351,7 @@
             <td style="background-color: transparent">
                 <div style="width: 200px; height: 20px;">
                     <p style="color: White; margin: 5px 1px 5px 1px;">
-                        -----------------------------------------------
+                        --------------------------------
                     </p>
                 </div>
             </td>
@@ -338,7 +360,8 @@
                     <p>
                         Gay Bar</p>
                     <input type="checkbox" id="checkbox_1_10" class="regular-checkbox" name="gaybar" />
-                    <label for="checkbox_1_10"></label>
+                    <label for="checkbox_1_10">
+                    </label>
                 </div>
             </td>
             <td>
@@ -347,7 +370,8 @@
                         Hip-Hop
                     </p>
                     <input type="checkbox" id="checkbox_1_16" class="regular-checkbox" name="hiphop" />
-                    <label for="checkbox_1_16"></label>
+                    <label for="checkbox_1_16">
+                    </label>
                 </div>
             </td>
             <td>
@@ -356,7 +380,8 @@
                         Disco
                     </p>
                     <input type="checkbox" id="checkbox_1_23" class="regular-checkbox" name="disco" />
-                    <label for="checkbox_1_23"></label>
+                    <label for="checkbox_1_23">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -367,7 +392,8 @@
                         Evento
                     </p>
                     <input type="checkbox" id="checkbox_1_4" class="regular-checkbox" name="evento" />
-                    <label for="checkbox_1_4"></label>
+                    <label for="checkbox_1_4">
+                    </label>
                 </div>
             </td>
             <td>
@@ -376,7 +402,8 @@
                         Mezcalería
                     </p>
                     <input type="checkbox" id="checkbox_1_11" class="regular-checkbox" name="mezcaleria" />
-                    <label for="checkbox_1_11"></label>
+                    <label for="checkbox_1_11">
+                    </label>
                 </div>
             </td>
             <td>
@@ -385,7 +412,8 @@
                         Jazz/Blues
                     </p>
                     <input type="checkbox" id="checkbox_1_17" class="regular-checkbox" name="jazzblues" />
-                    <label for="checkbox_1_17"></label>
+                    <label for="checkbox_1_17">
+                    </label>
                 </div>
             </td>
             <td>
@@ -394,7 +422,8 @@
                         Tropical
                     </p>
                     <input type="checkbox" id="checkbox_1_24" class="regular-checkbox" name="tropical" />
-                    <label for="checkbox_1_24"></label>
+                    <label for="checkbox_1_24">
+                    </label>
                 </div>
             </td>
         </tr>
@@ -405,7 +434,8 @@
                         Promoción
                     </p>
                     <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion" />
-                    <label for="checkbox_1_3"></label>
+                    <label for="checkbox_1_3">
+                    </label>
                 </div>
             </td>
             <td>
@@ -414,7 +444,8 @@
                         Cervecería
                     </p>
                     <input type="checkbox" id="checkbox_1_12" class="regular-checkbox" name="cerveceria" />
-                    <label for="checkbox_1_12"></label>
+                    <label for="checkbox_1_12">
+                    </label>
                 </div>
             </td>
             <td>
@@ -423,12 +454,12 @@
                         Reggae
                     </p>
                     <input type="checkbox" id="checkbox_1_18" class="regular-checkbox" name="reggae" />
-                    <label for="checkbox_1_18"></label>
+                    <label for="checkbox_1_18">
+                    </label>
                 </div>
             </td>
             <td style="background-color: transparent">
                 <div style="width: 200px; height: 20px;">
-                    
                 </div>
             </td>
         </tr>
@@ -437,5 +468,67 @@
 </div>
 <div id="section3" style="width: 100%; height: 4000px; background-color: #B4FCE9;">
 </div>
-<div id="section4" style="width: 100%; height: 4000px; background-color: #E3B8FF;">
+<div id="section4" style="width: 100%; height: 4000px; font-family: HelveticaNeue_Regular;
+    color: white">
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+        <div id="contacto">
+        </div>
+        <div style="float: left; width: 187px">
+            <div style="float: left; width: 80px; height: 58px">
+            </div>
+            <div id="contactoTitle">
+            </div>
+            <div style="clear: both; width: 100%;">
+            </div>
+            <div style="float: left; width: 80px">
+                Nombre:
+            </div>
+            <div style="float: left; width: 107px">
+            </div>
+            <div style="clear: both; width: 100%;">
+            </div>
+            <div style="float: left; width: 80px">
+                Email:
+            </div>
+            <div style="float: left; width: 107px">
+            </div>
+            <div style="clear: both; width: 100%;">
+            </div>
+            <div style="float: left; width: 80px">
+                Asunto:
+            </div>
+            <div style="float: left; width: 107px">
+            </div>
+            <div style="clear: both; width: 100%;">
+                <label for="enviar" style="position: relative">
+                    <input style="margin: 4px;" name="enviar" value="Enviar" type="submit" onclick="validateForm()" /></label>
+            </div>
+        </div>
+        <div style="float: left">
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+    function validateForm() {
+        var x = document.forms["newsForm"]["fname"].value;
+        var e = document.forms["newsForm"]["email"].value;
+        if (x == null || x == "") {
+            alert("Nombre requerido");
+            return false;
+        }
+        if (e == null || e == "") {
+            alert("Email requerido");
+            return false;
+        }
+        var atpos = e.indexOf("@@");
+        var dotpos = e.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= e.length) {
+            alert("Email inválido");
+            return false;
+        }
+    }
+</script>

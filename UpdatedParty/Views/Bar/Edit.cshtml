@@ -149,7 +149,7 @@
                 @Html.LabelFor(model => model.BarSchedule)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.BarSchedule)
+                @Html.TextBoxFor(model => model.BarSchedule, new { style="width: 200px"})
                 @Html.ValidationMessageFor(model => model.BarSchedule)
             </div>
             <div class="editor-label">
@@ -163,29 +163,25 @@
                 @Html.LabelFor(model => model.BarService)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.BarService)
+                @Html.TextBoxFor(model => model.BarService, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.BarService)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Payment)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Payment)
+                @Html.TextBoxFor(model => model.Payment, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.Payment)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Review)
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Review)
+                @Html.TextBoxFor(model => model.Review, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.Review)
             </div>
             <div class="editor-label">
-                @Html.LabelFor(model => model.Parking)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Parking)
-                @Html.ValidationMessageFor(model => model.Parking)
+                @Html.EditorFor(model => model.Parking) @Html.LabelFor(model => model.Parking) @Html.ValidationMessageFor(model => model.Parking)
             </div>
             @*<div class="editor-label">
             @Html.LabelFor(model => model.RegisterDate)
@@ -195,7 +191,7 @@
             @Html.ValidationMessageFor(model => model.RegisterDate)
         </div>*@
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Guardar" />
             </p>
         </fieldset>
     </div>
