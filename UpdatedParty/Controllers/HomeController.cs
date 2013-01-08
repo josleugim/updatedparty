@@ -10,10 +10,10 @@ namespace UpdatedParty.Controllers
 {
     public class HomeController : Controller
     {
-        private UpdatedPartyDB _db = new UpdatedPartyDB();
+        private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
 
 
-        public ViewResult Index(string sortOrder, string coloniaUP, string delegacion, int? page)
+        public ViewResult Index(string sortOrder, string coloniaUp, string delegacion, int? page)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             //ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
@@ -29,17 +29,19 @@ namespace UpdatedParty.Controllers
 
             if (!String.IsNullOrEmpty(delegacion))
             {
-                stayup = stayup.Where(s => s.Bar.Township == delegacion);
+                stayup = stayup.Where(s => s.Bar.Township == delegacion
+                    && !String.IsNullOrEmpty(s.Bar.Cologne)
+                    && s.Bar.Cologne.Contains(coloniaUp));
                 //stayup = stayup.Join(_db.Bars, s => s.Bar.Township == delegacion, )
             }
 
             //var quote = _db.UPUsers.OrderBy(q => _db.GetNewId()).First();
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
-            }
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
+            //                           || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
+            //}
 
             switch (sortOrder)
             {
@@ -61,7 +63,7 @@ namespace UpdatedParty.Controllers
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
 
-            int pageSize = 10;
+            const int pageSize = 5;
             int pageNumber = (page ?? 1);
 
             //return View(stayup.ToList().Take(10));
