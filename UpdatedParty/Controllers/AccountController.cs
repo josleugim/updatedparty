@@ -89,7 +89,7 @@ namespace UpdatedParty.Controllers
                                  where u.Email == model.Email
                                  select u.BarID;
                     int id = userid.First();
-                    return RedirectToAction("Edit", "User", new { id });
+                    return RedirectToAction("Edit", "Bar", new { id });
                 }
                 else
                 {

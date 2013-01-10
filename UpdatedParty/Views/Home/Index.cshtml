@@ -12,9 +12,12 @@
     <div style="float: left; width: 350px">
         <div id="whatsup">
         </div>
+        <div style="width: 100%; height: 60px">
+        </div>
         <div class="tweetWrapp">
-            <div style="width: 100%; border-bottom: 1px solid #FFF;">
-                <span style="font-size: 22px; font-family: 'Intro'; color: White;">Twitter</span>
+            <div style="width: 100%;">
+                @*<span style="font-size: 22px; font-family: 'Intro'; color: White;">Twitter</span>*@
+                <img src="../../Content/images/twitter.jpg" />
             </div>
             <script type="text/javascript" charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
             <script type="text/javascript">
@@ -28,7 +31,7 @@
                     theme: {
                         shell: {
                             background: 'transparent',
-                            color: '#000'
+                            color: '#FFF'
                         },
                         tweets: {
                             background: 'transparent',
@@ -56,9 +59,13 @@
         Find by name: @Html.TextBox("SearchString")  
         <input type="submit" value="Search" />
         </p>*@
-            <div style="width: 100%; border: none">
+            <div style="width: 100%; height: 160px">
+            </div>
+            <div style="width: 100%; height: 60px">
+            </div>
+            <div style="width: 100%; border: none; line-height: 35px;">
                 <div style="float: left;">
-                    <p style="color: #5C5C5C">
+                    <p style="color: #2F2F2F">
                         Delegación:
                     </p>
                 </div>
@@ -66,22 +73,25 @@
                     @Html.DropDownList("delegacion")
                 </div>
                 <div style="float: left;">
-                    <p style="color: #5C5C5C">
+                    <p style="color: #2F2F2F">
                         Colonia:
                     </p>
                 </div>
                 <div style="float: left">
-                    @Html.TextBox("coloniaUP")
+                    @Html.TextBox("coloniaUP", null, new { style = "background-color: black; border: 1px solid #2F2F2F; color: yellow; height:25px; font-size: 16px; text-align: center" })
                 </div>
-                <div style="float: left">
+                <div style="float: left; margin-left: 15px">
                     <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
             </div>
             <br />
         }
+        <br />
         <table class="supSearch">
             <tr>
                 <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
-                    <span style="font-weight: lighter; font-family: 'bebasneue'; color: White;">@DateTime.Now.DayOfWeek / @DateTime.Now.Month / @DateTime.Now.Year</span>
+                    <span style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">@DateTime.Now.ToString("dddd")
+                        @DateTime.Now.Day de @DateTime.Now.ToString("MMMM")</span>
+                    <br />
                 </th>
             </tr>
             <tr>
@@ -116,33 +126,34 @@
                 </tr>
             }
         </table>
-        <div>
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-            of @Model.PageCount
+        <div id="siguiente">
+            <p style="color: #2F2F2F">
+                Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                de @Model.PageCount</p>
             @if (Model.HasPreviousPage)
             {
                 @Html.ActionLink("<<", "Index", new { page = 1 })
                 @Html.Raw(" ");
-                @Html.ActionLink("< Anterior", "Index", new { page = Model.PageNumber - 1 })
+                @Html.ActionLink("Anterior", "Index", new { page = Model.PageNumber - 1 })
             }
             else
             {
                 @:<<
         @Html.Raw(" ");
-                @:< Prev
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                @:Anterior |
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
             @if (Model.HasNextPage)
             {
-                @Html.ActionLink("Siguiente >", "Index", new { page = Model.PageNumber + 1 })
+                @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
                 @Html.Raw(" ");
                 @Html.ActionLink(">>", "Index", new { page = Model.PageCount })
             }
             else
             {
-                @:Next >
-        @Html.Raw(" ")
+                @:| Siguiente
+        @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
         </div>
     </div>
 </div>
@@ -158,7 +169,7 @@
         <div style="float: left; width: 724px;">
             <div style="clear: both; height: 200px">
                 <div style="clear: both; width: 100%; text-align: center">
-                    <p>
+                    <p style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">
                         Resultados</p>
                 </div>
                 <div id="searchResults" style="float: left;">
@@ -175,7 +186,7 @@
     </div>
     <div style="width: 100%; border: none">
         <div style="float: left">
-            <p>
+            <p style="color: #2F2F2F">
                 Delegación:
             </p>
         </div>
