@@ -107,6 +107,22 @@ table td
     display: inline-block;
 }
 
+#blog
+{
+    float: left;
+    width: 300px;
+    height: 195px;
+    background: #000 url('images/sprites-header.png') no-repeat 0px -948px !important;
+}
+
+#headache
+{
+    float: left;
+    width: 300px;
+    height: 195px;
+    background: #000 url('images/sprites-header.png') no-repeat 0px -1358px !important;
+}
+
 #contacto
 {
     float: left;
@@ -128,7 +144,7 @@ table td
     clear: both;
     width: 100%;
     height: 45px;
-    background-image: url("images/busqueda-avanzada.png");
+    background: #000 url('images/sprites-titles.png') no-repeat 0px 0px !important;
 }
 #advancedSearch:hover
 {
@@ -151,9 +167,15 @@ table td
     background: transparent url('images/sprites-menu.png') no-repeat 0px -35px !important;
 }
 
-#siguiente {color: white}
+#siguiente
+{
+    color: white;
+}
 
-#siguiente a{color: yellow}
+#siguiente a
+{
+    color: yellow;
+}
 
 .tAdvancedSearch
 {
@@ -243,7 +265,7 @@ table td
 
 .asideMenu a
 {
-    color: #0458BC;
+    color: yellow;
     text-decoration: none;
     padding: 5px;
 }
@@ -288,6 +310,35 @@ table td
     width: 200px;
     height: 20px;
     position: relative;
+}
+
+#ArtRecientes
+{
+    clear: both;
+    width: 1024px;
+    height: 36px;
+    background: #000 url('images/sprites-titles.png') no-repeat 0px -101px !important;
+}
+
+/*Articles*/
+.Article
+{
+    font-size: 18px;
+    text-align: justify;
+    border-bottom: 2px dotted #C1C4C9;
+    font-family: georgia;
+    font-weight: lighter;
+}
+.Article p
+{
+    margin: 8px;
+    line-height: 1.8em;
+}
+.headache
+{
+    float: left;
+    width: 500px;
+    margin: 8px;
 }
 
 /*Whats up township*/
@@ -350,8 +401,7 @@ table td
     float: left;
     width: 300px; /* this is important if you want to make any positioning */
     margin: 10px 0 0 10px;
-    padding: 0 0 15px;
-    /* background: #fafafa url(../../Content/images/stressed_linen.png); our cute background */ /*** cross browser box shadow ***/
+    padding: 0 0 15px; /* background: #fafafa url(../../Content/images/stressed_linen.png); our cute background */ /*** cross browser box shadow ***/
     background: #000;
     -moz-box-shadow: 0 0 2px #000;
     -webkit-box-shadow: 0 0 2px #000;
@@ -366,8 +416,7 @@ table td
 .twtr-hd
 {
     /*** cross browser rgba ***/
-    background-color: transparent;
-    /*background-color: rgba(255,255,0,0.9);*/
+    background-color: transparent; /*background-color: rgba(255,255,0,0.9);*/
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#30ffffff);
     -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#30ffffff)'; /*visibility:hidden;*/
 }

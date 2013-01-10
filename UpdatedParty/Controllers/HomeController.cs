@@ -736,5 +736,10 @@ namespace UpdatedParty.Controllers
 
             return View();
         }
+
+        public ViewResult Headache()
+        {
+            return View();
+        }
     }
 }
