@@ -3,7 +3,7 @@
     ViewBag.Title = "General";
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
-<h2 style="color: #0458BC">
+<h2 style="color: yellow; font-family: bebasneue">
     Información general</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -12,17 +12,17 @@
     @Html.ValidationSummary(true)
     <div class="LogInWrapper">
         @Html.HiddenFor(model => model.BarID)
-        <fieldset style="color: #0458BC">
-            <legend>Selecciona el giro de tu bar</legend>
+        <fieldset>
+            <legend>Selecciona el giro de tu negocio</legend>
             <div class="editor-label">
                 @Html.EditorFor(model => model.BarType) @Html.LabelFor(model => model.BarType) @Html.ValidationMessageFor(model => model.BarType)
                 @Html.EditorFor(model => model.Antro) @Html.LabelFor(model => model.Antro) @Html.ValidationMessageFor(model => model.Antro)
                 @Html.EditorFor(model => model.After) @Html.LabelFor(model => model.After) @Html.ValidationMessageFor(model => model.After)
             </div>
             <p style="color: red; font-size: 11px">
-                * Desde luego no puedes tener los 3 giros</p>
+                * No puedes tener los 3 giros</p>
         </fieldset>
-        <fieldset style="color: #0458BC">
+        <fieldset>
             <legend>Ubicación</legend>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Street)
@@ -63,8 +63,8 @@
             <p style="color: red; font-size: 11px">
                 * Esta información es muy importante, es la que te ubicara en el mapa.</p>
         </fieldset>
-        <fieldset style="color: #0458BC">
-            <legend>Tipo de bar</legend>
+        <fieldset>
+            <legend>Selecciona tu tipo de bar</legend>
             <div style="clear: both; width:100%">
                 <div style="float: left; width: 150px">@Html.EditorFor(model => model.Pub) @Html.LabelFor(model => model.Pub) @Html.ValidationMessageFor(model => model.Pub)</div>
                 <div style="float: left; width: 150px">@Html.EditorFor(model => model.Karaoke) @Html.LabelFor(model => model.Karaoke) @Html.ValidationMessageFor(model => model.Karaoke)</div>
@@ -75,7 +75,7 @@
                 <div style="float: left; width: 150px">@Html.EditorFor(model => model.Botanero) @Html.LabelFor(model => model.Botanero) @Html.ValidationMessageFor(model => model.Botanero)</div>
             </div>
         </fieldset>
-        <fieldset style="color: #0458BC">
+        <fieldset>
             <legend>Género musical</legend>
             <div style="clear: both; width:100%">
                 <div style="float: left; width: 150px">@Html.EditorFor(model => model.Alternative) @Html.LabelFor(model => model.Alternative) @Html.ValidationMessageFor(model => model.Alternative)</div>
@@ -95,7 +95,7 @@
                 <div style="clear: both; width: 150px"></div>
             </div>
         </fieldset>
-        <fieldset style="color: #0458BC">
+        <fieldset>
             <legend>Información adicional</legend>@*<div class="editor-label">
             @Html.LabelFor(model => model.UserTypeId)
         </div>

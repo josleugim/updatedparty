@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <title>@ViewBag.Title</title>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/upfrontend.css")" rel="stylesheet" type="text/css" />
@@ -89,15 +90,9 @@
             });
         });
     </script>
-    <script>        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
 </head>
 <body>
     <div class="mainWrapper">
-        <div style="position: fixed; top: 100px; right: 0;">
-            <p>
-                <a href="https://twitter.com/updatedparty" class="twitter-follow-button" data-show-count="false"
-                    data-lang="en">Follow @@updatedparty</a></p>
-        </div>
         <div class="upheader">
             <div id="logo">
             </div>
@@ -114,16 +109,16 @@
         <div class="menu">
             <ul>
                 <li><span id="leftArrow"></span></li>
-                <li><a href="#section1">What's UP</a></li>
+                <li><a href="../../Home/Index#section1">What's UP</a></li>
                 <li>
                     <img src="../../Content/images/Bbolita-blanca.png" /></li>
-                <li><a href="#section2">Antros y Bares</a></li>
+                <li><a href="../../Home/Index#section2">Antros y Bares</a></li>
                 <li><span id="logoUP"></span></li>
                 <li></li>
-                <li><a href="#section3">Blog</a></li>
+                <li><a href="../../Home/Index#section3">Blog</a></li>
                 <li>
                     <img src="../../Content/images/Bbolita-blanca.png" /></li>
-                <li><a href="#section4">Contacto</a></li>
+                <li><a href="../../Home/Index#section4">Contacto</a></li>
                 <li><span id="rightArrow"></span></li>
             </ul>
             <div style="clear: both; width: 100%; height: 18px; background-color: #000; background-image: url('../Content/images/menuribbon.png');

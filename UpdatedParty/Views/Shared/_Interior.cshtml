@@ -43,8 +43,7 @@
             });
 
         });
-    </script>*@
-    @*<script type="text/javascript">
+    </script>*@ @*<script type="text/javascript">
         $(function () {
 
             // grab the initial top offset of the navigation 
@@ -79,19 +78,30 @@
         });
     </script>*@
 </head>
-<body style="background-color: white">
-    <div style="width: 100%; height: 250px; background-color: #0458BC; margin: 0 auto;"
+<body style="background-color: black">
+    <div style="width: 100%; height: 250px; background-color: black; margin: 0 auto;"
         id="section1">
-        <h1 style="margin: 0;">
-            Updated Party</h1>
-        <p style="font-family: HelveticaNeue_Regular">@Html.Partial("_LogOnPartial")</p>
-        <p style="font-family: HelveticaNeue_Regular; text-align: left">
-            Aquí encontraras la información de tu cuenta, es muy importante que pongas datos
-            reales, ya que serán determinantes en la forma que las personas te encuentren.</p>
-        <p style="font-family: HelveticaNeue_Regular; text-align: left">
-            Primero llena tu información general, después sube un máximo de 5 fotos a tu galería
-            y por último mantén tus eventos y promociones actualizados, en la sección de Stay
-            UP.</p>
+        <div id="logo">
+        </div>
+        <div style="float: left; margin: 10px; width: 700px; text-align: left">
+            @*<h1 style="margin: 0; color: yellow">
+                Updated Party</h1>*@
+            <p style="font-family: HelveticaNeue_Regular; color: white; text-align: center">@Html.Partial("_LogOnPartial")</p>
+            <p style="font-family: HelveticaNeue_Regular; text-align: left; color: white">
+                Aquí podras manipular la información de tu cuenta, es muy importante que pongas
+                datos reales, ya que serán determinantes en las busquedas. Es sencillo, solo sigue
+                estos pasos:</p>
+            <ol>
+                <li>Llena la información general de tu negocio.</li>
+                <li>Sube hasta 5 imágenes a la galería.</li>
+                <li>Mantén tus eventos y promociones actualizadas en la sección de <span style="color: yellow; font-family: bebasneue; font-size: 20px">
+                    WHAT'S UP</span>.</li>
+            </ol>
+            @*<p style="font-family: HelveticaNeue_Regular; text-align: left; color: white">
+                Primero llena la información general de tu negocio, después sube hasta 5 fotos a
+                tu galería y por último mantén tus eventos y promociones actualizadas en la sección
+                de <span style="color: yellow">Stay UP</span>.</p>*@
+        </div>
     </div>
     <div style="width: 100%;">
         @*<div class="menu">
@@ -106,7 +116,7 @@
             <div class="asideMenu">
                 <ul>
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Stay UP", "Index", "Bar")</li>
+                    <li>@Html.ActionLink("WHAT'S UP", "Index", "Bar")</li>
                     <li>@Html.ActionLink("Información general", "General", "Bar")</li>
                     <li>@Html.ActionLink("Galería", "Create", "Gallery")</li>
                 </ul>
