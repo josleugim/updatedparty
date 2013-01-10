@@ -35,11 +35,11 @@ namespace UpdatedParty.Controllers
 
             //var quote = _db.UPUsers.OrderBy(q => _db.GetNewId()).First();
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
-                                       || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
-            }
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
+            //                           || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
+            //}
 
             switch (sortOrder)
             {
