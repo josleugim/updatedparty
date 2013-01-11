@@ -3,27 +3,6 @@
     ViewBag.Title = "Home Page";
     
 }
-@*<h2>@ViewBag.Message</h2>*@
-<script type="text/javascript">
-    function validateForm() {
-        var x = document.forms["newsForm"]["fname"].value;
-        var e = document.forms["newsForm"]["email"].value;
-        if (x == null || x == "") {
-            alert("Nombre requerido");
-            return false;
-        }
-        if (e == null || e == "") {
-            alert("Email requerido");
-            return false;
-        }
-        var atpos = e.indexOf('@@');
-        var dotpos = e.lastIndexOf(".");
-        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= e.length) {
-            alert("Email inválido");
-            return false;
-        }
-    }
-</script>
 <div id="section1">
     <br />
     <br />
@@ -161,7 +140,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -173,7 +152,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -521,8 +500,8 @@
     <div id="ArtRecientes">
     </div>
 </div>
-<div id="section4" style="width: 100%; height: 4000px; font-family: HelveticaNeue_Regular;
-    color: white">
+<div id="section4" style="width: 100%; height: 720px; font-family: HelveticaNeue_Regular;
+    color: white; border-bottom: 2px dotted #C1C4C9;">
     <br />
     <br />
     <br />
@@ -530,43 +509,68 @@
     <div>
         <div id="contacto">
         </div>
-        <form action="../../Content/contactar.php" method="post">
-        <div style="float: left; width: 187px">
-            <div style="float: left; width: 80px; height: 58px">
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+        {
+            <div style="float: left; width: 339px">
+                <div style="float: left; width: 130px; height: 58px">
+                </div>
+                <div id="contactoTitle">
+                </div>
+                <div style="clear: both; width: 100%; height: 30px">
+                </div>
+                <div style="float: left; width: 80px">
+                    Nombre:
+                </div>
+                <div style="float: left; width: 250px">
+                    @Html.TextBox("nombre", null, new { style = "color: #5E148D; width: 250px; height:25px; font-size: 16px; text-align: center" })
+                </div>
+                <div style="clear: both; width: 100%; height: 10px">
+                </div>
+                <div style="float: left; width: 80px">
+                    Email:
+                </div>
+                <div style="float: left; width: 250px">
+                    @Html.TextBox("email", null, new { style = "color: #5E148D; width: 250px; height:25px; font-size: 16px; text-align: center" })
+                </div>
+                <div style="clear: both; width: 100%; height: 10px">
+                </div>
+                <div style="float: left; width: 80px">
+                    Asunto:
+                </div>
+                <div style="float: left; width: 250px">
+                    @Html.TextArea("emailMessage", null, new { style = "color: #5E148D; width: 250px; max-width: 250px; height: 120px; max-height: 150px; font-size: 16px; text-align: center" })
+                </div>
+                <div style="clear: both; width: 100%; text-align: right">
+                    <input type="image" src="../../Content/images/boton-enviar.png" value="Enviar" />
+                </div>
             </div>
-            <div id="contactoTitle">
+        }
+        @using (Html.BeginForm("Suscribe", "Home", FormMethod.Post))
+        {
+            <div style="float: left; width: 365px; margin-left: 20px">
+                <div id="newsLetter">
+                </div>
+                <div style="clear: both; width: 100%; height: 30px">
+                </div>
+                <div style="float: left; width: 250px">
+                    @Html.TextBox("newsletterEmail", null, new { style = "color: #5E148D; width: 250px; height:28px; font-size: 16px; text-align: center" })
+                </div>
+                <div style="float: left; width: 83px; margin-left: 10px; text-align: right">
+                    <input type="image" src="../../Content/images/boton-suscribete.png" value="Suscríbete" />
+                </div>
+                <div style="clear: both; width: 100%; height: 30px">
+                </div>
+                <div style="width: 100%;">
+                    <a href="https://www.facebook.com/updatedparty?ref=ts&fref=ts" target="_blank"><div id="facebook" onclick="">
+                    </div></a>
+                    <a href="https://twitter.com/updatedparty" target="_blank"><div id="twitter">
+                    </div></a>
+                </div>
             </div>
-            <div style="clear: both; width: 100%;">
-            </div>
-            <div style="float: left; width: 80px">
-                Nombre:
-                <input style="margin: 4px;" name="nombre" size="50" maxlength="80" type="text" />
-            </div>
-            <div style="float: left; width: 107px">
-            </div>
-            <div style="clear: both; width: 100%;">
-            </div>
-            <div style="float: left; width: 80px">
-                Email:
-                <input style="margin: 4px;" name="email" size="50" maxlength="60" type="text" />
-            </div>
-            <div style="float: left; width: 107px">
-            </div>
-            <div style="clear: both; width: 100%;">
-            </div>
-            <div style="float: left; width: 80px">
-                Asunto:
-                <input style="margin: 4px;" name="asunto" size="50" maxlength="60" type="text" />
-            </div>
-            <div style="float: left; width: 107px">
-            </div>
-            <div style="clear: both; width: 100%;">
-                <label for="enviar" style="position: relative">
-                    <input style="margin: 4px;" name="enviar" value="Enviar" type="submit" onclick="validateForm()" /></label>
-            </div>
-        </div>
-        </form>
-        <div style="float: left">
-        </div>
+        }
     </div>
+</div>
+<div style="clear: both; width: 100%; height: 50px">
+    <p>
+        Términos, Condiciones y Aviso de Privacidad</p>
 </div>

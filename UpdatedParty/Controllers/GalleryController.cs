@@ -91,23 +91,23 @@ namespace UpdatedParty.Controllers
         //
         // GET: /Gallery/Delete/5
  
-        public ActionResult Delete(int id)
-        {
-            Gallery gallery = db.Galleries.Find(id);
-            return View(gallery);
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    Gallery gallery = db.Galleries.Find(id);
+        //    return View(gallery);
+        //}
 
-        //
-        // POST: /Gallery/Delete/5
+        ////
+        //// POST: /Gallery/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Gallery gallery = db.Galleries.Find(id);
-            db.Galleries.Remove(gallery);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //public ActionResult DeleteConfirmed(int id)
+        //{            
+        //    Gallery gallery = db.Galleries.Find(id);
+        //    db.Galleries.Remove(gallery);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using UpdatedParty.Models;
 using System.Data.Objects;
 using PagedList;
+using System.Web.Helpers;
 
 namespace UpdatedParty.Controllers
 {
@@ -738,6 +739,30 @@ namespace UpdatedParty.Controllers
         }
 
         public ViewResult Headache()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult Contact(string email, string nombre, string emailMessage) // Your model is passed in here
+        {
+            try
+            {
+                WebMail.SmtpServer = "smtp.updatedparty.com";
+                WebMail.Send("contacto@updatedparty.com", "Contacto:" + nombre, emailMessage, email);
+
+                return View();
+            }
+
+            catch (Exception ex)
+            {
+                ViewData.ModelState.AddModelError("_FORM", ex.ToString());
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ViewResult Suscribe(string newsletterEmail)
         {
             return View();
         }

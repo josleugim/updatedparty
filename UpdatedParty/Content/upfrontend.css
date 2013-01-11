@@ -139,6 +139,33 @@ table td
     background: #000 url('images/sprites-contact.png') no-repeat 0px 0px !important;
 }
 
+#newsLetter
+{
+    float: left;
+    margin-left: 60px;
+    width: 147px;
+    height: 57px;
+    background: #000 url('images/sprites-contact.png') no-repeat 0px -70px !important;
+}
+
+#facebook
+{
+    float: left;
+    margin-left: 50px;
+    width: 84px;
+    height: 80px;
+    background: #000 url('images/sprites-contact.png') no-repeat 0px -135px !important;
+}
+
+#twitter
+{
+    float: left;
+    margin-left: 10px;
+    width: 84px;
+    height: 80px;
+    background: #000 url('images/sprites-contact.png') no-repeat 0px -225px !important;
+}
+
 #advancedSearch
 {
     clear: both;
