@@ -4,6 +4,26 @@
     
 }
 @*<h2>@ViewBag.Message</h2>*@
+<script type="text/javascript">
+    function validateForm() {
+        var x = document.forms["newsForm"]["fname"].value;
+        var e = document.forms["newsForm"]["email"].value;
+        if (x == null || x == "") {
+            alert("Nombre requerido");
+            return false;
+        }
+        if (e == null || e == "") {
+            alert("Email requerido");
+            return false;
+        }
+        var atpos = e.indexOf('@@');
+        var dotpos = e.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= e.length) {
+            alert("Email inválido");
+            return false;
+        }
+    }
+</script>
 <div id="section1">
     <br />
     <br />
@@ -141,7 +161,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -153,7 +173,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -493,11 +513,13 @@
             <p>
                 Si alguna vez se te han pasado los tragos seguramente los efectos de la resaca o
                 “cruda”, como decimos en México, te son familiares. Uno de los más terribles –tal
-                vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" }) @*<a href="../Home/Headache.cshtml"
+                vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
+                @*<a href="../Home/Headache.cshtml"
                     target="_self" style="color: #66ffcc">Leer más.</a>*@</p>
         </div>
     </div>
-    <div id="ArtRecientes"></div>
+    <div id="ArtRecientes">
+    </div>
 </div>
 <div id="section4" style="width: 100%; height: 4000px; font-family: HelveticaNeue_Regular;
     color: white">
@@ -508,6 +530,7 @@
     <div>
         <div id="contacto">
         </div>
+        <form action="../../Content/contactar.php" method="post">
         <div style="float: left; width: 187px">
             <div style="float: left; width: 80px; height: 58px">
             </div>
@@ -517,6 +540,7 @@
             </div>
             <div style="float: left; width: 80px">
                 Nombre:
+                <input style="margin: 4px;" name="nombre" size="50" maxlength="80" type="text" />
             </div>
             <div style="float: left; width: 107px">
             </div>
@@ -524,6 +548,7 @@
             </div>
             <div style="float: left; width: 80px">
                 Email:
+                <input style="margin: 4px;" name="email" size="50" maxlength="60" type="text" />
             </div>
             <div style="float: left; width: 107px">
             </div>
@@ -531,6 +556,7 @@
             </div>
             <div style="float: left; width: 80px">
                 Asunto:
+                <input style="margin: 4px;" name="asunto" size="50" maxlength="60" type="text" />
             </div>
             <div style="float: left; width: 107px">
             </div>
@@ -539,27 +565,8 @@
                     <input style="margin: 4px;" name="enviar" value="Enviar" type="submit" onclick="validateForm()" /></label>
             </div>
         </div>
+        </form>
         <div style="float: left">
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function validateForm() {
-        var x = document.forms["newsForm"]["fname"].value;
-        var e = document.forms["newsForm"]["email"].value;
-        if (x == null || x == "") {
-            alert("Nombre requerido");
-            return false;
-        }
-        if (e == null || e == "") {
-            alert("Email requerido");
-            return false;
-        }
-        var atpos = e.indexOf("@@");
-        var dotpos = e.lastIndexOf(".");
-        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= e.length) {
-            alert("Email inválido");
-            return false;
-        }
-    }
-</script>
