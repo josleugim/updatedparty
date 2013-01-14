@@ -1,14 +1,15 @@
 ﻿@model UpdatedParty.Models.RegisterModel
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registro";
+    Layout = "~/Views/Shared/_Articles.cshtml";
 }
 
 <h2 style="color: yellow">Crear cuenta</h2>
-<p style="font-family: HelveticaNeue_Regular">
+<p>
     Usa el siguiente formulario para crear tu cuenta. 
 </p>
-<p style="font-family: HelveticaNeue_Regular">
+<p>
     La contraseña tiene que ser al menos de @Membership.MinRequiredPasswordLength caracteres.
 </p>
 

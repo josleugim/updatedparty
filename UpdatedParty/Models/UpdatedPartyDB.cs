@@ -11,6 +11,10 @@ namespace UpdatedParty.Models
     /// </summary>
     public class UpdatedPartyDB:DbContext
     {
+        //Use this code in only in the development server
+        public UpdatedPartyDB()
+            : base("name=UpdatedPartyDB")
+        { }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<TState> TStates { get; set; }
         public DbSet<ComplainType> ComplainTypes { get; set; }

@@ -110,6 +110,7 @@
     <Content Include="Content\images\twitter.jpg" />
     <Content Include="Content\images\up-logo_small.png" />
     <Content Include="Content\images\star.gif" />
+    <Content Include="Content\images\upfavicon.ico" />
     <Content Include="Content\jquery-ui-1.8.22.custom.css" />
     <Content Include="Content\jquery.ui.datepicker.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -216,7 +217,8 @@
   <ItemGroup>
     <None Include="Content\font\bebasneue-webfont.ttf" />
     <None Include="Content\font\BebasNeue.otf" />
-    <None Include="Content\font\HelveticaNeueLTStd-Md.otf" />
+    <None Include="Content\font\futura-condensed-medium.ttf" />
+    <None Include="Content\font\helveticaneueltstd-md-webfont.ttf" />
     <None Include="Content\font\Intro.otf" />
     <Content Include="Views\Shared\_Interior.cshtml" />
     <Content Include="Views\Bar\Edit.cshtml" />
@@ -235,6 +237,7 @@
     <Content Include="Views\StayUP\Delete.cshtml" />
     <Content Include="Views\Shared\_Articles.cshtml" />
     <Content Include="Views\Home\Headache.cshtml" />
+    <Content Include="Views\Bar\BarDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />

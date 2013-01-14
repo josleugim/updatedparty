@@ -9,12 +9,12 @@ using UpdatedParty.Models;
 
 namespace UpdatedParty.Controllers
 {
-    [Authorize]
     public class BarController : Controller
     {
-        private UpdatedPartyDB db = new UpdatedPartyDB();
+        private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
         //
         // GET: /User/
+        [Authorize]
         public ActionResult Index()
         {
             //ViewBag.UserType = db.UserTypes.Select(u => u.UserTypeName);
@@ -24,14 +24,14 @@ namespace UpdatedParty.Controllers
             //    .Include(s => s.StatusType)
             //    .Where(n => n.upUserEmail == User.Identity.Name);
             //return View(upusers.ToList());
-            var userid = from u in db.Bars
+            var userid = from u in _db.Bars
                          where u.Email == User.Identity.Name
                          select u.BarID;
             int id = userid.First();
             return RedirectToAction("Create", "StayUP", new { id });
 
         }
-
+        [Authorize]
         //
         // GET: /User/
         public ActionResult General()
@@ -43,7 +43,7 @@ namespace UpdatedParty.Controllers
             //    .Include(s => s.StatusType)
             //    .Where(n => n.upUserEmail == User.Identity.Name);
             //return View(upusers.ToList());
-            var userid = from u in db.Bars
+            var userid = from u in _db.Bars
                          where u.Email == User.Identity.Name
                          select u.BarID;
             int id = userid.First();
@@ -53,26 +53,26 @@ namespace UpdatedParty.Controllers
 
         //
         // GET: /UserType/Details/5
-
+        [Authorize]
         public ViewResult Details(int id)
         {
             //UPUser upusers = db.UPUsers.Find(id);
             //Include de relationship table
-            Bar upusers = db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
+            Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
 
             return View(upusers);
         }
 
         //
         // GET: /User/Edit/5
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
 
-            Bar upusers = db.Bars.Find(id);
+            Bar upusers = _db.Bars.Find(id);
 
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
-            ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+            ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
+            ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
             var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
@@ -82,7 +82,7 @@ namespace UpdatedParty.Controllers
 
         //
         // POST: /User/Edit/5
-
+        [Authorize]
         [HttpPost]
         //public ActionResult Edit(UPUser upusers)
         public ActionResult Edit(int id, FormCollection formValues, string delegacion)
@@ -102,10 +102,10 @@ namespace UpdatedParty.Controllers
                 //upusers.StatusType = status.First();
                 //upusers.RegisterDate = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", null);
                 //db.SaveChanges();
-                Bar upuser = db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
+                Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
                 UpdateModel(upuser);
                 if (upuser != null) upuser.Township = delegacion;
-                db.SaveChanges();
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
@@ -115,7 +115,7 @@ namespace UpdatedParty.Controllers
 
         //
         // GET: /StayUP/Create
-
+        [Authorize]
         public ActionResult StayUP(int id)
         {
 
@@ -129,7 +129,7 @@ namespace UpdatedParty.Controllers
 
         //
         // POST: /StayUP/Create
-
+        [Authorize]
         [HttpPost]
         public ActionResult StayUP(StayUP stayup, int id)
         {
@@ -153,8 +153,8 @@ namespace UpdatedParty.Controllers
                 //db.SaveChanges();
                 //return RedirectToAction("Index");
 
-                db.stayUP.Add(stayup);
-                db.SaveChanges();
+                _db.stayUP.Add(stayup);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
@@ -162,6 +162,15 @@ namespace UpdatedParty.Controllers
             //return View();
 
             return View(stayup);
+        }
+
+        //
+        // GET: /Bar/Details/
+
+        public ViewResult BarDetails(int id)
+        {
+            Bar users = _db.Bars.Find(id);
+            return View(users);
         }
     }
 }

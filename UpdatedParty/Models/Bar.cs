@@ -39,6 +39,7 @@ namespace UpdatedParty.Models
         [DisplayName("Precio")]
         public int? Price { get; set; }
 
+        //Quitar
         [DisplayName("Servicios")]
         public string BarService { get; set; }
 

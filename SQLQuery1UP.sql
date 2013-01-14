@@ -8,7 +8,7 @@ select * from Tstates
 
 
 update StayUPs
-Set EventDate = '2013-08-01'
+Set EventDate = '2013-14-01'
 --where StayUPID = 7
 
 --update Bars

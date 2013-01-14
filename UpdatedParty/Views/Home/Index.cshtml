@@ -1,6 +1,6 @@
 ﻿@model PagedList.IPagedList<UpdatedParty.Models.StayUP>
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Updated Party";
     
 }
 <div id="section1">
@@ -18,6 +18,9 @@
                 @*<span style="font-size: 22px; font-family: 'Intro'; color: White;">Twitter</span>*@
                 <img src="../../Content/images/twitter.jpg" />
             </div>
+            @*<a class="twitter-timeline" href="https://twitter.com/updatedparty" data-widget-id="290690057470361600">
+                Tweets by @@updatedparty</a>
+            <script>                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>*@
             <script type="text/javascript" charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
             <script type="text/javascript">
                 new TWTR.Widget({
@@ -47,7 +50,7 @@
                         avatars: false,
                         behavior: 'all'
                     }
-                }).render().setUser('updatedparty').start();
+                }).render().setUser('@@updatedparty').start();
             </script>
         </div>
     </div>
@@ -112,7 +115,7 @@
             @Html.ActionLink("Details", "Details", new { id = item.UPUserID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.UPUserID })
         </td>*@
-                    <th>@Html.ActionLink(item.Bar.BarName, "Details", new { id = item.BarId }, new { style = "color:#FFFF00;" })
+                    <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId }, new { style = "color:#FFFF00;" })
                     </th>
                     <td>
                         <p>@Html.DisplayFor(modelItem => item.BarEvent)</p>
@@ -140,7 +143,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -152,7 +155,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
         </div>
     </div>
 </div>
@@ -500,8 +503,7 @@
     <div id="ArtRecientes">
     </div>
 </div>
-<div id="section4" style="width: 100%; height: 720px; font-family: HelveticaNeue_Regular;
-    color: white; border-bottom: 2px dotted #C1C4C9;">
+<div id="section4" style="width: 100%; height: 720px; color: white; border-bottom: 2px dotted #C1C4C9;">
     <br />
     <br />
     <br />
@@ -561,10 +563,13 @@
                 <div style="clear: both; width: 100%; height: 30px">
                 </div>
                 <div style="width: 100%;">
-                    <a href="https://www.facebook.com/updatedparty?ref=ts&fref=ts" target="_blank"><div id="facebook" onclick="">
-                    </div></a>
-                    <a href="https://twitter.com/updatedparty" target="_blank"><div id="twitter">
-                    </div></a>
+                    <a href="https://www.facebook.com/updatedparty?ref=ts&fref=ts" target="_blank">
+                        <div id="facebook" onclick="">
+                        </div>
+                    </a><a href="https://twitter.com/updatedparty" target="_blank">
+                        <div id="twitter">
+                        </div>
+                    </a>
                 </div>
             </div>
         }

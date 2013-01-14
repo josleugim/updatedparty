@@ -1,10 +1,11 @@
 ﻿@model UpdatedParty.Models.LogOnModel
 @{
-    ViewBag.Title = "Log On";
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_Articles.cshtml";
 }
 <h2 style="color: yellow">
     Log In</h2>
-<p style="font-family: HelveticaNeue_Regular">
+<p>
     Por favor ingresa tu nombre de usuario y contraseña. @Html.ActionLink("Registra tu bar", "Register", null, new { style = "color: yellow" })
     si no tienes una cuenta.
 </p>

@@ -1,0 +1,153 @@
+﻿@model UpdatedParty.Models.Bar
+@{
+    ViewBag.Title = Model.BarName;
+    Layout = "~/Views/Shared/_Articles.cshtml";
+}
+@Html.HiddenFor(model => model.UserTypeId)
+@Html.HiddenFor(model => model.StatusTypeId)
+<div style="clear: both; width: 100%; color: white;">
+    <div style="width: 100%; margin-top: 20px; height: 180px; border-bottom: 2px dotted #C1C4C9;">
+        <div style="float: left; width: 340px">
+            <h2 style="color: yellow">@Html.DisplayFor(model => model.BarName)</h2>
+            <p>@Html.DisplayFor(model => model.Street)</p>
+            <p>
+                Col. @Html.DisplayFor(model => model.Cologne), @Html.DisplayFor(model => model.Township)
+                @Html.DisplayFor(model => model.TState.StateName).</p>
+            <p>
+                Reserva al:</p>
+            <br />
+        </div>
+        <div style="float: left; width: 340px">
+            @{
+                if (Model.BarType == true)
+                {
+                <h3 style="color: yellow">
+                    <span style="color: white; font-size: 16px">Giro:</span> Bar</h3>
+                }
+                else if (Model.Antro == true)
+                {
+                <h3 style="color: yellow">
+                    <span style="color: white; font-size: 16px">Giro:</span> Antro</h3>
+                }
+                else if (Model.After == true)
+                {
+                <h3 style="color: yellow">
+                    <span style="color: white; font-size: 16px">Giro:</span> After</h3>
+                }
+                <p>
+                    Horarios: @Html.DisplayFor(model => model.BarSchedule)</p>
+                if (Model.Parking == true)
+                {
+                <p>
+                    Valet parking</p>
+                }
+            }
+        </div>
+        <div style="float: left; width: 340px">
+            <br />
+            <p>
+                Sitio web: @Html.DisplayFor(model => model.WebSite)</p>
+            <p>
+                Facebook:
+            </p>
+            <p>
+                Twitter:
+            </p>
+        </div>
+    </div>
+    <div style="clear: both; width: 100%; height: 400px">
+        <div style="float: left; width: 50%">
+            <p>@Html.DisplayFor(model => model.Review)</p>
+            <p style="color: yellow">
+                Música:</p>
+            <p>
+                @{
+                
+                    if (Model.Alternative == true)
+                    {
+                    @:Alternativo
+                    }
+                    if (Model.Rock == true)
+                    {
+                    @:, Rock
+                    }
+                    if (Model.Electronic == true)
+                    {
+                    @:, Electrónica
+                    }
+                    if (Model.HipHop == true)
+                    {
+                    @:, Hip-Hop
+                    }
+                    if (Model.JazzBlues == true)
+                    {
+                    @:, Jazz & Blues
+                    }
+                    if (Model.Reggae == true)
+                    {
+                    @:, Reggae
+                    }
+                    if (Model.Trova == true)
+                    {
+                    @:, Trova
+                    }
+                    if (Model.Lounge == true)
+                    {
+                    @:, Lounge
+                    }
+                    if (Model.Banda == true)
+                    {
+                    @:, Banda
+                    }
+                    if (Model.Pop == true)
+                    {
+                    @:, Pop
+                    }
+                    if (Model.Disco == true)
+                    {
+                    @:, Disco
+                    }
+                    if (Model.Tropical == true)
+                    {
+                    @:, Tropical
+                    }
+                }
+                .</p>
+            <p style="color: yellow">
+                De que tipo:</p>
+            <p>
+                @{
+                    if (Model.Cerveceria == true)
+                    {
+                    @:, Cerveceria
+                    }
+                    if (Model.Pub == true)
+                    {
+                    @:, Pub
+                    }
+                    if (Model.Karaoke == true)
+                    {
+                    @:, Karaoke
+                    }
+                    if (Model.Botanero == true)
+                    {
+                    @:, Botanero
+                    }
+                    if (Model.GayBar == true)
+                    {
+                    @:, Gay
+                    }
+                    if (Model.Mezcaleria == true)
+                    {
+                    @:, @Html.DisplayFor(model => model.Mezcaleria)
+                    }
+                }
+            </p>
+        </div>
+        <div style="float: left; width: 50%">
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Regresar", "Index", "Home")
+</p>

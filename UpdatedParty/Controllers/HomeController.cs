@@ -722,15 +722,6 @@ namespace UpdatedParty.Controllers
             return Json(barResult2, JsonRequestBehavior.AllowGet);
         }
 
-        //
-        // GET: /Gallery/Details/
-
-        public ViewResult Details(int id)
-        {
-            Bar users = _db.Bars.Find(id);
-            return View(users);
-        }
-
         //[HttpPost]
         public ActionResult Rate(string rate)
         {
@@ -748,7 +739,7 @@ namespace UpdatedParty.Controllers
         {
             try
             {
-                WebMail.SmtpServer = "smtp.updatedparty.com";
+                WebMail.SmtpServer = "mail.updatedparty.com";
                 WebMail.Send("contacto@updatedparty.com", "Contacto:" + nombre, emailMessage, email);
 
                 return View();
