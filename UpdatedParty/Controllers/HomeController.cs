@@ -755,6 +755,12 @@ namespace UpdatedParty.Controllers
         [HttpPost]
         public ViewResult Suscribe(string newsletterEmail)
         {
+            var record = new Newsletter
+                {
+                    Email = newsletterEmail, RegisterDate = DateTime.Now
+                };
+            
+            
             return View();
         }
     }

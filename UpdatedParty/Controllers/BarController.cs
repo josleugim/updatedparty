@@ -73,6 +73,7 @@ namespace UpdatedParty.Controllers
 
             ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
             ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+            ViewBag.TState = new SelectList(_db.TStates, "TStateID", "StateName");
             var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
@@ -85,7 +86,7 @@ namespace UpdatedParty.Controllers
         [Authorize]
         [HttpPost]
         //public ActionResult Edit(UPUser upusers)
-        public ActionResult Edit(int id, FormCollection formValues, string delegacion)
+        public ActionResult Edit(Bar bars, string delegacion)
         {
             if (ModelState.IsValid)
             {
@@ -102,14 +103,18 @@ namespace UpdatedParty.Controllers
                 //upusers.StatusType = status.First();
                 //upusers.RegisterDate = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", null);
                 //db.SaveChanges();
-                Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
-                UpdateModel(upuser);
-                if (upuser != null) upuser.Township = delegacion;
+                //Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
+                UpdateModel(bars);
+                if (bars != null) bars.Township = delegacion;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
             //ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+            ViewBag.TState = new SelectList(_db.TStates, "TStateID", "StateName");
+            var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
+            "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
+            ViewBag.delegacion = new SelectList(del);
             return View();
         }
 

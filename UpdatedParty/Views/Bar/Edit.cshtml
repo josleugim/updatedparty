@@ -12,6 +12,7 @@
     @Html.ValidationSummary(true)
     <div class="LogInWrapper">
         @Html.HiddenFor(model => model.BarID)
+        @Html.HiddenFor(model => model.UserTypeId)
         <fieldset>
             <legend>Selecciona el giro de tu negocio</legend>
             <div class="editor-label">
@@ -24,75 +25,137 @@
         </fieldset>
         <fieldset>
             <legend>Ubicación</legend>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Street)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Street)
-                @Html.ValidationMessageFor(model => model.Street)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Cologne)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Cologne)
-                @Html.ValidationMessageFor(model => model.Cologne)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Township)
-            </div>
-            <div class="editor-field">
-                @Html.DropDownList("delegacion", null, Model.Township)
-                @*@Html.EditorFor(model => model.Township)
+            <div style="width: 100%; clear: both">
+                <div style="float: left">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Street)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Street)
+                        @Html.ValidationMessageFor(model => model.Street)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Cologne)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Cologne)
+                        @Html.ValidationMessageFor(model => model.Cologne)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Township)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("delegacion", null, Model.Township)
+                        @*@Html.EditorFor(model => model.Township)
                 @Html.ValidationMessageFor(model => model.Township)*@
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.TState)
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("TState")
+                        @Html.ValidationMessageFor(model => model.TStateId)
+                    </div>
+                </div>
+                <div style="float: left; margin-left: 10px">
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.WebSite)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.WebSite)
+                        @Html.ValidationMessageFor(model => model.WebSite)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Facebook)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Facebook)
+                        @Html.ValidationMessageFor(model => model.Facebook)
+                    </div>
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Twitter)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Twitter)
+                        @Html.ValidationMessageFor(model => model.Twitter)
+                    </div>
+                </div>
             </div>
-            <div class="editor-label">
+            @*<div class="editor-label">
                 @Html.LabelFor(model => model.Country)
             </div>
             <div class="editor-field">
                 @Html.EditorFor(model => model.Country)
                 @Html.ValidationMessageFor(model => model.Country)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.WebSite)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.WebSite)
-                @Html.ValidationMessageFor(model => model.WebSite)
-            </div>
-            <p style="color: red; font-size: 11px">
+            </div>*@
+            <p style="color: red; font-size: 11px; clear: both">
                 * Esta información es muy importante, es la que te ubicara en el mapa.</p>
         </fieldset>
         <fieldset>
             <legend>Selecciona tu tipo de bar</legend>
-            <div style="clear: both; width:100%">
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Pub) @Html.LabelFor(model => model.Pub) @Html.ValidationMessageFor(model => model.Pub)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Karaoke) @Html.LabelFor(model => model.Karaoke) @Html.ValidationMessageFor(model => model.Karaoke)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.GayBar) @Html.LabelFor(model => model.GayBar) @Html.ValidationMessageFor(model => model.GayBar)</div>
-                <div style="clear: both; width: 150px"></div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Cerveceria) @Html.LabelFor(model => model.Cerveceria) @Html.ValidationMessageFor(model => model.Cerveceria)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Mezcaleria) @Html.LabelFor(model => model.Mezcaleria) @Html.ValidationMessageFor(model => model.Mezcaleria)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Botanero) @Html.LabelFor(model => model.Botanero) @Html.ValidationMessageFor(model => model.Botanero)</div>
+            <div style="clear: both; width: 100%">
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Pub) @Html.LabelFor(model => model.Pub)
+                    @Html.ValidationMessageFor(model => model.Pub)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Karaoke) @Html.LabelFor(model => model.Karaoke)
+                    @Html.ValidationMessageFor(model => model.Karaoke)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.GayBar) @Html.LabelFor(model => model.GayBar)
+                    @Html.ValidationMessageFor(model => model.GayBar)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Billar) @Html.LabelFor(model => model.Billar)
+                    @Html.ValidationMessageFor(model => model.Billar)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.OpenBar) @Html.LabelFor(model => model.OpenBar)
+                    @Html.ValidationMessageFor(model => model.OpenBar)</div>
+                <div style="clear: both; width: 150px">
+                </div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Cerveceria) @Html.LabelFor(model => model.Cerveceria)
+                    @Html.ValidationMessageFor(model => model.Cerveceria)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Mezcaleria) @Html.LabelFor(model => model.Mezcaleria)
+                    @Html.ValidationMessageFor(model => model.Mezcaleria)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Botanero) @Html.LabelFor(model => model.Botanero)
+                    @Html.ValidationMessageFor(model => model.Botanero)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.SportsBar) @Html.LabelFor(model => model.SportsBar)
+                    @Html.ValidationMessageFor(model => model.SportsBar)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.RestaurantBar)
+                    @Html.LabelFor(model => model.RestaurantBar)
+                    @Html.ValidationMessageFor(model => model.RestaurantBar)</div>
+                <div style="clear: both; width: 150px">
+                </div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.DanceFloor) @Html.LabelFor(model => model.DanceFloor)
+                    @Html.ValidationMessageFor(model => model.DanceFloor)</div>
             </div>
         </fieldset>
         <fieldset>
             <legend>Género musical</legend>
-            <div style="clear: both; width:100%">
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Alternative) @Html.LabelFor(model => model.Alternative) @Html.ValidationMessageFor(model => model.Alternative)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Electronic) @Html.LabelFor(model => model.Electronic) @Html.ValidationMessageFor(model => model.Electronic)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Lounge) @Html.LabelFor(model => model.Lounge) @Html.ValidationMessageFor(model => model.Lounge)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Rock) @Html.LabelFor(model => model.Rock) @Html.ValidationMessageFor(model => model.Rock)</div>
-                <div style="clear: both; width: 150px"></div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Banda) @Html.LabelFor(model => model.Banda) @Html.ValidationMessageFor(model => model.Banda)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.HipHop) @Html.LabelFor(model => model.HipHop) @Html.ValidationMessageFor(model => model.HipHop)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Pop) @Html.LabelFor(model => model.Pop) @Html.ValidationMessageFor(model => model.Pop)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Tropical) @Html.LabelFor(model => model.Tropical) @Html.ValidationMessageFor(model => model.Tropical)</div>
-                <div style="clear: both; width: 150px"></div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Disco) @Html.LabelFor(model => model.Disco) @Html.ValidationMessageFor(model => model.Disco)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.JazzBlues) @Html.LabelFor(model => model.JazzBlues) @Html.ValidationMessageFor(model => model.JazzBlues)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Reggae) @Html.LabelFor(model => model.Reggae) @Html.ValidationMessageFor(model => model.Reggae)</div>
-                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Trova) @Html.LabelFor(model => model.Trova) @Html.ValidationMessageFor(model => model.Trova)</div>
-                <div style="clear: both; width: 150px"></div>
+            <div style="clear: both; width: 100%">
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Alternative) @Html.LabelFor(model => model.Alternative)
+                    @Html.ValidationMessageFor(model => model.Alternative)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Electronic) @Html.LabelFor(model => model.Electronic)
+                    @Html.ValidationMessageFor(model => model.Electronic)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Lounge) @Html.LabelFor(model => model.Lounge)
+                    @Html.ValidationMessageFor(model => model.Lounge)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Rock) @Html.LabelFor(model => model.Rock)
+                    @Html.ValidationMessageFor(model => model.Rock)</div>
+                <div style="clear: both; width: 150px">
+                </div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Banda) @Html.LabelFor(model => model.Banda)
+                    @Html.ValidationMessageFor(model => model.Banda)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.HipHop) @Html.LabelFor(model => model.HipHop)
+                    @Html.ValidationMessageFor(model => model.HipHop)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Pop) @Html.LabelFor(model => model.Pop)
+                    @Html.ValidationMessageFor(model => model.Pop)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Tropical) @Html.LabelFor(model => model.Tropical)
+                    @Html.ValidationMessageFor(model => model.Tropical)</div>
+                <div style="clear: both; width: 150px">
+                </div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Disco) @Html.LabelFor(model => model.Disco)
+                    @Html.ValidationMessageFor(model => model.Disco)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.JazzBlues) @Html.LabelFor(model => model.JazzBlues)
+                    @Html.ValidationMessageFor(model => model.JazzBlues)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Reggae) @Html.LabelFor(model => model.Reggae)
+                    @Html.ValidationMessageFor(model => model.Reggae)</div>
+                <div style="float: left; width: 150px">@Html.EditorFor(model => model.Trova) @Html.LabelFor(model => model.Trova)
+                    @Html.ValidationMessageFor(model => model.Trova)</div>
+                <div style="clear: both; width: 150px">
+                </div>
             </div>
         </fieldset>
         <fieldset>
@@ -149,7 +212,7 @@
                 @Html.LabelFor(model => model.BarSchedule)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.BarSchedule, new { style="width: 200px"})
+                @Html.TextBoxFor(model => model.BarSchedule, new { style = "width: 200px" })
                 @Html.ValidationMessageFor(model => model.BarSchedule)
             </div>
             <div class="editor-label">
@@ -158,20 +221,6 @@
             <div class="editor-field">
                 @Html.EditorFor(model => model.Price)
                 @Html.ValidationMessageFor(model => model.Price)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.BarService)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.BarService, new { style = "width: 200px" })
-                @Html.ValidationMessageFor(model => model.BarService)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Payment)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.Payment, new { style = "width: 200px" })
-                @Html.ValidationMessageFor(model => model.Payment)
             </div>
             <div class="editor-label">
                 @Html.LabelFor(model => model.Review)

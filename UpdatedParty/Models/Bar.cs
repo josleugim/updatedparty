@@ -27,27 +27,20 @@ namespace UpdatedParty.Models
         [Required(ErrorMessage = "La contraseña es requerida")]
         public string Pass { get; set; }
 
-        //[DisplayName("Promoción")]
-        //public string Promotion { get; set; }
-
-        //[DisplayName("Evento")]
-        //public string Event { get; set; }
-
         [DisplayName("Horario")]
         public string BarSchedule { get; set; }
 
         [DisplayName("Precio")]
         public int? Price { get; set; }
 
-        //Quitar
-        [DisplayName("Servicios")]
-        public string BarService { get; set; }
-
         [DisplayName("Sitio Web")]
         public string WebSite { get; set; }
 
-        [DisplayName("Forma de pago")]
-        public string Payment { get; set; }
+        [DisplayName("Facebook")]
+        public string Facebook { get; set; }
+
+        [DisplayName("Twitter")]
+        public string Twitter { get; set; }
 
         [DisplayName("Reseña")]
         public string Review { get; set; }
@@ -59,7 +52,7 @@ namespace UpdatedParty.Models
         [DisplayName("Colonia")]
         public string Cologne { get; set; }
 
-        [DisplayName("Municipio")]
+        [DisplayName("Municipio/Delegación")]
         public string Township { get; set; }
 
         [DisplayName("Estado")]
@@ -68,8 +61,18 @@ namespace UpdatedParty.Models
         [DisplayName("País")]
         public string Country { get; set; }
 
+        [DisplayName("Promoción de cumpleaños")]
+        public string BirthdayPromotion { get; set; }
+
+        [DisplayName("De 18 a 23")]
+        public bool YoungAge { get; set; }
+        [DisplayName("De 24 a 29")]
+        public bool MidAge { get; set; }
+        [DisplayName("De 30 +")]
+        public bool OldAge { get; set; }
+
         //
-        //Criterios
+        //Tipo
         //
         [DisplayName("Bar")]
         public bool BarType { get; set; }
@@ -77,7 +80,7 @@ namespace UpdatedParty.Models
         [DisplayName("Antro")]
         public bool Antro { get; set; }
 
-        [DisplayName("Estacionamiento")]
+        [DisplayName("Valet parking")]
         public bool Parking { get; set; }
 
         [DisplayName("After")]
@@ -101,8 +104,23 @@ namespace UpdatedParty.Models
         [DisplayName("Cervecería")]
         public bool Cerveceria { get; set; }
 
+        [DisplayName("Billar")]
+        public bool Billar { get; set; }
+
+        [DisplayName("Dance floor")]
+        public bool DanceFloor { get; set; }
+
+        [DisplayName("SportsBar")]
+        public bool SportsBar { get; set; }
+
+        [DisplayName("Al aire libre")]
+        public bool OpenBar { get; set; }
+
+        [DisplayName("Restaurant bar")]
+        public bool RestaurantBar { get; set; }
+
         //
-        //Género musical
+        //Música
         //
         [DisplayName("Alternativo")]
         public bool Alternative { get; set; }

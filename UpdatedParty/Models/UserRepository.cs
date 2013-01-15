@@ -24,9 +24,13 @@ namespace UpdatedParty.Models
                 //user.Event = "";
                 user.BarSchedule = "";
                 user.Price = null;
-                user.BarService = "";
+                user.YoungAge = false;
+                user.MidAge = false;
+                user.OldAge = false;
                 user.WebSite = "";
-                user.Payment = "";
+                user.Facebook = "";
+                user.Twitter = "";
+                user.BirthdayPromotion = "";
                 user.Review = "";
                 user.Street = "";
                 user.Cologne = "";
@@ -44,6 +48,11 @@ namespace UpdatedParty.Models
                 user.GayBar = false;
                 user.Mezcaleria = false;
                 user.Cerveceria = false;
+                user.Billar = false;
+                user.DanceFloor = false;
+                user.SportsBar = false;
+                user.OpenBar = false;
+                user.RestaurantBar = false;
                 user.Alternative = false;
                 user.Rock = false;
                 user.Electronic = false;

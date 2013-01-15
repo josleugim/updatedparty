@@ -33,8 +33,8 @@ namespace UpdatedParty
 
         protected void Application_Start()
         {
-            //Database.SetInitializer<UpdatedPartyDB>(new UPInitializer());
-            Database.SetInitializer<UpdatedPartyDB>(null);
+            Database.SetInitializer<UpdatedPartyDB>(new UPInitializer());
+            //Database.SetInitializer<UpdatedPartyDB>(null);
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);

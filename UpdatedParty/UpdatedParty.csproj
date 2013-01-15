@@ -79,6 +79,7 @@
     <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\ComplainType.cs" />
     <Compile Include="Models\Gallery.cs" />
+    <Compile Include="Models\Newsletter.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\SocialMedia.cs" />
     <Compile Include="Models\StatusType.cs" />
@@ -238,6 +239,7 @@
     <Content Include="Views\Shared\_Articles.cshtml" />
     <Content Include="Views\Home\Headache.cshtml" />
     <Content Include="Views\Bar\BarDetails.cshtml" />
+    <Content Include="Views\Home\Suscribe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />

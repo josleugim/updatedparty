@@ -2,7 +2,7 @@ use UpdatedPartyDB
 go
 
 INSERT INTO TStates (StateName, StateAbbreviation, RegisterDate)
-Values('None', 'None', getdate())
+Values('Distrito Federal', 'DF', getdate())
 
 select * from Tstates
 
