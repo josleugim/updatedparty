@@ -19,13 +19,13 @@ namespace UpdatedParty.Models
             };
             usertype.ForEach(d => context.UserTypes.Add(d));
 
-            var statustype = new List<StatusType> { 
-                new StatusType { StatusTypeName = "Activo",
-                                 RegisterDate = DateTime.Now},
-                new StatusType {StatusTypeName = "Inactivo",
-                                RegisterDate = DateTime.Now}
-            };
-            statustype.ForEach(d => context.StatusTypes.Add(d));
+            //var statustype = new List<StatusType> { 
+            //    new StatusType { StatusTypeName = "Activo",
+            //                     RegisterDate = DateTime.Now},
+            //    new StatusType {StatusTypeName = "Inactivo",
+            //                    RegisterDate = DateTime.Now}
+            //};
+            //statustype.ForEach(d => context.StatusTypes.Add(d));
 
             var states = new List<TState>
             {

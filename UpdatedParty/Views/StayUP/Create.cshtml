@@ -46,18 +46,11 @@
                 @Html.ValidationMessageFor(model => model.EventDate)
             </div>
             <div class="editor-label">
-                @Html.LabelFor(model => model.Promotion)
+                @Html.LabelFor(model => model.PromotionEvent)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.Promotion, new {style="width: 230px"})
-                @Html.ValidationMessageFor(model => model.Promotion)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.BarEvent)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.BarEvent, new { style = "width: 230px" })
-                @Html.ValidationMessageFor(model => model.BarEvent)
+                @Html.TextBoxFor(model => model.PromotionEvent, new { style = "width: 300px" })
+                @Html.ValidationMessageFor(model => model.PromotionEvent)
             </div>
             @*<div class="editor-label">
             @Html.LabelFor(model => model.RegisterDate)
@@ -67,11 +60,11 @@
             @Html.ValidationMessageFor(model => model.RegisterDate)
         </div>*@
             <p>
-                <input type="submit" value="Actualizar" />
+                <input type="submit" value="Crear" />
             </p>
         </fieldset>
     </div>
 }
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+<div>
+    @Html.ActionLink("Consulta tu calendario", "Index")
+</div>

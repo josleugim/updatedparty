@@ -69,16 +69,16 @@ namespace UpdatedParty.Controllers
         public ActionResult Edit(int id)
         {
 
-            Bar upusers = _db.Bars.Find(id);
+            Bar bars = _db.Bars.Find(id);
 
-            ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
-            ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
-            ViewBag.TState = new SelectList(_db.TStates, "TStateID", "StateName");
+            //ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
+            //ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+            ViewBag.TStateId = new SelectList(_db.TStates, "TStateID", "StateName", bars.TStateId);
             var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
 
-            return View(upusers);
+            return View(bars);
         }
 
         //
@@ -99,19 +99,19 @@ namespace UpdatedParty.Controllers
                 //             where s.StatusTypeId == id
                 //             select s;
 
-                //db.Entry(upusers).State = EntityState.Modified;
+                _db.Entry(bars).State = EntityState.Modified;
                 //upusers.StatusType = status.First();
                 //upusers.RegisterDate = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", null);
                 //db.SaveChanges();
                 //Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
-                UpdateModel(bars);
-                if (bars != null) bars.Township = delegacion;
+                //UpdateModel(bars);
+                if (!String.IsNullOrEmpty(delegacion)) bars.Township = delegacion;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
             //ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
-            ViewBag.TState = new SelectList(_db.TStates, "TStateID", "StateName");
+            ViewBag.TStateId = new SelectList(_db.TStates, "TStateID", "StateName", bars.TStateId);
             var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);

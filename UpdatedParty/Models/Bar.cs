@@ -12,7 +12,7 @@ namespace UpdatedParty.Models
     {
         public int BarID { get; set; }
         public int UserTypeId { get; set; }
-        public int StatusTypeId { get; set; }
+        //public int StatusTypeId { get; set; }
         public int TStateId { get; set; }
 
         [DisplayName("Nombre de usuario")]
@@ -95,7 +95,7 @@ namespace UpdatedParty.Models
         [DisplayName("Botanero")]
         public bool Botanero { get; set; }
 
-        [DisplayName("Gaybar")]
+        [DisplayName("Gay")]
         public bool GayBar { get; set; }
 
         [DisplayName("Mezcalería")]
@@ -110,7 +110,7 @@ namespace UpdatedParty.Models
         [DisplayName("Dance floor")]
         public bool DanceFloor { get; set; }
 
-        [DisplayName("SportsBar")]
+        [DisplayName("Sports bar")]
         public bool SportsBar { get; set; }
 
         [DisplayName("Al aire libre")]
@@ -158,12 +158,15 @@ namespace UpdatedParty.Models
         [DisplayName("Tropical")]
         public bool Tropical { get; set; }
 
+        [DisplayName("Activo")]
+        public bool IsActived { get; set; }
+
         [DisplayName("Fecha de registro")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime RegisterDate { get; set; }
 
         public virtual UserType UserType { get; set; }
 
-        public virtual StatusType StatusType { get; set; }
+        //public virtual StatusType StatusType { get; set; }
     }
 }

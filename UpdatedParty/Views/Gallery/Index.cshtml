@@ -1,24 +1,19 @@
 ﻿@model IEnumerable<UpdatedParty.Models.Gallery>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Interior.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado de imágenes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nueva imagen", "Create")
 </p>
 <table>
     <tr>
         <th>
-            UPUser
-        </th>
-        <th>
-            UrlImage
-        </th>
-        <th>
-            RegisterDate
+            Imagen
         </th>
         <th></th>
     </tr>
@@ -26,18 +21,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.UPUser.upUserName)
+            @*@Html.DisplayFor(modelItem => item.UrlImage)*@
+            <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="Imagen" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UrlImage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegisterDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GalleryID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GalleryID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GalleryID })
+            @Html.ActionLink("Cambiar", "Edit", new { id=item.GalleryID })
         </td>
     </tr>
 }

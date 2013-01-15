@@ -93,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\banner2.jpg" />
     <Content Include="Content\images\boton-enviar.png" />
     <Content Include="Content\images\boton-suscribete.png" />
     <Content Include="Content\images\ddlarrow.png" />
@@ -240,8 +241,10 @@
     <Content Include="Views\Home\Headache.cshtml" />
     <Content Include="Views\Bar\BarDetails.cshtml" />
     <Content Include="Views\Home\Suscribe.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\gallery\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

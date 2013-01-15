@@ -67,9 +67,9 @@ namespace UpdatedParty.Models
                 user.Tropical = false;
                 user.RegisterDate = DateTime.Now;
                 UserType usertype = db.UserTypes.Find(1);
-                StatusType statustype = db.StatusTypes.Find(1);
+                //StatusType statustype = db.StatusTypes.Find(1);
                 user.UserType = usertype;
-                user.StatusType = statustype;
+                user.IsActived = true;
                 //user.PasswordSalt = "1234";
                 //user.CreatedDate = DateTime.Now;
                 //user.IsActivated = false;
