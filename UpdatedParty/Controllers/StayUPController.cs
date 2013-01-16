@@ -12,14 +12,14 @@ namespace UpdatedParty.Controllers
 { 
     public class StayUPController : Controller
     {
-        private UpdatedPartyDB db = new UpdatedPartyDB();
+        private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
 
         //
         // GET: /StayUP/
 
         public ViewResult Index()
         {
-            var stayup = db.stayUP.Include(s => s.Bar);
+            var stayup = _db.stayUP.Include(s => s.Bar).Where(b => b.Bar.Email == User.Identity.Name);
             return View(stayup.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace UpdatedParty.Controllers
 
         public ViewResult Details(int id)
         {
-            StayUP stayup = db.stayUP.Find(id);
+            StayUP stayup = _db.stayUP.Find(id);
             return View(stayup);
         }
 
@@ -37,7 +37,7 @@ namespace UpdatedParty.Controllers
 
         public ActionResult Create(int id)
         {
-            ViewBag.BarId = new SelectList(db.Bars, "BarID", "BarName");
+            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName");
             return View();
         } 
 
@@ -57,17 +57,18 @@ namespace UpdatedParty.Controllers
                 if (result >= 0)
                 {
                     //"Date1 is later or equal than Today"
-                    var oldEvent = from e in db.stayUP
+                    var oldEvent = from e in _db.stayUP
                                    where EntityFunctions.TruncateTime(e.EventDate) == date1
                                    & e.Bar.BarID == id
                                    select e;
-                    if (oldEvent.Count() == 0)
+                    if (!oldEvent.Any())
                     {
-                        Bar bar = db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
-                        db.stayUP.Add(stayup);
+                        Bar bar = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
+                        _db.stayUP.Add(stayup);
                         stayup.RegisterDate = DateTime.Now;
                         stayup.Bar = bar;
-                        db.SaveChanges();
+                        stayup.IsActived = true;
+                        _db.SaveChanges();
                         return RedirectToAction("Index");
                     }
                     else
@@ -83,7 +84,7 @@ namespace UpdatedParty.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BarId = new SelectList(db.Bars, "BarID", "BarName", stayup.BarId);
+            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
             return View(stayup);
         }
         
@@ -92,8 +93,8 @@ namespace UpdatedParty.Controllers
  
         public ActionResult Edit(int id)
         {
-            StayUP stayup = db.stayUP.Find(id);
-            ViewBag.BarId = new SelectList(db.Bars, "BarID", "BarName", stayup.BarId);
+            StayUP stayup = _db.stayUP.Find(id);
+            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
             return View(stayup);
         }
 
@@ -105,11 +106,11 @@ namespace UpdatedParty.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(stayup).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(stayup).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BarId = new SelectList(db.Bars, "BarID", "BarName", stayup.BarId);
+            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
             return View(stayup);
         }
 
@@ -118,7 +119,7 @@ namespace UpdatedParty.Controllers
  
         public ActionResult Delete(int id)
         {
-            StayUP stayup = db.stayUP.Find(id);
+            StayUP stayup = _db.stayUP.Find(id);
             return View(stayup);
         }
 
@@ -128,15 +129,16 @@ namespace UpdatedParty.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            StayUP stayup = db.stayUP.Find(id);
-            db.stayUP.Remove(stayup);
-            db.SaveChanges();
+            StayUP stayup = _db.stayUP.Find(id);
+            //_db.stayUP.Remove(stayup);
+            stayup.IsActived = false;
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+            _db.Dispose();
             base.Dispose(disposing);
         }
     }

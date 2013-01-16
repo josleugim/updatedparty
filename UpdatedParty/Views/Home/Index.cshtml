@@ -4,11 +4,8 @@
     
 }
 <div id="section1">
-    <br />
-    <br />
-    <br />
-    <br />
     <div style="float: left; width: 350px">
+        <div style="width: 100%; height: 90px;"></div>
         <div id="whatsup">
         </div>
         <div style="width: 100%; height: 60px">
@@ -46,7 +43,7 @@
                         loop: true,
                         live: true,
                         hashtags: true,
-                        timestamp: true,
+                        timestamp: false,
                         avatars: false,
                         behavior: 'all'
                     }
@@ -54,18 +51,15 @@
             </script>
         </div>
     </div>
-    <div style="float: left; margin: 0 auto; width: 674px; height: 300px;">
+    <div style="float: left; margin: 0 auto; width: 674px;">
         @using (Html.BeginForm())
         {
-@*<p>
-        Find by name: @Html.TextBox("SearchString")  
-        <input type="submit" value="Search" />
-        </p>*@
-            <div style="width: 100%; height: 160px">
+            <div style="width: 100%; height: 20px;"></div>
+            <div style="width: 100%; height: 290px">
+                <img style="border: none" src="../../Content/images/banner2.jpg" alt="Imagen" />
             </div>
-            <div style="width: 100%; height: 60px">
-            </div>
-            <div style="width: 100%; border: none; line-height: 35px;">
+            
+            <div style="clear: both; width: 100%; border: none; line-height: 35px;">
                 <div style="float: left;">
                     <p style="color: #2F2F2F">
                         Delegación:
@@ -99,10 +93,7 @@
             <tr>
                 <th>
                 </th>
-                <th>@Html.ActionLink("Evento", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { style = "color:#FFFF00;" })
-                </th>
-                <th>
-                    Promoción
+                <th>@Html.ActionLink("Evento y promoción", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { style = "color:#FFFF00;" })
                 </th>
                 @*<th>@Html.ActionLink("Fecha del evento", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
                     </th>*@
@@ -118,10 +109,7 @@
                     <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId }, new { style = "color:#FFFF00;" })
                     </th>
                     <td>
-                        <p>@Html.DisplayFor(modelItem => item.BarEvent)</p>
-                    </td>
-                    <td>
-                        <p>@Html.DisplayFor(modelItem => item.Promotion)</p>
+                        <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
                     </td>
                     @*<td>@Html.DisplayFor(modelItem => item.EventDate)
                         </td>*@
@@ -143,7 +131,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -155,7 +143,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -173,6 +161,8 @@
                 <div style="clear: both; width: 100%; text-align: center">
                     <p style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">
                         Resultados</p>
+                    <p style="color: red; font-size: 18px;">Seguimos trabajando en la busqueda avanzada,
+                        pronto estará <span style="color: yellow; font-size: 22px; font-family: bebasneue">UP</span></p>
                 </div>
                 <div id="searchResults" style="float: left;">
                 </div>
@@ -199,7 +189,7 @@
             @Html.TextBox("colonia")
         </div>
         <div style="float: left">
-            <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
+            <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" disabled="disabled" /></div>
     </div>
     <table class="tAdvancedSearch" style="border-spacing: 10px 0">
         <tr>

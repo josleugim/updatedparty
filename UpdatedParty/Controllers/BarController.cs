@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using UpdatedParty.Models;
 
 namespace UpdatedParty.Controllers
@@ -13,7 +12,7 @@ namespace UpdatedParty.Controllers
     {
         private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
         //
-        // GET: /User/
+        // GET: /User/Always redirect to here
         [Authorize]
         public ActionResult Index()
         {
@@ -27,7 +26,16 @@ namespace UpdatedParty.Controllers
             var userid = from u in _db.Bars
                          where u.Email == User.Identity.Name
                          select u.BarID;
-            int id = userid.First();
+
+            if (!userid.Any())
+            {
+                Session.Clear();
+                FormsAuthentication.SignOut();
+                Session.Abandon();
+                return RedirectToAction("Index", "Home");
+            }
+
+            var id = userid.First();
             return RedirectToAction("Create", "StayUP", new { id });
 
         }
@@ -58,9 +66,9 @@ namespace UpdatedParty.Controllers
         {
             //UPUser upusers = db.UPUsers.Find(id);
             //Include de relationship table
-            Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
+            //Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
 
-            return View(upusers);
+            return View();
         }
 
         //
@@ -69,16 +77,16 @@ namespace UpdatedParty.Controllers
         public ActionResult Edit(int id)
         {
 
-            Bar upusers = _db.Bars.Find(id);
+            Bar bars = _db.Bars.Find(id);
 
-            ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
-            ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
-            ViewBag.TState = new SelectList(_db.TStates, "TStateID", "StateName");
+            //ViewBag.UserTypeId = new SelectList(_db.UserTypes, "UserTypeId", "UserTypeName", upusers.UserTypeId);
+            //ViewBag.StatusTypeId = new SelectList(_db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+            ViewBag.TStateId = new SelectList(_db.TStates, "TStateID", "StateName", bars.TStateId);
             var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
 
-            return View(upusers);
+            return View(bars);
         }
 
         //
@@ -99,18 +107,26 @@ namespace UpdatedParty.Controllers
                 //             where s.StatusTypeId == id
                 //             select s;
 
-                //db.Entry(upusers).State = EntityState.Modified;
+                _db.Entry(bars).State = EntityState.Modified;
                 //upusers.StatusType = status.First();
                 //upusers.RegisterDate = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", null);
                 //db.SaveChanges();
-                Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
-                UpdateModel(upuser);
-                if (upuser != null) upuser.Township = delegacion;
+
+                //Bar upuser = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
+                //UpdateModel(bars);
+                if (!String.IsNullOrEmpty(delegacion)) bars.Township = delegacion;
                 _db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
             //ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
+
+            ViewBag.TStateId = new SelectList(_db.TStates, "TStateID", "StateName", bars.TStateId);
+            var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
+            "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
+            ViewBag.delegacion = new SelectList(del);
+
             return View();
         }
 
@@ -172,6 +188,14 @@ namespace UpdatedParty.Controllers
         {
             Bar users = _db.Bars.Find(id);
             return View(users);
+        }
+
+        public ActionResult MyBarView()
+        {
+            var bar = _db.Bars.FirstOrDefault(c => c.Email.Equals(User.Identity.Name));
+            if (bar != null) return RedirectToAction("BarDetails", new { id = bar.BarID });
+            else
+                return View();
         }
     }
 }

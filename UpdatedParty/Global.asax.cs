@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Data.Entity;            // Database.SetInitialize
-using UpdatedParty.Models;              // MovieInitializer
+using UpdatedParty.Models;
+using System.Globalization;
+using System.Threading;              // MovieInitializer
 
 namespace UpdatedParty
 {
@@ -33,12 +35,18 @@ namespace UpdatedParty
 
         protected void Application_Start()
         {
-            Database.SetInitializer<UpdatedPartyDB>(new UPInitializer());
-            //Database.SetInitializer<UpdatedPartyDB>(null);
+            //Database.SetInitializer<UpdatedPartyDB>(new UPInitializer());
+            Database.SetInitializer<UpdatedPartyDB>(null);
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            //Culture for México
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(1034);
         }
     }
 }

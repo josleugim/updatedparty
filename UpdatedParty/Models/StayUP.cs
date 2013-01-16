@@ -14,15 +14,16 @@ namespace UpdatedParty.Models
 
         public int BarId { get; set; }
 
-        [DisplayName("Promoción")]
-        public string Promotion { get; set; }
-
-        [DisplayName("Evento")]
-        public string BarEvent { get; set; }
+        [DisplayName("Promoción y evento")]
+        [MaxLength(140, ErrorMessage = "* 140 caracteres máximo")]
+        public string PromotionEvent { get; set; }
 
         [DisplayName("Fecha del evento")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? EventDate { get; set; }
+
+        [DisplayName("Activo")]
+        public bool IsActived { get; set; }
 
         public DateTime RegisterDate { get; set; }
 

@@ -12,17 +12,14 @@ namespace UpdatedParty.Models
     public class UpdatedPartyDB:DbContext
     {
         //Use this code in only in the development server
-        //public UpdatedPartyDB()
-        //    : base("name=UpdatedPartyDB")
-        //{ }
-        public DbSet<UserType> UserTypes { get; set; }
+        public UpdatedPartyDB()
+            : base("name=UpdatedPartyDB")
+        { }
+
         public DbSet<TState> TStates { get; set; }
         public DbSet<Newsletter> Newsletters { get; set; }
         public DbSet<ComplainType> ComplainTypes { get; set; }
-        public DbSet<StatusType> StatusTypes { get; set; }
-        //public DbSet<Photo> Photos { get; set; }
         public DbSet<Complain> Complains { get; set; }
-        public DbSet<SocialMedia> Socialmedia { get; set; }
         public DbSet<Bar> Bars { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<StayUP> stayUP { get; set; }

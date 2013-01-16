@@ -11,45 +11,58 @@ namespace UpdatedParty.Models
     public class Bar
     {
         public int BarID { get; set; }
-        public int UserTypeId { get; set; }
-        public int StatusTypeId { get; set; }
+        //public int UserTypeId { get; set; }
+        //public int StatusTypeId { get; set; }
         public int TStateId { get; set; }
 
         [DisplayName("Nombre de usuario")]
         [Required(ErrorMessage = "El nombre es requerido")]
+        [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
         public string BarName { get; set; }
 
         [DisplayName("Email")]
         [Required(ErrorMessage = "El email es requerido")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Ingresa un email válido")]
+        [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
         public string Email { get; set; }
 
         [DisplayName("Contraseña")]
         [Required(ErrorMessage = "La contraseña es requerida")]
+        [MaxLength(25, ErrorMessage = "* 25 caracteres máximo")]
         public string Pass { get; set; }
 
         [DisplayName("Horario")]
+        [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
         public string BarSchedule { get; set; }
 
         [DisplayName("Precio")]
         public int? Price { get; set; }
 
         [DisplayName("Sitio Web")]
+        [MaxLength(100, ErrorMessage = "* 100 caracteres máximo")]
         public string WebSite { get; set; }
 
         [DisplayName("Facebook")]
+        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo, 'Nombre de la cuenta'")]
         public string Facebook { get; set; }
 
         [DisplayName("Twitter")]
+        [MaxLength(25, ErrorMessage = "* 25 caracteres máximo")]
         public string Twitter { get; set; }
 
         [DisplayName("Reseña")]
         public string Review { get; set; }
 
+        [DisplayName("Teléfono de reservación")]
+        public long? PhoneNumber { get; set; }
+
         //Dirección
         [DisplayName("Calle")]
+        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
         public string Street { get; set; }
 
         [DisplayName("Colonia")]
+        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
         public string Cologne { get; set; }
 
         [DisplayName("Municipio/Delegación")]
@@ -59,9 +72,11 @@ namespace UpdatedParty.Models
         public virtual TState TState { get; set; }
 
         [DisplayName("País")]
+        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
         public string Country { get; set; }
 
         [DisplayName("Promoción de cumpleaños")]
+        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
         public string BirthdayPromotion { get; set; }
 
         [DisplayName("De 18 a 23")]
@@ -72,8 +87,7 @@ namespace UpdatedParty.Models
         public bool OldAge { get; set; }
 
         //
-        //Tipo
-        //
+        //Giro
         [DisplayName("Bar")]
         public bool BarType { get; set; }
 
@@ -86,6 +100,11 @@ namespace UpdatedParty.Models
         [DisplayName("After")]
         public bool After { get; set; }
 
+        //
+        //Giro
+        [DisplayName("Cerveza artesanal")]
+        public bool CervezaArtesanal { get; set; }
+
         [DisplayName("Pub")]
         public bool Pub { get; set; }
 
@@ -95,7 +114,7 @@ namespace UpdatedParty.Models
         [DisplayName("Botanero")]
         public bool Botanero { get; set; }
 
-        [DisplayName("Gaybar")]
+        [DisplayName("Gay")]
         public bool GayBar { get; set; }
 
         [DisplayName("Mezcalería")]
@@ -110,7 +129,7 @@ namespace UpdatedParty.Models
         [DisplayName("Dance floor")]
         public bool DanceFloor { get; set; }
 
-        [DisplayName("SportsBar")]
+        [DisplayName("Sports bar")]
         public bool SportsBar { get; set; }
 
         [DisplayName("Al aire libre")]
@@ -158,12 +177,21 @@ namespace UpdatedParty.Models
         [DisplayName("Tropical")]
         public bool Tropical { get; set; }
 
+        [DisplayName("Dj")]
+        public bool Dj { get; set; }
+
+        [DisplayName("Activo")]
+        public bool IsActived { get; set; }
+
+        [DisplayName("Nivel premium")]
+        public int? PremiumLevel { get; set; }
+
         [DisplayName("Fecha de registro")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime RegisterDate { get; set; }
 
-        public virtual UserType UserType { get; set; }
+        //public virtual UserType UserType { get; set; }
 
-        public virtual StatusType StatusType { get; set; }
+        //public virtual StatusType StatusType { get; set; }
     }
 }

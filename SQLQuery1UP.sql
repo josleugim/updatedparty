@@ -5,7 +5,8 @@ INSERT INTO TStates (StateName, StateAbbreviation, RegisterDate)
 Values('Distrito Federal', 'DF', getdate())
 
 select * from Tstates
-
+select * from galleries
+select * from Complains
 
 update StayUPs
 Set EventDate = '2013-14-01'
@@ -30,3 +31,11 @@ from StatusTypes
 
 select *
 from Galleries
+
+--drop table Complains
+--drop table ComplainTypes
+--drop table Galleries
+--drop table StayUPs
+--drop table bars
+--drop table TStates
+--drop table NewsLetters

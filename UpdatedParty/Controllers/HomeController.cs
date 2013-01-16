@@ -163,8 +163,7 @@ namespace UpdatedParty.Controllers
                                         // ReSharper restore ImplicitlyCapturedClosure
                                                  && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                  && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                 && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                 && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                 && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                  && @t.u.Cologne.Contains(colonia)
                                                  && @t.u.BarType.Equals(bBar)
                                                  && @t.u.Parking.Equals(bEstac)
@@ -200,8 +199,7 @@ namespace UpdatedParty.Controllers
                                                 // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && (@t.u.BarType.Equals(bBar) || @t.u.Antro.Equals(bAntro))
                                                 && @t.u.Parking.Equals(bEstac)
@@ -238,8 +236,7 @@ namespace UpdatedParty.Controllers
                                                 // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && (@t.u.BarType.Equals(bBar) || @t.u.Antro.Equals(bAntro) || @t.u.After.Equals(bAfter))
                                                 && @t.u.Parking.Equals(bEstac)
@@ -277,8 +274,7 @@ namespace UpdatedParty.Controllers
                                                 // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && @t.u.Antro.Equals(bAntro)
                                                 && @t.u.Parking.Equals(bEstac)
@@ -316,8 +312,7 @@ namespace UpdatedParty.Controllers
                                                 // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && (@t.u.Antro.Equals(bAntro) || @t.u.After.Equals((bAfter)))
                                                 && @t.u.Parking.Equals(bEstac)
@@ -355,8 +350,7 @@ namespace UpdatedParty.Controllers
                                                 // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && @t.u.After.Equals((bAfter))
                                                 && @t.u.Parking.Equals(bEstac)
@@ -394,8 +388,7 @@ namespace UpdatedParty.Controllers
                                        // ReSharper restore ImplicitlyCapturedClosure
                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.Promotion)
-                                                && !String.IsNullOrEmpty(@t.s.BarEvent)
+                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
                                                 && @t.u.Cologne.Contains(colonia)
                                                 && (@t.u.BarType.Equals(bBar) || @t.u.After.Equals((bAfter)))
                                                 && @t.u.Parking.Equals(bEstac)
@@ -737,19 +730,19 @@ namespace UpdatedParty.Controllers
         [HttpPost]
         public ViewResult Contact(string email, string nombre, string emailMessage) // Your model is passed in here
         {
-            try
-            {
+            //try
+            //{
                 WebMail.SmtpServer = "mail.updatedparty.com";
                 WebMail.Send("contacto@updatedparty.com", "Contacto:" + nombre, emailMessage, email);
 
                 return View();
-            }
+            //}
 
-            catch (Exception ex)
-            {
-                ViewData.ModelState.AddModelError("_FORM", ex.ToString());
-            }
-            return View();
+            //catch (Exception ex)
+            //{
+            //    ViewData.ModelState.AddModelError("_FORM", ex.ToString());
+            //}
+            //return View();
         }
 
         [HttpPost]
@@ -759,7 +752,7 @@ namespace UpdatedParty.Controllers
                 {
                     Email = newsletterEmail, RegisterDate = DateTime.Now
                 };
-            
+            UpdateModel(record);
             
             return View();
         }

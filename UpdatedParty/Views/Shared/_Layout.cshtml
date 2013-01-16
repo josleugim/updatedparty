@@ -94,6 +94,14 @@
 </head>
 <body>
     <div class="mainWrapper">
+        <div style="position: fixed; top: 0; right: 50px; background-color: transparent; line-height: 5px">
+            @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+            {
+                <p>
+                    <img src="../../Content/images/candado_small.png" alt="Candado" />
+                    @Html.ActionLink("Ajustes", "Index", "Bar", null, new { style = "color: yellow" })</p>
+            }
+        </div>
         <div style="position: fixed; top: 100px; right: 0;">
             @*<p>
                 <a href="https://twitter.com/updatedparty" class="twitter-follow-button" data-show-count="false"
@@ -113,8 +121,7 @@
             <div id="register">
                 <a href="@Url.Action("Register", "Account")" target="_self">
                     <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png"
-                        alt="Imagen" /></a>
-                @*<p>@Html.Partial("_LogOnPartial")</p>*@
+                        alt="Imagen" /></a> @*<p>@Html.Partial("_LogOnPartial")</p>*@
                 <p>@Html.ActionLink("Iniciar sesión", "Logon", "Account")</p>
             </div>
             @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@

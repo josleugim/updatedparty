@@ -10,18 +10,15 @@ namespace UpdatedParty.Models
     {
         //
         //Create User
-        //
         public MembershipUser CreateUser(string username, string password, string email)
         {
-            using (UpdatedPartyDB db = new UpdatedPartyDB())
+            using (var db = new UpdatedPartyDB())
             {
-                Bar user = new Bar();
+                var user = new Bar();
 
                 user.BarName = username;
                 user.Email = email;
                 user.Pass = password;
-                //user.Promotion = "";
-                //user.Event = "";
                 user.BarSchedule = "";
                 user.Price = null;
                 user.YoungAge = false;
@@ -32,6 +29,7 @@ namespace UpdatedParty.Models
                 user.Twitter = "";
                 user.BirthdayPromotion = "";
                 user.Review = "";
+                user.PhoneNumber = null;
                 user.Street = "";
                 user.Cologne = "";
                 user.Township = "";
@@ -42,6 +40,7 @@ namespace UpdatedParty.Models
                 user.Antro = false;
                 user.Parking = false;
                 user.After = false;
+                user.CervezaArtesanal = false;
                 user.Pub = false;
                 user.Karaoke = false;
                 user.Botanero = false;
@@ -65,11 +64,13 @@ namespace UpdatedParty.Models
                 user.Pop = false;
                 user.Disco = false;
                 user.Tropical = false;
+                user.Dj = false;
                 user.RegisterDate = DateTime.Now;
-                UserType usertype = db.UserTypes.Find(1);
-                StatusType statustype = db.StatusTypes.Find(1);
-                user.UserType = usertype;
-                user.StatusType = statustype;
+                user.IsActived = true;
+                user.PremiumLevel = null;
+                //UserType usertype = db.UserTypes.Find(1);
+                //StatusType statustype = db.StatusTypes.Find(1);
+                //user.UserType = usertype;
                 //user.PasswordSalt = "1234";
                 //user.CreatedDate = DateTime.Now;
                 //user.IsActivated = false;
@@ -85,7 +86,7 @@ namespace UpdatedParty.Models
 
         public string GetUserNameByEmail(string email)
         {
-            using (UpdatedPartyDB db = new UpdatedPartyDB())
+            using (var db = new UpdatedPartyDB())
             {
                 var result = from u in db.Bars where (u.Email == email) select u;
 
@@ -95,16 +96,13 @@ namespace UpdatedParty.Models
 
                     return dbuser.BarName;
                 }
-                else
-                {
-                    return "";
-                }
+                return "";
             }
         }
 
         public MembershipUser GetUser(string username)
         {
-            using (UpdatedPartyDB db = new UpdatedPartyDB())
+            using (var db = new UpdatedPartyDB())
             {
                 var result = from u in db.Bars where (u.BarName == username) select u;
 
@@ -141,10 +139,7 @@ namespace UpdatedParty.Models
 
                     return user;
                 }
-                else
-                {
-                    return null;
-                }
+                return null;
             }
         }
     }
