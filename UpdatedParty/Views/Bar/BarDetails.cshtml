@@ -3,36 +3,41 @@
     ViewBag.Title = Model.BarName;
     Layout = "~/Views/Shared/_Articles.cshtml";
 }
-@Html.HiddenFor(model => model.UserTypeId)
 <div style="clear: both; width: 100%; color: white;">
-    <div style="width: 100%; margin-top: 20px; height: 180px; border-bottom: 2px dotted #C1C4C9;">
+    <div style="width: 100%; margin-top: 20px; height: 220px; border-bottom: 2px dotted #C1C4C9;">
         <div style="float: left; width: 340px">
-            <h2 style="color: yellow">@Html.DisplayFor(model => model.BarName)</h2>
+            <div style="width: 100%;">
+                @{
+                    if (Model.BarType == true)
+                    {
+                    <h2 style="color: yellow; margin-bottom: 1px;">
+                        Bar</h2>
+                    }
+                    else if (Model.Antro == true)
+                    {
+                    <h2 style="color: yellow; margin-bottom: 1px;">
+                        Antro</h2>
+                    }
+                    else if (Model.After == true)
+                    {
+                    <h2 style="color: yellow; margin-bottom: 1px;">
+                        After</h2>
+                    }
+                }
+                <h1 style="color: yellow; margin: 1px;">@Html.DisplayFor(model => model.BarName)</h1>
+            </div>
             <p>@Html.DisplayFor(model => model.Street)</p>
             <p>
                 Col. @Html.DisplayFor(model => model.Cologne), @Html.DisplayFor(model => model.Township)
                 @Html.DisplayFor(model => model.TState.StateName).</p>
-            <p>
-                Reserva al:</p>
             <br />
         </div>
         <div style="float: left; width: 340px">
+            <br />
+            <br />
             @{
-                if (Model.BarType == true)
-                {
-                <h3 style="color: yellow">
-                    <span style="color: white; font-size: 16px">Giro:</span> Bar</h3>
-                }
-                else if (Model.Antro == true)
-                {
-                <h3 style="color: yellow">
-                    <span style="color: white; font-size: 16px">Giro:</span> Antro</h3>
-                }
-                else if (Model.After == true)
-                {
-                <h3 style="color: yellow">
-                    <span style="color: white; font-size: 16px">Giro:</span> After</h3>
-                }
+                <p>
+                    Reserva al: @Html.DisplayFor(model => model.PhoneNumber)</p>
                 <p>
                     Horarios: @Html.DisplayFor(model => model.BarSchedule)</p>
                 if (Model.Parking == true)
@@ -44,13 +49,14 @@
         </div>
         <div style="float: left; width: 340px">
             <br />
+            <br />
             <p>
                 Sitio web: @Html.DisplayFor(model => model.WebSite)</p>
             <p>
-                Facebook:
+                Facebook: @Html.DisplayFor(model => model.Facebook)
             </p>
             <p>
-                Twitter:
+                Twitter: @Html.DisplayFor(model => model.Twitter)
             </p>
         </div>
     </div>
@@ -59,94 +65,103 @@
             <p>@Html.DisplayFor(model => model.Review)</p>
             <p style="color: yellow">
                 Música:</p>
-            <p>
+            <ul>
                 @{
-                
                     if (Model.Alternative == true)
                     {
-                    @:Alternativo
+                    <li>Alternativo</li>
                     }
                     if (Model.Rock == true)
                     {
-                    @:, Rock
+                    <li>Rock</li>
                     }
                     if (Model.Electronic == true)
                     {
-                    @:, Electrónica
+                    <li>Electrónica</li>
                     }
                     if (Model.HipHop == true)
                     {
-                    @:, Hip-Hop
+                    <li>Hip-Hop</li>
                     }
                     if (Model.JazzBlues == true)
                     {
-                    @:, Jazz & Blues
+                    <li>Jazz & Blues</li>
                     }
                     if (Model.Reggae == true)
                     {
-                    @:, Reggae
+                    <li>Reggae</li>
                     }
                     if (Model.Trova == true)
                     {
-                    @:, Trova
+                    <li>Trova</li>
                     }
                     if (Model.Lounge == true)
                     {
-                    @:, Lounge
+                    <li>Lounge</li>
                     }
                     if (Model.Banda == true)
                     {
-                    @:, Banda
+                    <li>Banda</li>
                     }
                     if (Model.Pop == true)
                     {
-                    @:, Pop
+                    <li>Pop</li>
                     }
                     if (Model.Disco == true)
                     {
-                    @:, Disco
+                    <li>Disco</li>
                     }
                     if (Model.Tropical == true)
                     {
-                    @:, Tropical
+                    <li>Tropical</li>
+                    }
+                    if (Model.Dj == true)
+                    {
+                    <li>Dj</li>
                     }
                 }
-                .</p>
+            </ul>
             <p style="color: yellow">
-                De que tipo:</p>
-            <p>
+                Tipo:</p>
+            <ul>
                 @{
                     if (Model.Cerveceria == true)
                     {
-                    @:, Cerveceria
+                    <li>Cerveceria</li>
                     }
                     if (Model.Pub == true)
                     {
-                    @:, Pub
+                    <li>Pub</li>
                     }
                     if (Model.Karaoke == true)
                     {
-                    @:, Karaoke
+                    <li>Karaoke</li>
                     }
                     if (Model.Botanero == true)
                     {
-                    @:, Botanero
+                    <li>Botanero</li>
                     }
                     if (Model.GayBar == true)
                     {
-                    @:, Gay
+                    <li>Gay</li>
                     }
                     if (Model.Mezcaleria == true)
                     {
-                    @:, @Html.DisplayFor(model => model.Mezcaleria)
+                    <li>Mezcalería</li>
+                    }
+                    if (Model.RestaurantBar == true)
+                    {
+                    <li>Restaurant bar</li>
                     }
                 }
-            </p>
+            </ul>
+            <p>
+                Promoción de cumpleaños: @Html.DisplayFor(model => model.BirthdayPromotion)</p>
         </div>
         <div style="float: left; width: 50%">
         </div>
     </div>
 </div>
 <p>
-    @Html.ActionLink("Regresar", "Index", "Home")
+    @Html.ActionLink("Regresar", "Index", "Home", new { style = "color: yellow" })
 </p>

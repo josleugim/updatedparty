@@ -31,6 +31,7 @@ namespace UpdatedParty.Models
     {
         [Required]
         [Display(Name = "Correo electrónico")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Ingresa un email válido")]
         public string UserEmail { get; set; }
 
         [Required]
@@ -50,6 +51,7 @@ namespace UpdatedParty.Models
 
         [Required]
         [DataType(DataType.EmailAddress)]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Ingresa un email válido")]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 

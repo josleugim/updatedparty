@@ -71,7 +71,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StayUPController.cs" />
     <Compile Include="Controllers\BarController.cs" />
-    <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -89,13 +88,13 @@
     <Compile Include="Models\UPInitializer.cs" />
     <Compile Include="Models\Bar.cs" />
     <Compile Include="Models\UserRepository.cs" />
-    <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\banner2.jpg" />
     <Content Include="Content\images\boton-enviar.png" />
     <Content Include="Content\images\boton-suscribete.png" />
+    <Content Include="Content\images\candado_small.png" />
     <Content Include="Content\images\ddlarrow.png" />
     <Content Include="Content\images\down_arrow_select.jpg" />
     <Content Include="Content\images\elementos-amarillos-laterales-der.png" />
@@ -199,24 +198,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\UserType\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserType\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserType\Create.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserType\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\UserType\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Bar\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Content\font\bebasneue-webfont.ttf" />
     <None Include="Content\font\BebasNeue.otf" />
     <None Include="Content\font\futura-condensed-medium.ttf" />
@@ -224,8 +205,6 @@
     <None Include="Content\font\Intro.otf" />
     <Content Include="Views\Shared\_Interior.cshtml" />
     <Content Include="Views\Bar\Edit.cshtml" />
-    <Content Include="Views\Bar\Details.cshtml" />
-    <Content Include="Views\Bar\StayUP.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Gallery\Details.cshtml" />
     <Content Include="Views\Gallery\Create.cshtml" />

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using UpdatedParty.Models;
 
 namespace UpdatedParty.Controllers
@@ -13,7 +12,7 @@ namespace UpdatedParty.Controllers
     {
         private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
         //
-        // GET: /User/
+        // GET: /User/Always redirect to here
         [Authorize]
         public ActionResult Index()
         {
@@ -27,7 +26,16 @@ namespace UpdatedParty.Controllers
             var userid = from u in _db.Bars
                          where u.Email == User.Identity.Name
                          select u.BarID;
-            int id = userid.First();
+
+            if (!userid.Any())
+            {
+                Session.Clear();
+                FormsAuthentication.SignOut();
+                Session.Abandon();
+                return RedirectToAction("Index", "Home");
+            }
+
+            var id = userid.First();
             return RedirectToAction("Create", "StayUP", new { id });
 
         }
@@ -58,9 +66,9 @@ namespace UpdatedParty.Controllers
         {
             //UPUser upusers = db.UPUsers.Find(id);
             //Include de relationship table
-            Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
+            //Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
 
-            return View(upusers);
+            return View();
         }
 
         //
@@ -176,6 +184,14 @@ namespace UpdatedParty.Controllers
         {
             Bar users = _db.Bars.Find(id);
             return View(users);
+        }
+
+        public ActionResult MyBarView()
+        {
+            var bar = _db.Bars.FirstOrDefault(c => c.Email.Equals(User.Identity.Name));
+            if (bar != null) return RedirectToAction("BarDetails", new { id = bar.BarID });
+            else
+                return View();
         }
     }
 }

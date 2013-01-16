@@ -11,13 +11,13 @@ namespace UpdatedParty.Models
         protected override void Seed(UpdatedPartyDB context)
         {
             //base.Seed(context);
-            var usertype = new List<UserType> { 
-            new UserType {UserTypeName = "Bar",
-            RegisterDate = DateTime.Now},
-            new UserType {UserTypeName = "Antro",
-            RegisterDate = DateTime.Now}
-            };
-            usertype.ForEach(d => context.UserTypes.Add(d));
+            //var usertype = new List<UserType> { 
+            //new UserType {UserTypeName = "Bar",
+            //RegisterDate = DateTime.Now},
+            //new UserType {UserTypeName = "Antro",
+            //RegisterDate = DateTime.Now}
+            //};
+            //usertype.ForEach(d => context.UserTypes.Add(d));
 
             //var statustype = new List<StatusType> { 
             //    new StatusType { StatusTypeName = "Activo",
@@ -31,8 +31,8 @@ namespace UpdatedParty.Models
             {
                 new TState
                 {
-                    StateName = "Aguascalientes",
-                    StateAbbreviation = "AGS",
+                    StateName = "Distrito Federal",
+                    StateAbbreviation = "DF",
                     RegisterDate = Convert.ToDateTime(DateTime.Now.ToShortDateString())
                 },
                 new TState
@@ -42,6 +42,8 @@ namespace UpdatedParty.Models
                     RegisterDate = Convert.ToDateTime(DateTime.Now.ToShortDateString())
                 }
             };
+
+            states.ForEach(s => context.TStates.Add(s));
 
             //var upuser = new List<UPUser>{
 
