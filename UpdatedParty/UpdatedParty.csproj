@@ -91,6 +91,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\global.css" />
+    <Content Include="Content\images\arrow-nextup.png" />
+    <Content Include="Content\images\arrow-prevup.png" />
     <Content Include="Content\images\banner2.jpg" />
     <Content Include="Content\images\boton-enviar.png" />
     <Content Include="Content\images\boton-suscribete.png" />
@@ -101,7 +104,9 @@
     <Content Include="Content\images\Bbolita-blanca.png" />
     <Content Include="Content\images\corazon-prendido.png" />
     <Content Include="Content\images\headacheUP_med.jpg" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\menuribbon.png" />
+    <Content Include="Content\images\paginationup.png" />
     <Content Include="Content\images\registerbutton.png" />
     <Content Include="Content\images\sprites-contact.png" />
     <Content Include="Content\images\sprites-header.png" />
@@ -162,6 +167,7 @@
     <Content Include="Scripts\jsonScript.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\slides.min.jquery.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
