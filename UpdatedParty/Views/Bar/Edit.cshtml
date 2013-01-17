@@ -233,7 +233,7 @@
                     @Html.LabelFor(model => model.BirthdayPromotion)
                 </div>
                 <div class="editor-field">
-                    @Html.EditorFor(model => model.BirthdayPromotion)
+                    @Html.TextBoxFor(model => model.BirthdayPromotion, new { style = "width: 300px;" })
                     @Html.ValidationMessageFor(model => model.BirthdayPromotion)
                 </div>
                 <p style="color: red; font-size: 13px">
