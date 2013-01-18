@@ -71,11 +71,6 @@ namespace UpdatedParty.Controllers
             return View(stayup.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
-
         public ActionResult JsonSearch(string delegacion, string colonia, string bar, string antro, string promocion, string evento,
             string estacionamiento, string after, string pub, string karaoke, string botanero, string gaybar, string mezcaleria,
             string cerveceria, string alternativo, string rock, string electro, string hiphop, string jazzblues, string reggae,
@@ -107,14 +102,14 @@ namespace UpdatedParty.Controllers
 
             //
             //Change value to true
-            if (!String.IsNullOrEmpty(bar))
-                bBar = true;
-            if (!String.IsNullOrEmpty(antro))
-                bAntro = true;
+            //if (!String.IsNullOrEmpty(bar))
+            //    bBar = true;
+            //if (!String.IsNullOrEmpty(antro))
+            //    bAntro = true;
+            //if (!String.IsNullOrEmpty(after))
+            //    bAfter = true;
             if (!String.IsNullOrEmpty(estacionamiento))
                 bEstac = true;
-            if (!String.IsNullOrEmpty(after))
-                bAfter = true;
             if (!String.IsNullOrEmpty(pub))
                 bPub = true;
             if (!String.IsNullOrEmpty(karaoke))
@@ -152,567 +147,120 @@ namespace UpdatedParty.Controllers
             if (!String.IsNullOrEmpty(tropical))
                 bTropical = true;
 
-            //
-            //Search bar promotions or events of today
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento) && !String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after))
-            {
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                    .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                        // ReSharper restore ImplicitlyCapturedClosure
-                                                 && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                 && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                 && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                 && @t.u.Cologne.Contains(colonia)
-                                                 && @t.u.BarType.Equals(bBar)
-                                                 && @t.u.Parking.Equals(bEstac)
-                                                 && @t.u.Pub.Equals(bPub)
-                                                 && @t.u.Karaoke.Equals(bKaraoke)
-                                                 && @t.u.Botanero.Equals(bBotanero)
-                                                 && @t.u.GayBar.Equals(bGaybar)
-                                                 && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                 && @t.u.Cerveceria.Equals(bCerve)
-                                                 && @t.u.Alternative.Equals(bAlter)
-                                                 && @t.u.Rock.Equals(bRock)
-                                                 && @t.u.Electronic.Equals(bElectro)
-                                                 && @t.u.HipHop.Equals(bHipH)
-                                                 && @t.u.JazzBlues.Equals(bJazzB)
-                                                 && @t.u.Reggae.Equals(bReggae)
-                                                 && @t.u.Trova.Equals(bTrova)
-                                                 && @t.u.Lounge.Equals(bLounge)
-                                                 && @t.u.Banda.Equals(bBanda)
-                                                 && @t.u.Pop.Equals(bPop)
-                                                 && @t.u.Disco.Equals(bDisco)
-                                                 && @t.u.Tropical.Equals(bTropical))
-                                    .Select(@t => new { @t.u.BarName, @t.u.BarID });
+            //var results = from b in _db.Bars
+            //              where !String.IsNullOrEmpty(b.Cologne)
+            //              && b.Cologne.Contains(colonia)
+            //              select b;
+            //if (bBar)
+            //{
+            //    results = results.Where(b => b.BarType.Equals(true));
+            //}
 
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+            //Solo busca bares
+            if (!String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after))
+            {
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && u.BarType.Equals(true))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento) && !String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after))
+            //Solo busca antros
+            if (!String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(after))
             {
-                //Search Bar and Antro
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                                // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && (@t.u.BarType.Equals(bBar) || @t.u.Antro.Equals(bAntro))
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && u.Antro.Equals(true))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
-            
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento) && !String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after))
+            //Busca antros y bares
+            if (!String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(after))
             {
-                //Search Bar, Antro and After
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                                // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && (@t.u.BarType.Equals(bBar) || @t.u.Antro.Equals(bAntro) || @t.u.After.Equals(bAfter))
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-            
-            if (!String.IsNullOrEmpty(promocion) ||
-                     !String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after))
-            {
-                //Search Antro
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                                // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && @t.u.Antro.Equals(bAntro)
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-            
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento) 
-                && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after))
-            {
-                //Search Antro and After
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                                // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && (@t.u.Antro.Equals(bAntro) || @t.u.After.Equals((bAfter)))
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-            
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento) 
-                && String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after))
-            {
-                //Search After
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                                // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && @t.u.After.Equals((bAfter))
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && (u.BarType.Equals(true) || u.Antro.Equals(true)))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
 
-            if (!String.IsNullOrEmpty(promocion) || !String.IsNullOrEmpty(evento)
-                && !String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after))
+            //Solo busca afters
+            if (String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
             {
-                //Search Bar and After
-                DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-                var barResult = _db.Bars.Join(_db.stayUP, u => u.BarID, s => s.BarId, (u, s) => new { u, s })
-                    // ReSharper disable ImplicitlyCapturedClosure
-                                   .Where(@t => EntityFunctions.TruncateTime(@t.s.EventDate) == datenow
-                                       // ReSharper restore ImplicitlyCapturedClosure
-                                                && @t.u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                                && !String.IsNullOrEmpty(@t.u.Cologne)
-                                                && !String.IsNullOrEmpty(@t.s.PromotionEvent)
-                                                && @t.u.Cologne.Contains(colonia)
-                                                && (@t.u.BarType.Equals(bBar) || @t.u.After.Equals((bAfter)))
-                                                && @t.u.Parking.Equals(bEstac)
-                                                && @t.u.Pub.Equals(bPub)
-                                                && @t.u.Karaoke.Equals(bKaraoke)
-                                                && @t.u.Botanero.Equals(bBotanero)
-                                                && @t.u.GayBar.Equals(bGaybar)
-                                                && @t.u.Mezcaleria.Equals(bMezcaleria)
-                                                && @t.u.Cerveceria.Equals(bCerve)
-                                                && @t.u.Alternative.Equals(bAlter)
-                                                && @t.u.Rock.Equals(bRock)
-                                                && @t.u.Electronic.Equals(bElectro)
-                                                && @t.u.HipHop.Equals(bHipH)
-                                                && @t.u.JazzBlues.Equals(bJazzB)
-                                                && @t.u.Reggae.Equals(bReggae)
-                                                && @t.u.Trova.Equals(bTrova)
-                                                && @t.u.Lounge.Equals(bLounge)
-                                                && @t.u.Banda.Equals(bBanda)
-                                                && @t.u.Pop.Equals(bPop)
-                                                && @t.u.Disco.Equals(bDisco)
-                                                && @t.u.Tropical.Equals(bTropical))
-                                   .Select(@t => new { @t.u.BarName, @t.u.BarID });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && u.After.Equals(true))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
 
-            //
-            //Search without promotion or event just bar
-            if (!String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
+            //Busca after y bares
+            if (String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
             {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && u.BarType.Equals(bBar)
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && (u.BarType.Equals(true) || u.After.Equals(true)))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
 
-            //
-            //Search bar and Antro
-            if (!String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
+            //Busca antros y after
+            if (!String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
             {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && (u.BarType.Equals(bBar) || u.Antro.Equals(bAntro))
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia)
+                                         && (u.After.Equals(true) || u.Antro.Equals(true)))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
             }
 
-            //
-            //Search bar or Antro or after
-            if (!String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
-            {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && (u.BarType.Equals(bBar) || u.Antro.Equals(bAntro) || u.After.Equals(bAfter))
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-
-            //
-            //Search bar or after
-            if (!String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
-            {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && (u.BarType.Equals(bBar) || u.After.Equals(bAfter))
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-
-            //
-            //Search antro or after
-            if (String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
-            {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && (u.Antro.Equals(bAntro) || u.After.Equals(bAfter))
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-
-            //
-            //Search antro
-            if (String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
-            {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && u.Antro.Equals(bAntro)
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-
-            //
-            //Search antro
-            if (String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(after) && String.IsNullOrEmpty(evento) && String.IsNullOrEmpty(promocion))
-            {
-                var barResult = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && u.After.Equals(bAfter)
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-                return Json(barResult, JsonRequestBehavior.AllowGet);
-            }
-
-            var barResult2 = _db.Bars
-                    .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                        && !String.IsNullOrEmpty(u.Cologne)
-                        && u.Cologne.Contains(colonia)
-                        && (u.BarType.Equals(true) || u.Antro.Equals(true) || u.After.Equals(true))
-                        && u.Parking.Equals(bEstac)
-                        && u.Pub.Equals(bPub)
-                        && u.Karaoke.Equals(bKaraoke)
-                        && u.Botanero.Equals(bBotanero)
-                        && u.GayBar.Equals(bGaybar)
-                        && u.Mezcaleria.Equals(bMezcaleria)
-                        && u.Cerveceria.Equals(bCerve)
-                        && u.Alternative.Equals(bAlter)
-                        && u.Rock.Equals(bRock)
-                        && u.Electronic.Equals(bElectro)
-                        && u.HipHop.Equals(bHipH)
-                        && u.JazzBlues.Equals(bJazzB)
-                        && u.Reggae.Equals(bReggae)
-                        && u.Trova.Equals(bTrova)
-                        && u.Lounge.Equals(bLounge)
-                        && u.Banda.Equals(bBanda)
-                        && u.Pop.Equals(bPop)
-                        && u.Disco.Equals(bDisco)
-                        && u.Tropical.Equals(bTropical)
-                        )
-                    .Select(r => new
-                    {
-                        r.BarName,
-                        r.BarID
-                    });
-
-            return Json(barResult2, JsonRequestBehavior.AllowGet);
+            //Buscatodo
+            var results = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && !String.IsNullOrEmpty(u.Cologne)
+                                         && u.Cologne.Contains(colonia))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+            return Json(results, JsonRequestBehavior.AllowGet);
         }
 
         //[HttpPost]
@@ -727,33 +275,54 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Contacts the specified email.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <param name="nombre">The nombre.</param>
+        /// <param name="emailMessage">The email message.</param>
+        /// <returns></returns>
         [HttpPost]
         public ViewResult Contact(string email, string nombre, string emailMessage) // Your model is passed in here
         {
-            //try
-            //{
+            try
+            {
                 WebMail.SmtpServer = "mail.updatedparty.com";
                 WebMail.Send("contacto@updatedparty.com", "Contacto:" + nombre, emailMessage, email);
 
                 return View();
-            //}
+            }
 
-            //catch (Exception ex)
-            //{
-            //    ViewData.ModelState.AddModelError("_FORM", ex.ToString());
-            //}
-            //return View();
+            catch (Exception ex)
+            {
+                ViewData.ModelState.AddModelError("_FORM", ex.ToString());
+            }
+            return View("ContactFail");
         }
 
         [HttpPost]
         public ViewResult Suscribe(string newsletterEmail)
         {
-            var record = new Newsletter
-                {
-                    Email = newsletterEmail, RegisterDate = DateTime.Now
-                };
-            UpdateModel(record);
-            
+            var searchEmail = from n in _db.Newsletters
+                              where n.Email.Equals(newsletterEmail)
+                              select n;
+            if (!searchEmail.Any())
+            {
+                var newsletter = new Newsletter();
+
+                newsletter.Email = newsletterEmail;
+                newsletter.RegisterDate = DateTime.Now;
+                _db.Newsletters.Add(newsletter);
+                _db.SaveChanges();
+
+                return View();
+            }
+
+            return View("SuscribeExist");
+        }
+
+        public ViewResult AvisoPrivacidad()
+        {
             return View();
         }
     }

@@ -5,7 +5,8 @@
 }
 <div id="section1">
     <div style="float: left; width: 350px">
-        <div style="width: 100%; height: 90px;"></div>
+        <div style="width: 100%; height: 90px;">
+        </div>
         <div id="whatsup">
         </div>
         <div style="width: 100%; height: 60px">
@@ -54,13 +55,14 @@
     <div style="float: left; margin: 0 auto; width: 674px;">
         @using (Html.BeginForm())
         {
-            <div style="width: 100%; height: 20px;"></div>
+            <div style="width: 100%; height: 20px;">
+            </div>
             <div style="width: 100%; height: 290px">
                 <img style="border: none" src="../../Content/images/banner2.jpg" alt="Imagen" />
             </div>
             
             <div style="clear: both; width: 100%; border: none; line-height: 35px;">
-                <div style="float: left;">
+                <div style="float: left; font-size: 14px">
                     <p style="color: #2F2F2F">
                         Delegación:
                     </p>
@@ -68,7 +70,7 @@
                 <div class="styled-select" style="float: left">
                     @Html.DropDownList("delegacion")
                 </div>
-                <div style="float: left;">
+                <div style="float: left; font-size: 14px">
                     <p style="color: #2F2F2F">
                         Colonia:
                     </p>
@@ -131,7 +133,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -143,7 +145,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
         </div>
     </div>
 </div>
@@ -161,16 +163,12 @@
                 <div style="clear: both; width: 100%; text-align: center">
                     <p style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">
                         Resultados</p>
-                    <p style="color: red; font-size: 18px;">Seguimos trabajando en la busqueda avanzada,
-                        pronto estará <span style="color: yellow; font-size: 22px; font-family: bebasneue">UP</span></p>
                 </div>
                 <div id="searchResults" style="float: left;">
                 </div>
             </div>
             <script id="searchTemplate" type="text/x-jquery-tmpl">
-             
-                <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><p style='margin-left:14px'>@Html.ActionLink("${BarName}", "Details", new { id = "BarID" }, new { style = "color:#FF3430;" })</p></div>
-             
+                <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}" }))'>${BarName}</a></div>
             </script>
         </div>
     </div>
@@ -189,7 +187,7 @@
             @Html.TextBox("colonia")
         </div>
         <div style="float: left">
-            <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" disabled="disabled" /></div>
+            <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" /></div>
     </div>
     <table class="tAdvancedSearch" style="border-spacing: 10px 0">
         <tr>
@@ -202,7 +200,8 @@
                     <p>
                         Estacionamiento
                     </p>
-                    <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento" />
+                    <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento"
+                        disabled="disabled" />
                     <label for="checkbox_1_5">
                     </label>
                 </div>
@@ -219,7 +218,7 @@
                     <p>
                         Trova
                     </p>
-                    <input type="checkbox" id="checkbox_1_19" class="regular-checkbox" name="trova" />
+                    <input type="checkbox" id="checkbox_1_19" class="regular-checkbox" name="trova" disabled="disabled" />
                     <label for="checkbox_1_19">
                     </label>
                 </div>
@@ -241,7 +240,7 @@
                     <p>
                         Pub
                     </p>
-                    <input type="checkbox" id="checkbox_1_7" class="regular-checkbox" name="pub" />
+                    <input type="checkbox" id="checkbox_1_7" class="regular-checkbox" name="pub" disabled="disabled" />
                     <label for="checkbox_1_7">
                     </label>
                 </div>
@@ -251,7 +250,8 @@
                     <p>
                         Alternativo
                     </p>
-                    <input type="checkbox" id="checkbox_1_13" class="regular-checkbox" name="alternativo" />
+                    <input type="checkbox" id="checkbox_1_13" class="regular-checkbox" name="alternativo"
+                        disabled="disabled" />
                     <label for="checkbox_1_13">
                     </label>
                 </div>
@@ -261,7 +261,8 @@
                     <p>
                         Lounge
                     </p>
-                    <input type="checkbox" id="checkbox_1_20" class="regular-checkbox" name="lounge" />
+                    <input type="checkbox" id="checkbox_1_20" class="regular-checkbox" name="lounge"
+                        disabled="disabled" />
                     <label for="checkbox_1_20">
                     </label>
                 </div>
@@ -283,7 +284,8 @@
                     <p>
                         Karaoke
                     </p>
-                    <input type="checkbox" id="checkbox_1_8" class="regular-checkbox" name="karaoke" />
+                    <input type="checkbox" id="checkbox_1_8" class="regular-checkbox" name="karaoke"
+                        disabled="disabled" />
                     <label for="checkbox_1_8">
                     </label>
                 </div>
@@ -293,7 +295,7 @@
                     <p>
                         Rock
                     </p>
-                    <input type="checkbox" id="checkbox_1_14" class="regular-checkbox" name="rock" />
+                    <input type="checkbox" id="checkbox_1_14" class="regular-checkbox" name="rock" disabled="disabled" />
                     <label for="checkbox_1_14">
                     </label>
                 </div>
@@ -303,7 +305,7 @@
                     <p>
                         Banda
                     </p>
-                    <input type="checkbox" id="checkbox_1_21" class="regular-checkbox" name="banda" />
+                    <input type="checkbox" id="checkbox_1_21" class="regular-checkbox" name="banda" disabled="disabled" />
                     <label for="checkbox_1_21">
                     </label>
                 </div>
@@ -324,7 +326,8 @@
                     <p>
                         Botanero
                     </p>
-                    <input type="checkbox" id="checkbox_1_9" class="regular-checkbox" name="botanero" />
+                    <input type="checkbox" id="checkbox_1_9" class="regular-checkbox" name="botanero"
+                        disabled="disabled" />
                     <label for="checkbox_1_9">
                     </label>
                 </div>
@@ -334,7 +337,8 @@
                     <p>
                         Electrónica
                     </p>
-                    <input type="checkbox" id="checkbox_1_15" class="regular-checkbox" name="electro" />
+                    <input type="checkbox" id="checkbox_1_15" class="regular-checkbox" name="electro"
+                        disabled="disabled" />
                     <label for="checkbox_1_15">
                     </label>
                 </div>
@@ -344,7 +348,7 @@
                     <p>
                         Pop
                     </p>
-                    <input type="checkbox" id="checkbox_1_22" class="regular-checkbox" name="pop" />
+                    <input type="checkbox" id="checkbox_1_22" class="regular-checkbox" name="pop" disabled="disabled" />
                     <label for="checkbox_1_22">
                     </label>
                 </div>
@@ -362,7 +366,8 @@
                 <div class="criterion">
                     <p>
                         Gay Bar</p>
-                    <input type="checkbox" id="checkbox_1_10" class="regular-checkbox" name="gaybar" />
+                    <input type="checkbox" id="checkbox_1_10" class="regular-checkbox" name="gaybar"
+                        disabled="disabled" />
                     <label for="checkbox_1_10">
                     </label>
                 </div>
@@ -372,7 +377,8 @@
                     <p>
                         Hip-Hop
                     </p>
-                    <input type="checkbox" id="checkbox_1_16" class="regular-checkbox" name="hiphop" />
+                    <input type="checkbox" id="checkbox_1_16" class="regular-checkbox" name="hiphop"
+                        disabled="disabled" />
                     <label for="checkbox_1_16">
                     </label>
                 </div>
@@ -382,7 +388,7 @@
                     <p>
                         Disco
                     </p>
-                    <input type="checkbox" id="checkbox_1_23" class="regular-checkbox" name="disco" />
+                    <input type="checkbox" id="checkbox_1_23" class="regular-checkbox" name="disco" disabled="disabled" />
                     <label for="checkbox_1_23">
                     </label>
                 </div>
@@ -394,7 +400,7 @@
                     <p>
                         Evento
                     </p>
-                    <input type="checkbox" id="checkbox_1_4" class="regular-checkbox" name="evento" />
+                    <input type="checkbox" id="checkbox_1_4" class="regular-checkbox" name="evento" disabled="disabled" />
                     <label for="checkbox_1_4">
                     </label>
                 </div>
@@ -404,7 +410,8 @@
                     <p>
                         Mezcalería
                     </p>
-                    <input type="checkbox" id="checkbox_1_11" class="regular-checkbox" name="mezcaleria" />
+                    <input type="checkbox" id="checkbox_1_11" class="regular-checkbox" name="mezcaleria"
+                        disabled="disabled" />
                     <label for="checkbox_1_11">
                     </label>
                 </div>
@@ -414,7 +421,8 @@
                     <p>
                         Jazz/Blues
                     </p>
-                    <input type="checkbox" id="checkbox_1_17" class="regular-checkbox" name="jazzblues" />
+                    <input type="checkbox" id="checkbox_1_17" class="regular-checkbox" name="jazzblues"
+                        disabled="disabled" />
                     <label for="checkbox_1_17">
                     </label>
                 </div>
@@ -424,7 +432,8 @@
                     <p>
                         Tropical
                     </p>
-                    <input type="checkbox" id="checkbox_1_24" class="regular-checkbox" name="tropical" />
+                    <input type="checkbox" id="checkbox_1_24" class="regular-checkbox" name="tropical"
+                        disabled="disabled" />
                     <label for="checkbox_1_24">
                     </label>
                 </div>
@@ -436,7 +445,8 @@
                     <p>
                         Promoción
                     </p>
-                    <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion" />
+                    <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion"
+                        disabled="disabled" />
                     <label for="checkbox_1_3">
                     </label>
                 </div>
@@ -446,7 +456,8 @@
                     <p>
                         Cervecería
                     </p>
-                    <input type="checkbox" id="checkbox_1_12" class="regular-checkbox" name="cerveceria" />
+                    <input type="checkbox" id="checkbox_1_12" class="regular-checkbox" name="cerveceria"
+                        disabled="disabled" />
                     <label for="checkbox_1_12">
                     </label>
                 </div>
@@ -456,7 +467,8 @@
                     <p>
                         Reggae
                     </p>
-                    <input type="checkbox" id="checkbox_1_18" class="regular-checkbox" name="reggae" />
+                    <input type="checkbox" id="checkbox_1_18" class="regular-checkbox" name="reggae"
+                        disabled="disabled" />
                     <label for="checkbox_1_18">
                     </label>
                 </div>
@@ -467,6 +479,11 @@
             </td>
         </tr>
     </table>
+    <p style="font-size: 14px">
+        * Seguimos trabajando en la búsqueda avanzada, por el momento solo puedes realizar búsquedas
+        de <span style="color: red;">bar</span>, <span style="color: red;">antro</span>
+        y <span style="color: red;">after</span>. Pronto estará <span style="color: yellow;
+            font-size: 22px; font-family: bebasneue">UP</span></p>
     </form>
 </div>
 <div id="section3" style="width: 100%; height: 720px; border-bottom: 2px dotted #C1C4C9;">
@@ -537,7 +554,7 @@
                 </div>
             </div>
         }
-        @using (Html.BeginForm("Suscribe", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Suscribe", "Home", FormMethod.Post, new { name = "newsForm", onsubmit = "return validateForm()" }))
         {
             <div style="float: left; width: 365px; margin-left: 20px">
                 <div id="newsLetter">
@@ -566,6 +583,21 @@
     </div>
 </div>
 <div style="clear: both; width: 100%; height: 50px">
-    <p>
-        Términos, Condiciones y Aviso de Privacidad</p>
+    
 </div>
+<!-- this function validates the newsletter form -->
+<script type="text/javascript">
+    function validateForm() {
+        var e = document.forms["newsForm"]["newsletterEmail"].value;
+        if (e == null || e == "") {
+            alert("Email requerido");
+            return false;
+        }
+        var atpos = e.indexOf('@@');
+        var dotpos = e.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= e.length) {
+            alert("Email inválido");
+            return false;
+        }
+    }
+</script>

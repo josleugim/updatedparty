@@ -424,6 +424,12 @@ table td
     color: white;
 }
 
+.LogInWrapper span
+{
+    color: red;
+    font-size: 14px;
+}
+
 .LogInWrapper label
 {
     position: relative;

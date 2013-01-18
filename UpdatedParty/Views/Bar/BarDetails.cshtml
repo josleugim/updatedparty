@@ -60,6 +60,23 @@
                     Valet parking</p>
                 }
             }
+            <p>Edad:</p>
+            <ul style="list-style: none; margin-left: 25px; margin-top: 0; padding: 0">
+                @{
+                    if (Model.YoungAge == true)
+                    {
+                        <li>18-23</li>
+                    }
+                    if (Model.MidAge)
+                    {
+                        <li>24-29</li>
+                    }
+                    if (Model.MidAge)
+                    {
+                        <li>30 +</li>
+                    }
+            }
+            </ul>
         </div>
         <div style="float: left; width: 340px">
             <br />
@@ -76,7 +93,7 @@
     </div>
     <div style="clear: both; width: 100%; height: 400px">
         <div style="float: left; width: 50%">
-            <p>@Html.DisplayFor(model => model.Review)</p>
+            <p style="text-align: justify">@Html.DisplayFor(model => model.Review)</p>
             <p style="color: yellow">
                 Música:</p>
             <ul>
@@ -179,9 +196,9 @@
                         <div class="slides_container">
                             @{
                                 for (int i = 0; i < 5; i++)
-                                 {
+                                {
                                      
-                                 }
+                                }
                                  
                             }
                             <a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!"
@@ -220,9 +237,10 @@
                     </div>
                 </div>
             </div>
+            <p style="color: red; font-size: 14px">*Galería de muestra</p>
         </div>
     </div>
 </div>
 <p>
-    @Html.ActionLink("Regresar", "Index", "Home", new { style = "color: yellow" })
+     <a style="color: yellow" href="javascript:history.back(1)">Regresar</a>
 </p>

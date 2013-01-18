@@ -1,0 +1,16 @@
+﻿@model UpdatedParty.Models.Newsletter
+@{
+    ViewBag.Title = "SuscribeExist";
+    Layout = "~/Views/Shared/_Articles.cshtml";
+}
+<div style="width: 50%; margin: 0 auto;">
+    <h3 style="color: yellow; font-family: bebasneue; font-size: 30px">
+        Yay !!!</h3>
+    <p style="font-size: 20px">
+        El email <span style="color: yellow">@Html.DisplayFor(model => model.Email)</span>
+        ya se encuentra registrado, si no recibes nuestro newsletter contáctanos, o revisa
+        tu correo no deseado.</p>
+    <p>
+        @Html.ActionLink("Regresar", "Index", null, new {style="color: yellow"})
+    </p>
+</div>

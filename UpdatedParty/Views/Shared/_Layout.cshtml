@@ -108,7 +108,8 @@
 </head>
 <body>
     <div class="mainWrapper">
-        <div style="position: fixed; top: 0; right: 50px; background-color: transparent; line-height: 5px">
+        <div style="position: fixed; top: 0; right: 50px; background-color: transparent;
+            line-height: 5px">
             @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 <p>
@@ -134,8 +135,7 @@
             </div>
             <div id="register">
                 <a href="@Url.Action("Register", "Account")" target="_self">
-                    <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png"
-                        alt="Imagen" /></a> @*<p>@Html.Partial("_LogOnPartial")</p>*@
+                    <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png" /></a> @*<p>@Html.Partial("_LogOnPartial")</p>*@
                 <p>@Html.ActionLink("Iniciar sesión", "Logon", "Account")</p>
             </div>
             @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@
@@ -178,9 +178,10 @@
         <section id="main">
             @RenderBody()
         </section>
-        <footer>
-        </footer>
     </div>*@
+        <footer>
+            @Html.ActionLink("Términos, Condiciones y Aviso de Privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: gray; font-size: 14px" })
+        </footer>
     </div>
 </body>
 </html>

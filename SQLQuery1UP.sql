@@ -7,6 +7,7 @@ Values('Distrito Federal', 'DF', getdate())
 select * from Tstates
 select * from galleries
 select * from Complains
+Select * from Newsletters
 
 update StayUPs
 Set EventDate = '2013-14-01'
@@ -18,7 +19,7 @@ Set EventDate = '2013-14-01'
 
 select *
 from bars
-Where Township = 'Benito Juárez'
+Where Township = 'Alvaro Obregón'
 AND Cologne = 'Condesa'
 AND(BarType = 1 OR [After] = 1)
 

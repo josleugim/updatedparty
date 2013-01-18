@@ -16,8 +16,10 @@ namespace UpdatedParty.Models
 
         [DisplayName("Promoción y evento")]
         [MaxLength(140, ErrorMessage = "* 140 caracteres máximo")]
+        [Required(ErrorMessage = "* Un evento o promoción son requeridas")]
         public string PromotionEvent { get; set; }
 
+        [Required(ErrorMessage = "* La fecha es importante")]
         [DisplayName("Fecha del evento")]
         [DisplayFormat(DataFormatString = "{0:d}")]
         public DateTime? EventDate { get; set; }

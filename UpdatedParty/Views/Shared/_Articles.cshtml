@@ -91,7 +91,6 @@
             });
         });
     </script>*@
-
     <!-- Analytics -->
     <script type="text/javascript">
 
@@ -109,7 +108,8 @@
 </head>
 <body>
     <div class="mainWrapper">
-        <div style="position: fixed; top: 0; right: 50px; background-color: transparent; line-height: 5px">
+        <div style="position: fixed; top: 0; right: 50px; background-color: transparent;
+            line-height: 5px">
             @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 <p>
@@ -125,12 +125,13 @@
                     ENTÉRATE <span style="font-size: 24px">EN</span> <span style="font-size: 30px">TIEMPO</span>
                     <span style="font-size: 20px">REAL</span> <span style="font-size: 20px">DE</span>
                     <span style="font-size: 30px">LA VIDA</span> NOCTURNA <span style="font-size: 20px">
-                                                                              DE</span> <span style="font-size: 30px">TU CIUDAD</span> </h1>
+                        DE</span> <span style="font-size: 30px">TU CIUDAD</span>
+                </h1>
             </div>
             <div id="register">
                 <a href="@Url.Action("Register", "Account")" target="_self">
                     <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png"
-                         alt="Imagen" /></a>
+                        alt="Imagen" /></a>
                 <p>@Html.Partial("_LogOnPartial")</p>
             </div>
             @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@
@@ -151,7 +152,7 @@
                 <li><span id="rightArrow"></span></li>
             </ul>
             <div style="clear: both; width: 100%; height: 18px; background-color: #000; background-image: url('../../Content/images/menuribbon.png');
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  background-repeat: repeat-x">
+                background-repeat: repeat-x">
             </div>
         </div>
         @RenderBody()
@@ -176,6 +177,9 @@
         <footer>
         </footer>
     </div>*@
+        <footer>
+            @Html.ActionLink("Términos, Condiciones y Aviso de Privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: gray; font-size: 14px" })
+        </footer>
     </div>
 </body>
 </html>

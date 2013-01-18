@@ -227,6 +227,9 @@
     <Content Include="Views\Bar\BarDetails.cshtml" />
     <Content Include="Views\Home\Suscribe.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\SuscribeExist.cshtml" />
+    <Content Include="Views\Home\ContactFail.cshtml" />
+    <Content Include="Views\Home\AvisoPrivacidad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\gallery\" />

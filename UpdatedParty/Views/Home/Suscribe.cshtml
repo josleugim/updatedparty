@@ -3,9 +3,12 @@
     ViewBag.Title = "Suscripción";
     Layout = "~/Views/Shared/_Articles.cshtml";
 }
-<div style="width: 40%; line-height: 25px">
-    <h2 style="color: yellow">
-        Gracias,</h2>
+<div style="width: 50%; margin: 0 auto;">
+    <h2 style="color: yellow; font-family: bebasneue;">
+        Gracias por suscribirte</h2>
+    <p style="font-size: 20px">
+        Pronto recibirás nuestro newsletter.</p>
     <p>
-        por suscribirte, pronto recibiras nuestro newsletter.</p>
+        @Html.ActionLink("Regresar", "Index", null, new { style = "color: yellow" })
+    </p>
 </div>
