@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -182,8 +183,9 @@ namespace UpdatedParty.Controllers
 
         public ViewResult BarDetails(int id)
         {
-            Bar users = _db.Bars.Find(id);
-            return View(users);
+            Bar bars = _db.Bars.Find(id);
+            //Gallery gal = _db.Galleries.Include(d => d.Bar).Single(u => u.BarId == id);
+            return View(bars);
         }
 
         public ActionResult MyBarView()

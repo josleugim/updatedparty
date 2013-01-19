@@ -184,6 +184,26 @@
                     {
                     <li>Restaurant bar</li>
                     }
+                    if (Model.CervezaArtesanal == true)
+                    {
+                    <li>Cerveza artesanal</li>
+                    }
+                    if (Model.Billar == true)
+                    {
+                    <li>Billar</li>
+                    }
+                    if (Model.OpenBar == true)
+                    {
+                    <li>Al aire libre</li>
+                    }
+                    if (Model.SportsBar == true)
+                    {
+                    <li>Sports bar</li>
+                    }
+                    if (Model.DanceFloor == true)
+                    {
+                    <li>Dance bar</li>
+                    }
                 }
             </ul>
             <p>
@@ -195,9 +215,12 @@
                     <div id="slides">
                         <div class="slides_container">
                             @{
+                                
                                 for (int i = 0; i < 5; i++)
                                 {
-                                     
+                                     @*<a href="#" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank">
+                                <img src="#" width="570" height="270"
+                                     alt="Slide 1"></a>*@
                                 }
                                  
                             }

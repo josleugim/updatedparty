@@ -12,9 +12,9 @@ namespace UpdatedParty.Models
     public class UpdatedPartyDB:DbContext
     {
         //Use this code in only in the development server
-        public UpdatedPartyDB()
-            : base("name=UpdatedPartyDB")
-        { }
+        //public UpdatedPartyDB()
+        //    : base("name=UpdatedPartyDB")
+        //{ }
 
         public DbSet<TState> TStates { get; set; }
         public DbSet<Newsletter> Newsletters { get; set; }
