@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
 
-<h2>Calendario de eventos y promociones</h2>
+<div style="width: 100%; clear: both; margin: 0 auto;">
+    <h2>Calendario de eventos y promociones</h2>
 
 <p>
-    @Html.ActionLink("Nuevo evento", "Create")
+    @Html.ActionLink("Crear nuevo evento", "Index", "Bar")
 </p>
-<table>
+<table class="supSearch">
     <tr>
         <th>
             Promoción y evento
@@ -24,16 +25,17 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.PromotionEvent)
+            <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EventDate)
+            <p>@Html.DisplayFor(modelItem => item.EventDate)</p>
         </td>
         <td>
             @Html.ActionLink("Modificar", "Edit", new { id=item.StayUPID }) |
-            @Html.ActionLink("Borrar", "Delete", new { id=item.StayUPID })
+            @*@Html.ActionLink("Borrar", "Delete", new { id=item.StayUPID })*@
         </td>
     </tr>
 }
 
 </table>
+</div>

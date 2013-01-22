@@ -9,18 +9,33 @@ select * from galleries
 select * from Complains
 Select * from Newsletters
 
-update StayUPs
-Set EventDate = '2013-14-01'
+--update StayUPs
+--Set PromotionEvent = 'Dj set a partir de las 8:00 pm'
+--where BarID = 20
 --where StayUPID = 7
+
+--update Bars
+--Set BarName = 'El Trappist'
+--where BarID = 14
+
+--update Bars
+--Set Email = 'imanolramirezmartinez76@gmail.com'
+--where BarID = 12
 
 --update Bars
 --Set Township = 'Cuauhtémoc'
 --where BarID = 6
 
+--Delete from Bars
+--Where BarID = 17
+
+--Delete from StayUPs
+--Where BarID = 22
+
 select *
 from bars
 Where Township = 'Alvaro Obregón'
-AND Cologne = 'Condesa'
+OR Cologne = ''
 AND(BarType = 1 OR [After] = 1)
 
 Select *
