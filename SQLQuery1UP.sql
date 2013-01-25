@@ -40,6 +40,7 @@ AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
+where EventDate = '2013-01-25 00:00:00.000'
 Select *
 from UserTypes
 Select *

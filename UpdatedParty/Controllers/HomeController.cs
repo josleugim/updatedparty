@@ -265,9 +265,7 @@ namespace UpdatedParty.Controllers
 
             //Buscatodo
             var results = _db.Bars
-// ReSharper disable ImplicitlyCapturedClosure
                              .Where(u => u.Township.ToUpper().Equals(delegacion.ToUpper()))
-// ReSharper restore ImplicitlyCapturedClosure
                                          .Select(r => new
                                          {
                                              r.BarID,

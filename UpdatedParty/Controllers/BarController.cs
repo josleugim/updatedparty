@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using UpdatedParty.Models;
 
 namespace UpdatedParty.Controllers
@@ -184,9 +185,48 @@ namespace UpdatedParty.Controllers
         public ViewResult BarDetails(int id)
         {
             Bar bars = _db.Bars.Find(id);
+            ViewBag.imgCount = _db.Galleries.Count();
             //Gallery gal = _db.Galleries.Include(d => d.Bar).Single(u => u.BarId == id);
+            
+            JsonSearch(id);
+            
             return View(bars);
+            
         }
+
+        public JsonResult JsonSearch(int id)
+        {
+            var cars = new List<string> { "http://slidesjs.com/examples/standard/img/slide-1.jpg", "http://slidesjs.com/examples/standard/img/slide-2.jpg" };
+            //var cars = new List<string> { "Ferrari", "Buick" };
+
+            if (Request.HttpMethod == "GET")
+            {
+                var barimg = from g in _db.Galleries
+                             where g.BarId == id
+                             select g.UrlImage;
+
+                return Json(barimg, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(cars, JsonRequestBehavior.AllowGet);
+        }
+
+        //public JsonResult GetStateList()
+        //{
+
+        //    List<ListItem> list = new List<ListItem>() {
+
+        //     new ListItem() { Value = "1", Text = "VA" },
+
+        //     new ListItem() { Value = "2", Text = "MD" },
+
+        //    new ListItem() { Value = "3", Text = "DC" }
+
+        //};
+
+        //    return this.Json(list, JsonRequestBehavior.AllowGet);
+
+        //}
 
         public ActionResult MyBarView()
         {

@@ -97,24 +97,15 @@
                 </th>
                 <th>@Html.ActionLink("Evento y promoción", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { style = "color:#FFFF00;" })
                 </th>
-                @*<th>@Html.ActionLink("Fecha del evento", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
-                    </th>*@
             </tr>
             @foreach (var item in Model)
             {
                 <tr>
-                    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UPUserID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.UPUserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.UPUserID })
-        </td>*@
                     <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId }, new { style = "color:#FFFF00;" })
                     </th>
                     <td>
                         <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
                     </td>
-                    @*<td>@Html.DisplayFor(modelItem => item.EventDate)
-                        </td>*@
                 </tr>
             }
         </table>
@@ -133,7 +124,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -145,7 +136,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -480,8 +471,8 @@
         </tr>
     </table>
     <p style="font-size: 14px">
-        * Seguimos trabajando en la búsqueda avanzada, por el momento solo puedes realizar búsquedas
-        de <span style="color: red;">bar</span>, <span style="color: red;">antro</span>
+        * Seguimos trabajando en la búsqueda avanzada, por el momento solo puedes realizar
+        búsquedas de <span style="color: red;">bar</span>, <span style="color: red;">antro</span>
         y <span style="color: red;">after</span>. Pronto estará <span style="color: yellow;
             font-size: 22px; font-family: bebasneue">UP</span></p>
     </form>
@@ -583,7 +574,6 @@
     </div>
 </div>
 <div style="clear: both; width: 100%; height: 50px">
-    
 </div>
 <!-- this function validates the newsletter form -->
 <script type="text/javascript">

@@ -16,7 +16,7 @@
             hoverPause: true
         });
     });
-	</script>
+</script>
 <div style="clear: both; width: 100%; color: white;">
     <div style="width: 100%; margin-top: 20px; height: 220px; border-bottom: 2px dotted #C1C4C9;">
         <div style="float: left; width: 340px">
@@ -60,22 +60,23 @@
                     Valet parking</p>
                 }
             }
-            <p>Edad:</p>
+            <p>
+                Edad:</p>
             <ul style="list-style: none; margin-left: 25px; margin-top: 0; padding: 0">
                 @{
                     if (Model.YoungAge == true)
                     {
-                        <li>18-23</li>
+                    <li>18-23</li>
                     }
                     if (Model.MidAge)
                     {
-                        <li>24-29</li>
+                    <li>24-29</li>
                     }
                     if (Model.MidAge)
                     {
-                        <li>30 +</li>
+                    <li>30 +</li>
                     }
-            }
+                }
             </ul>
         </div>
         <div style="float: left; width: 340px">
@@ -214,44 +215,9 @@
                 <div id="example">
                     <div id="slides">
                         <div class="slides_container">
-                            @{
-                                
-                                for (int i = 0; i < 5; i++)
-                                {
-                                     @*<a href="#" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank">
-                                <img src="#" width="570" height="270"
-                                     alt="Slide 1"></a>*@
-                                }
-                                 
-                            }
-                            <a href="http://www.flickr.com/photos/jliba/4665625073/" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!"
-                               target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-1.jpg" width="570" height="270"
-                                     alt="Slide 1"></a>
-                            <a href="http://www.flickr.com/photos/stephangeyer/3020487807/"
-                               title="Taxi | Flickr - Photo Sharing!" target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-2.jpg" width="570" height="270"
-                                     alt="Slide 2"></a> 
-                            <a href="http://www.flickr.com/photos/childofwar/2984345060/"
-                               title="Happy Bokeh raining Day | Flickr - Photo Sharing!" target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="570" height="270"
-                                     alt="Slide 3"></a> 
-                            <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!"
-                               target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="570" height="270"
-                                     alt="Slide 4"></a> 
-                            <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!"
-                               target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-5.jpg" width="570" height="270"
-                                     alt="Slide 5"></a> 
-                            <a href="http://www.flickr.com/photos/streetpreacher/2078765853/"
-                               title="twelve.inch | Flickr - Photo Sharing!" target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-6.jpg" width="570" height="270"
-                                     alt="Slide 6"></a> 
-                            <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!"
-                               target="_blank">
-                                <img src="http://slidesjs.com/examples/standard/img/slide-7.jpg" width="570" height="270"
-                                     alt="Slide 7"></a>
+                            <a id="mytext0"></a><a id="mytext1"></a><a id="mytext2"></a><a id="mytext3"></a>
+                            <a id="mytext4"></a><a id="mytext5"></a><a id="mytext6"></a><a id="mytext7"></a>
+                            <a id="mytext8"></a><a id="mytext9"></a>
                         </div>
                         <a href="#" class="prev">
                             <img src="../../Content/images/arrow-prevup.png" width="24" height="43" alt="Arrow Prev"></a>
@@ -260,10 +226,51 @@
                     </div>
                 </div>
             </div>
-            <p style="color: red; font-size: 14px">*Galería de muestra</p>
+            <p style="color: red; font-size: 14px">
+                *Galería de muestra</p>
         </div>
     </div>
 </div>
+@*$(this).wrap('<a href="#" target="_self"><img src="' + $(this).attr(cars) + '" width="570" height="270" /></a>');*@
+<div style="clear: both">
+    <script type="text/javascript">
+        $.getJSON("/Bar/JsonSearch", null, function (data) {
+
+            $.each(data, function (index, barimg) {
+                //                $("#mytext" + index).append(cars);
+
+                $("#mytext" + index).append($("<a>",
+                {
+                    href: "#",
+                    html: $("<img>", { src: barimg})
+                }));
+
+            });
+
+        });
+    </script>
+</div>
 <p>
-     <a style="color: yellow" href="javascript:history.back(1)">Regresar</a>
+    <a style="color: yellow" href="javascript:history.back(1)">Regresar</a>
 </p>
+@*<a href="#" title="145.365 - Happy Bokeh Thursday! | Flickr - Photo Sharing!" target="_blank">
+    <img src="http://slidesjs.com/examples/standard/img/slide-1.jpg" width="570" height="270"
+        alt="Slide 1"></a> <a href="http://www.flickr.com/photos/stephangeyer/3020487807/"
+            title="Taxi | Flickr - Photo Sharing!" target="_blank">
+            <img src="http://slidesjs.com/examples/standard/img/slide-2.jpg" width="570" height="270"
+                alt="Slide 2"></a> <a href="#" title="Happy Bokeh raining Day | Flickr - Photo Sharing!"
+                    target="_blank">
+                    <img src="http://slidesjs.com/examples/standard/img/slide-3.jpg" width="570" height="270"
+                        alt="Slide 3" /></a> <a href="http://www.flickr.com/photos/b-tal/117037943/" title="We Eat Light | Flickr - Photo Sharing!"
+                            target="_blank">
+                            <img src="http://slidesjs.com/examples/standard/img/slide-4.jpg" width="570" height="270"
+                                alt="Slide 4"></a> <a href="http://www.flickr.com/photos/bu7amd/3447416780/" title="“I must go down to the sea again, to the lonely sea and the sky; and all I ask is a tall ship and a star to steer her by.” | Flickr - Photo Sharing!"
+                                    target="_blank">
+                                    <img src="http://slidesjs.com/examples/standard/img/slide-5.jpg" width="570" height="270"
+                                        alt="Slide 5"></a> <a href="http://www.flickr.com/photos/streetpreacher/2078765853/"
+                                            title="twelve.inch | Flickr - Photo Sharing!" target="_blank">
+                                            <img src="http://slidesjs.com/examples/standard/img/slide-6.jpg" width="570" height="270"
+                                                alt="Slide 6"></a> <a href="http://www.flickr.com/photos/aftab/3152515428/" title="Save my love for loneliness | Flickr - Photo Sharing!"
+                                                    target="_blank">
+                                                    <img src="http://slidesjs.com/examples/standard/img/slide-7.jpg" width="570" height="270"
+                                                        alt="Slide 7"></a>*@
