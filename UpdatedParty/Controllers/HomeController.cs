@@ -250,11 +250,22 @@ namespace UpdatedParty.Controllers
                 return Json(results2, JsonRequestBehavior.AllowGet);
             }
 
+            if (!String.IsNullOrEmpty(colonia))
+            {
+                var results2 = _db.Bars
+                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                         && u.Cologne.Contains(colonia))
+                                         .Select(r => new
+                                         {
+                                             r.BarID,
+                                             r.BarName
+                                         });
+                return Json(results2, JsonRequestBehavior.AllowGet);
+            }
+
             //Buscatodo
             var results = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia))
+                             .Where(u => u.Township.ToUpper().Equals(delegacion.ToUpper()))
                                          .Select(r => new
                                          {
                                              r.BarID,

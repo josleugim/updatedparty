@@ -64,6 +64,8 @@
 
 .slides_container a img {
 	display:block;
+    max-width: 570px;
+    max-height: 270px;
 }
 
 /*

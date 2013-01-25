@@ -37,7 +37,7 @@ namespace UpdatedParty.Controllers
 
         public ActionResult Create(int id)
         {
-            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName");
+            //ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName");
             return View();
         } 
 
@@ -93,8 +93,7 @@ namespace UpdatedParty.Controllers
  
         public ActionResult Edit(int id)
         {
-            StayUP stayup = _db.stayUP.Find(id);
-            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
+            var stayup = _db.stayUP.Find(id);
             return View(stayup);
         }
 
@@ -110,7 +109,7 @@ namespace UpdatedParty.Controllers
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
+            //ViewBag.BarId = new SelectList(_db.Bars, "BarID", "BarName", stayup.BarId);
             return View(stayup);
         }
 
