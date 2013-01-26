@@ -92,7 +92,7 @@
             </p>
         </div>
     </div>
-    <div style="clear: both; width: 100%; height: 400px">
+    <div style="clear: both; width: 100%; height: 882px">
         <div style="float: left; width: 50%">
             <p style="text-align: justify">@Html.DisplayFor(model => model.Review)</p>
             <p style="color: yellow">
@@ -226,15 +226,14 @@
                     </div>
                 </div>
             </div>
-            <p style="color: red; font-size: 14px">
-                *Galería de muestra</p>
+            
         </div>
     </div>
 </div>
 @*$(this).wrap('<a href="#" target="_self"><img src="' + $(this).attr(cars) + '" width="570" height="270" /></a>');*@
 <div style="clear: both">
     <script type="text/javascript">
-        $.getJSON("/Bar/JsonSearch", null, function (data) {
+        $.getJSON("/Bar/JsonSearch/" + @Model.BarID, null, function (data) {
 
             $.each(data, function (index, barimg) {
                 //                $("#mytext" + index).append(cars);

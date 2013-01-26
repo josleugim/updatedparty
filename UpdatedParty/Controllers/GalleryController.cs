@@ -19,7 +19,7 @@ namespace UpdatedParty.Controllers
 
         public ViewResult Index()
         {
-            var galleries = _db.Galleries.Include(g => g.Bar);
+            var galleries = _db.Galleries.Include(g => g.Bar).Where(b => b.Bar.Email == User.Identity.Name);
             return View(galleries.ToList());
         }
 

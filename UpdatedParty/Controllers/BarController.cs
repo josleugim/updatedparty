@@ -187,28 +187,23 @@ namespace UpdatedParty.Controllers
             Bar bars = _db.Bars.Find(id);
             ViewBag.imgCount = _db.Galleries.Count();
             //Gallery gal = _db.Galleries.Include(d => d.Bar).Single(u => u.BarId == id);
-            
+
             JsonSearch(id);
-            
+
             return View(bars);
-            
+
         }
 
         public JsonResult JsonSearch(int id)
         {
-            var cars = new List<string> { "http://slidesjs.com/examples/standard/img/slide-1.jpg", "http://slidesjs.com/examples/standard/img/slide-2.jpg" };
+            //var cars = new List<string> { "http://slidesjs.com/examples/standard/img/slide-1.jpg", "http://slidesjs.com/examples/standard/img/slide-2.jpg" };
             //var cars = new List<string> { "Ferrari", "Buick" };
 
-            if (Request.HttpMethod == "GET")
-            {
-                var barimg = from g in _db.Galleries
-                             where g.BarId == id
-                             select g.UrlImage;
+            var barimg = from g in _db.Galleries
+                         where g.BarId == id
+                         select g.UrlImage;
 
-                return Json(barimg, JsonRequestBehavior.AllowGet);
-            }
-
-            return Json(cars, JsonRequestBehavior.AllowGet);
+            return Json(barimg, JsonRequestBehavior.AllowGet);
         }
 
         //public JsonResult GetStateList()

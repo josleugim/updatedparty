@@ -64,7 +64,7 @@ namespace UpdatedParty.Controllers
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
 
-            const int pageSize = 5;
+            const int pageSize = 10;
             int pageNumber = (page ?? 1);
 
             //return View(stayup.ToList().Take(10));

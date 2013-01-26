@@ -10,15 +10,17 @@
 
 #example {
 	width:600px;
-	height:350px;
+	/*height:350px;*/
+    height: 882px;
 	position:relative;
 }
 
 #frame {
 	position:absolute;
 	z-index:0;
-	width:739px;
-	height:341px;
+	width:880px;
+	/*height:341px;*/
+    height: 600px;
 	top:-3px;
 	left:-80px;
 }
@@ -58,14 +60,13 @@
 
 .slides_container a {
 	width:570px;
-	height:270px;
+	height:882px;
 	display:block;
 }
 
 .slides_container a img {
 	display:block;
-    max-width: 570px;
-    max-height: 270px;
+    width: 570px;
 }
 
 /*
