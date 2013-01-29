@@ -107,6 +107,8 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\menuribbon.png" />
     <Content Include="Content\images\paginationup.png" />
+    <Content Include="Content\images\Par227BarAndGrill_small.jpg" />
+    <Content Include="Content\images\recomendados.png" />
     <Content Include="Content\images\registerbutton.png" />
     <Content Include="Content\images\sprites-contact.png" />
     <Content Include="Content\images\sprites-header.png" />
@@ -117,6 +119,8 @@
     <Content Include="Content\images\up-logo_small.png" />
     <Content Include="Content\images\star.gif" />
     <Content Include="Content\images\upfavicon.ico" />
+    <Content Include="Content\images\whisky.jpg" />
+    <Content Include="Content\images\whisky_med.jpg" />
     <Content Include="Content\jquery-ui-1.8.22.custom.css" />
     <Content Include="Content\jquery.ui.datepicker.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -230,6 +234,7 @@
     <Content Include="Views\Home\SuscribeExist.cshtml" />
     <Content Include="Views\Home\ContactFail.cshtml" />
     <Content Include="Views\Home\AvisoPrivacidad.cshtml" />
+    <Content Include="Views\Home\Whiskey.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\gallery\" />

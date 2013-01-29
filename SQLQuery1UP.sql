@@ -34,13 +34,16 @@ Select * from Newsletters
 
 select *
 from bars
+order by Email
+where BarID = 4
 Where Township = 'Alvaro Obregón'
 OR Cologne = ''
 AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
-where EventDate = '2013-01-25 00:00:00.000'
+order by barId
+where EventDate = '2013-01-26 00:00:00.000'
 Select *
 from UserTypes
 Select *

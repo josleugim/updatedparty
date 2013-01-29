@@ -286,6 +286,11 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        public ViewResult Whiskey()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Contacts the specified email.
         /// </summary>

@@ -6,6 +6,8 @@
 <div id="section1">
     <div style="float: left; width: 350px">
         <div style="width: 100%; height: 90px;">
+            <h2 style="color: black">
+                WHAT'S UP</h2>
         </div>
         <div id="whatsup">
         </div>
@@ -124,7 +126,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -136,31 +138,33 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
         </div>
     </div>
 </div>
-<div id="section2" style="width: 100%; height: 720px; border-bottom: 2px dotted #C1C4C9;">
-    <br />
-    <br />
-    <br />
-    <br />
+<div id="section2" style="width: 100%; height: auto; border-bottom: 2px dotted #C1C4C9;">
+    <div style="width: 100%; height: 70px;">
+        <h2 style="color: black">
+            Antros y Bares</h2>
+    </div>
     <form method="get" action="@Url.Action("JsonSearch", "Home")" id="searchForm">
     <div style="float: left;">
         <div id="antrosbares">
         </div>
         <div style="float: left; width: 724px;">
-            <div style="clear: both; height: 200px">
-                <div style="clear: both; width: 100%; text-align: center">
-                    <p style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">
-                        Resultados</p>
+            <div style="width: 100%; height: 80px">
+                <div style="clear: both; height: 200px">
+                    <div style="clear: both; width: 100%; text-align: center">
+                        <p style="font-weight: lighter; font-family: 'bebasneue'; color: White; font-size: 22px">
+                            Resultados</p>
+                    </div>
+                    <div id="searchResults" style="float: left;">
+                    </div>
                 </div>
-                <div id="searchResults" style="float: left;">
-                </div>
+                <script id="searchTemplate" type="text/x-jquery-tmpl">
+                    <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}" }))'>${BarName}</a></div>
+                </script>
             </div>
-            <script id="searchTemplate" type="text/x-jquery-tmpl">
-                <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}" }))'>${BarName}</a></div>
-            </script>
         </div>
     </div>
     <div id="advancedSearch">
@@ -476,8 +480,36 @@
         y <span style="color: red;">after</span>. Pronto estará <span style="color: yellow;
             font-size: 22px; font-family: bebasneue">UP</span></p>
     </form>
+    <div style="width: 100%">
+        <img src="../../Content/images/recomendados.png" alt="Recomendaciones" />
+    </div>
+    <div style="width: 1024px; height: 380px">
+        <div style="width: 341px; float: left">
+            <div style="width: 100%; text-align: center">
+                <img src="../../Content/images/Par227BarAndGrill_small.jpg" alt="Par 227 Bar & Grill" />
+            </div>
+            <div style="width: 100%; text-align: justify; color: #666666">
+                <p style="font-family: bebasneue; font-size: 22px; margin-top: 0;">
+                    <a href="http://www.updatedparty.com/Bar/BarDetails/15" target="_self">Par 227 - Bar
+                        & Grill</a></p>
+                <p style="color: inherit">
+                    Cuando vayas al Par 227 no te debes perder los <span style="font-family: bebasneue;
+                        font-size: 18px">toritos</span>, la <span style="font-family: bebasneue; font-size: 18px">
+                            limonada eléctrica</span> y la bebida de la casa, el <span style="font-family: bebasneue;
+                                font-size: 18px">Par 227</span>. Su barman tiene más de 34 años de experiencia.</p>
+            </div>
+        </div>
+        <div style="width: 335px; margin-left: 5px; float: left">
+            <div style="width: 100%; text-align: center">
+            </div>
+        </div>
+        <div style="width: 340px; float: left">
+            <div style="width: 100%; text-align: center">
+            </div>
+        </div>
+    </div>
 </div>
-<div id="section3" style="width: 100%; height: 720px; border-bottom: 2px dotted #C1C4C9;">
+<div id="section3" style="clear: both; width: 100%; height: 720px; border-bottom: 2px dotted #C1C4C9;">
     <br />
     <br />
     <br />
@@ -485,20 +517,32 @@
     <div style="width: 100%;">
         <div id="blog">
         </div>
+        <div style="float: left; width: 345px; height: 195px;">
+            <img src="../../Content/images/whisky.jpg" alt="Whisky" />
+        </div>
+        <div style="float: left; width: 300px; height: 210px; text-align: justify">
+            <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
+                ¿Whisky o whiskey?</p>
+            <p>
+            Tomando unos tragos en el Diente de Oro –un muy buen whisky/ey bar en la Condesa–
+            notamos que en algunas ocasiones la palabra whisky/ey aparece escrita con “e” y
+            en otras no. Si eres fanático de esta bebida, seguro ya sabes a qué se debe, pero
+            si no, ahora te lo decimos. @Html.ActionLink("Leer más", "Whiskey", null, new { style = "color: #66ffcc" })
+        </div>
+    </div>
+    <div id="ArtRecientes">
+    </div>
+    <div style="width: 100%">
         <div id="headache">
         </div>
         <div style="float: left; width: 300px; height: 210px; text-align: justify">
             <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
                 ¿Por qué duele la cabeza después de una borrachera?</p>
             <p>
-                Si alguna vez se te han pasado los tragos seguramente los efectos de la resaca o
-                “cruda”, como decimos en México, te son familiares. Uno de los más terribles –tal
-                vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
-                @*<a href="../Home/Headache.cshtml"
-                    target="_self" style="color: #66ffcc">Leer más.</a>*@</p>
+            Si alguna vez se te han pasado los tragos seguramente los efectos de la resaca o
+            “cruda”, como decimos en México, te son familiares. Uno de los más terribles –tal
+            vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
         </div>
-    </div>
-    <div id="ArtRecientes">
     </div>
 </div>
 <div id="section4" style="width: 100%; height: 720px; color: white; border-bottom: 2px dotted #C1C4C9;">
