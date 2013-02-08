@@ -26,16 +26,19 @@ namespace UpdatedParty
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "BarsDetails", // Route name
+                "{Name}/{id}", // URL with parameters
+                new { controller = "Bar", action = "BarDetails"}, // Parameter defaults
+                new { id = @"^\d+$" }
+            );
+
+            //RouteTable.Routes.MapRoute(null, "{Name}", new { controller = "Bar", action = "BarDetails", id = "" });
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
-            //routes.MapRoute(
-            //    "Default", // Route name
-            //    "{controller}/{action}/{id}/{name}", // URL with parameters
-            //    new { controller = "Home", action = "Index", id = UrlParameter.Optional, name = UrlParameter.Optional } // Parameter defaults
-            //);
 
         }
 

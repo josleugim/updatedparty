@@ -56,7 +56,7 @@ namespace UpdatedParty.Controllers
                 //    stayup = stayup.OrderByDescending(s => s.RegisterDate);
                 //    break;
                 default:
-                    stayup = stayup.OrderBy(s => s.Bar.Email);
+                    stayup = stayup.OrderBy(s => s.Bar.BarID);
                     break;
             }
 

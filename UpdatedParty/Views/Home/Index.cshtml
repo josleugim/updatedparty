@@ -103,7 +103,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId }, new { style = "color:#FFFF00;" })
+                    <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId, Name = item.Bar.BarName}, new { style = "color:#FFFF00;" })
                     </th>
                     <td>
                         <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
@@ -126,7 +126,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -138,7 +138,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
         </div>
     </div>
 </div>
@@ -501,6 +501,14 @@
         </div>
         <div style="width: 335px; margin-left: 5px; float: left">
             <div style="width: 100%; text-align: center">
+                <img src="../../Content/images/margaritas-sunset.jpg" alt="Sunset" />
+            </div>
+            <div style="width: 100%; text-align: justify; color: #666666">
+                <p style="font-family: bebasneue; font-size: 22px; margin-top: 0;">
+                    <a href="http://www.updatedparty.com/Bar/BarDetails/5" target="_self">Sunset</a></p>
+                <p style="color: inherit">
+                    La especialidad del Sunset son sus margaritas, pero mejor aún, siempre están en
+                    promoción.</p>
             </div>
         </div>
         <div style="width: 340px; float: left">

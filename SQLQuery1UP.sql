@@ -9,8 +9,8 @@ select * from galleries
 select * from Complains
 Select * from Newsletters
 
---update StayUPs
---Set PromotionEvent = 'Dj set a partir de las 8:00 pm'
+update StayUPs
+Set EventDate = '2013-08-02 00:00:00.000'
 --where BarID = 20
 --where StayUPID = 7
 
@@ -23,26 +23,25 @@ Select * from Newsletters
 --where BarID = 12
 
 --update Bars
---Set Township = 'Cuauhtémoc'
---where BarID = 6
+--Set BarName = 'CatWalk'
+--where BarID = 33
 
---Delete from Bars
+--Delete from Galleries
 --Where BarID = 17
 
---Delete from StayUPs
---Where BarID = 22
+--Delete from Galleries
+--Where GalleryID = 32
 
 select *
 from bars
-order by Email
-where BarID = 4
+where BarID =33
 Where Township = 'Alvaro Obregón'
 OR Cologne = ''
 AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
-where EventDate = '2013-01-30 00:00:00.000'
+where EventDate = '2013-02-08 00:00:00.000'
 Select *
 from UserTypes
 Select *
@@ -50,6 +49,11 @@ from StatusTypes
 
 select *
 from Galleries
+where GalleryID = 30
+
+--Update Galleries
+--Set UrlImage = '../../Content/gallery/logo.jpg'
+--where GalleryID = 30
 
 --drop table Complains
 --drop table ComplainTypes
