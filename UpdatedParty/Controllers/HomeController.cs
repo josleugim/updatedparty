@@ -33,7 +33,13 @@ namespace UpdatedParty.Controllers
                 stayup = stayup.Where(s => s.Bar.Township == delegacion
                     && !String.IsNullOrEmpty(s.Bar.Cologne)
                     && s.Bar.Cologne.Contains(coloniaUp));
-                //stayup = stayup.Join(_db.Bars, s => s.Bar.Township == delegacion, )
+            }
+
+            if (delegacion == "Todas")
+            {
+                stayup = stayup.Where(s => s.Bar.Township == delegacion
+                    && !String.IsNullOrEmpty(s.Bar.Cologne)
+                    && s.Bar.Cologne.Contains(coloniaUp));
             }
 
             //var quote = _db.UPUsers.OrderBy(q => _db.GetNewId()).First();
@@ -60,7 +66,7 @@ namespace UpdatedParty.Controllers
                     break;
             }
 
-            var del = new List<string> { "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
+            var del = new List<string> { "Todas", "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
 
@@ -169,6 +175,7 @@ namespace UpdatedParty.Controllers
                                              r.BarID,
                                              r.BarName
                                          });
+
                 return Json(results2, JsonRequestBehavior.AllowGet);
             }
             //Solo busca antros
@@ -281,6 +288,7 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        //Blog
         public ViewResult Headache()
         {
             return View();

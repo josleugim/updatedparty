@@ -22,10 +22,10 @@
     <tr>
         <td>
             @*@Html.DisplayFor(modelItem => item.UrlImage)*@
-            <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="Imagen" style="width: 570px" />
+            <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="Imagen" style="width: 150px" />
         </td>
         <td>
-            @Html.ActionLink("Cambiar", "Edit", new { id=item.GalleryID })
+            @Html.ActionLink("Borrar", "Delete", new { id=item.GalleryID })
         </td>
     </tr>
 }

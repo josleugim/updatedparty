@@ -83,6 +83,7 @@
     <Compile Include="Models\SocialMedia.cs" />
     <Compile Include="Models\StatusType.cs" />
     <Compile Include="Models\StayUP.cs" />
+    <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Models\TState.cs" />
     <Compile Include="Models\UpdatedPartyDB.cs" />
     <Compile Include="Models\UPInitializer.cs" />

@@ -16,6 +16,8 @@ namespace UpdatedParty.Models
 
         public string UrlImage { get; set; }
 
+        public bool IsActived { get; set; }
+
         public DateTime RegisterDate { get; set; }
 
         public virtual Bar Bar { get; set; }

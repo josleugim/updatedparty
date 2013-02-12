@@ -10,12 +10,12 @@ select * from Complains
 Select * from Newsletters
 
 update StayUPs
-Set EventDate = '2013-08-02 00:00:00.000'
+Set EventDate = '2013-12-02 00:00:00.000'
 --where BarID = 20
 --where StayUPID = 7
 
---update Bars
---Set BarName = 'El Trappist'
+--update galleries
+--Set IsActived = 1
 --where BarID = 14
 
 --update Bars

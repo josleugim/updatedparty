@@ -215,9 +215,11 @@
                 <div id="example">
                     <div id="slides">
                         <div class="slides_container">
-                            <a id="mytext0"></a><a id="mytext1"></a><a id="mytext2"></a><a id="mytext3"></a>
-                            <a id="mytext4"></a><a id="mytext5"></a><a id="mytext6"></a><a id="mytext7"></a>
-                            <a id="mytext8"></a><a id="mytext9"></a>
+                            @for (int i = 0; i < ViewBag.Num; i++)
+                            {
+                                
+                                <a id="@("mytext" + i)"></a>
+                            }
                         </div>
                         <a href="#" class="prev">
                             <img src="../../Content/images/arrow-prevup.png" width="24" height="43" alt="Arrow Prev"></a>
@@ -226,11 +228,10 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
-@*$(this).wrap('<a href="#" target="_self"><img src="' + $(this).attr(cars) + '" width="570" height="270" /></a>');*@
+
 <div style="clear: both">
     <script type="text/javascript">
         $.getJSON("/Bar/JsonSearch/" + @Model.BarID, null, function (data) {

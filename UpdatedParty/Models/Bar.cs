@@ -76,7 +76,7 @@ namespace UpdatedParty.Models
         public string Country { get; set; }
 
         [DisplayName("Promoción de cumpleaños")]
-        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
+        [MaxLength(140, ErrorMessage = "* 140 caracteres máximo")]
         public string BirthdayPromotion { get; set; }
 
         [DisplayName("De 18 a 23")]

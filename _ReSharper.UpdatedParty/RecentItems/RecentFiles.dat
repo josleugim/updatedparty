@@ -1,15 +1,30 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:HomeController.cs" caret="2263" fromTop="52" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Bar/f:BarDetails.cshtml" caret="0" fromTop="0" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:BarController.cs" caret="7825" fromTop="21" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/f:Global.asax.cs" caret="1040" fromTop="12" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Home/f:Index.cshtml" caret="4850" fromTop="28" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/f:Global.asax.cs" caret="1119" fromTop="14" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Helpers/f:StringHelpers.cs" caret="186" fromTop="7" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:HomeController.cs" caret="800" fromTop="14" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Home/f:Index.cshtml" caret="4882" fromTop="0" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Gallery/f:Create.cshtml" caret="550" fromTop="16" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Gallery/f:Delete.cshtml" caret="129" fromTop="6" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Models/f:Gallery.cs" caret="440" fromTop="18" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:GalleryController.cs" caret="538" fromTop="12" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Gallery/f:Index.cshtml" caret="547" fromTop="18" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Shared/f:_Interior.cshtml" caret="3759" fromTop="12" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Bar/f:BarDetails.cshtml" caret="8210" fromTop="17" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:BarController.cs" caret="5227" fromTop="18" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Models/f:Bar.cs" caret="2766" fromTop="12" />
   </RecentFiles>
   <RecentEdits>
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:HomeController.cs" caret="2263" fromTop="22" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:BarController.cs" caret="7821" fromTop="21" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/f:Global.asax.cs" caret="1040" fromTop="12" />
-    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Home/f:Index.cshtml" caret="4809" fromTop="28" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:HomeController.cs" caret="7332" fromTop="10" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/f:Global.asax.cs" caret="1119" fromTop="14" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Bar/f:BarDetails.cshtml" caret="8219" fromTop="17" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Helpers/f:StringHelpers.cs" caret="71" fromTop="2" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Home/f:Index.cshtml" caret="4882" fromTop="27" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Models/f:Gallery.cs" caret="438" fromTop="18" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Gallery/f:Delete.cshtml" caret="129" fromTop="6" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Views/d:Gallery/f:Index.cshtml" caret="547" fromTop="18" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:GalleryController.cs" caret="591" fromTop="12" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Controllers/f:BarController.cs" caret="6618" fromTop="33" />
+    <File id="2B1591F9-29E4-467E-90F8-75ADE1F50E21/d:Models/f:Bar.cs" caret="2766" fromTop="12" />
   </RecentEdits>
 </RecentFiles>

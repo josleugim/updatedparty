@@ -19,7 +19,7 @@ namespace UpdatedParty.Controllers
 
         public ViewResult Index()
         {
-            var galleries = _db.Galleries.Include(g => g.Bar).Where(b => b.Bar.Email == User.Identity.Name);
+            var galleries = _db.Galleries.Include(g => g.Bar).Where(b => b.Bar.Email == User.Identity.Name).Where(g => g.IsActived);
             return View(galleries.ToList());
         }
 
@@ -74,6 +74,7 @@ namespace UpdatedParty.Controllers
                 var reader = new StreamReader(imagen.InputStream);
                 imagen.SaveAs(Server.MapPath("/Content/gallery/") + imagen.FileName);
                 gallery.UrlImage = "../../Content/gallery/" + imagen.FileName;
+                gallery.IsActived = true;
                 gallery.RegisterDate = DateTime.Now;
                 //gallery.Bar = upuser.First();
                 _db.SaveChanges();
@@ -113,24 +114,25 @@ namespace UpdatedParty.Controllers
 
         //
         // GET: /Gallery/Delete/5
- 
-        //public ActionResult Delete(int id)
-        //{
-        //    Gallery gallery = db.Galleries.Find(id);
-        //    return View(gallery);
-        //}
 
-        ////
-        //// POST: /Gallery/Delete/5
+        public ActionResult Delete(int id)
+        {
+            var gallery = _db.Galleries.Find(id);
+            return View(gallery);
+        }
 
-        //[HttpPost, ActionName("Delete")]
-        //public ActionResult DeleteConfirmed(int id)
-        //{            
-        //    Gallery gallery = db.Galleries.Find(id);
-        //    db.Galleries.Remove(gallery);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        //
+        // POST: /Gallery/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var gallery = _db.Galleries.Find(id);
+            //_db.Galleries.Remove(gallery);
+            gallery.IsActived = false;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         protected override void Dispose(bool disposing)
         {

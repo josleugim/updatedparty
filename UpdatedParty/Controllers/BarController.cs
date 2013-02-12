@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
+using UpdatedParty.Helpers;
 using UpdatedParty.Models;
 
 namespace UpdatedParty.Controllers
@@ -59,18 +60,6 @@ namespace UpdatedParty.Controllers
             int id = userid.First();
             return RedirectToAction("Edit", "Bar", new { id });
 
-        }
-
-        //
-        // GET: /UserType/Details/5
-        [Authorize]
-        public ViewResult Details(int id)
-        {
-            //UPUser upusers = db.UPUsers.Find(id);
-            //Include de relationship table
-            //Bar upusers = _db.Bars.Include(t => t.UserType).Single(u => u.BarID == id);
-
-            return View();
         }
 
         //
@@ -129,66 +118,22 @@ namespace UpdatedParty.Controllers
         }
 
         //
-        // GET: /StayUP/Create
-        [Authorize]
-        public ActionResult StayUP(int id)
-        {
-
-            //StayUP stayup = db.stayUP.Find(id);
-
-            //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "UserTypeName", stayup.UserTypeId);
-            //ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", stayup.StatusTypeId);
-
-            return View();
-        }
-
-        //
-        // POST: /StayUP/Create
-        [Authorize]
-        [HttpPost]
-        public ActionResult StayUP(StayUP stayup, int id)
-        {
-            if (ModelState.IsValid)
-            {
-                //var userid = from u in db.UPUsers
-                //             where u.upUserEmail == User.Identity.Name
-                //             select u.StatusType.StatusTypeId;
-                //int id = userid.First();
-
-                //var status = from s in db.StatusTypes
-                //             where s.StatusTypeId == id
-                //             select s;
-
-                //db.Entry(upusers).State = EntityState.Modified;
-                //upusers.StatusType = status.First();
-                //upusers.RegisterDate = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", null);
-                //db.SaveChanges();
-                //Bar upuser = db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
-                //UpdateModel(upuser);
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
-
-                _db.stayUP.Add(stayup);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            //ViewBag.UserTypeId = new SelectList(db.UserTypes, "UpUserTypeId", "UserTypeName", upusers.UserTypeId);
-            //ViewBag.StatusTypeId = new SelectList(db.StatusTypes, "StatusTypeId", "StatusTypeName", upusers.StatusTypeId);
-            //return View();
-
-            return View(stayup);
-        }
-
-        //
         // GET: /Bar/Details/
 
-        public ViewResult BarDetails(int id)
+        public ActionResult BarDetails(int id, string Name)
         {
             Bar bars = _db.Bars.Find(id);
-            ViewBag.imgCount = _db.Galleries.Count();
-            //Gallery gal = _db.Galleries.Include(d => d.Bar).Single(u => u.BarId == id);
+
+            // make sure the productName for the route matches the encoded product name
+            string expectedName = bars.BarName.ToSeoUrl();
+            string actualName = (Name ?? "").ToLower();
 
             JsonSearch(id);
+
+            if (expectedName != actualName)
+            {
+                return RedirectToActionPermanent("BarDetails", "Bar", new { id = bars.BarID, Name = expectedName });
+            }
 
             return View(bars);
 
@@ -201,9 +146,20 @@ namespace UpdatedParty.Controllers
 
             var barimg = from g in _db.Galleries
                          where g.BarId == id
+                         && g.IsActived
                          select g.UrlImage;
 
+            ViewBag.Num = barimg.Count();
+
             return Json(barimg, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult MyBarView()
+        {
+            var bar = _db.Bars.FirstOrDefault(c => c.Email.Equals(User.Identity.Name));
+            if (bar != null) return RedirectToAction("BarDetails", new { id = bar.BarID, Name = bar.BarName.ToSeoUrl() });
+
+            return View("Error");
         }
 
         //public JsonResult GetStateList()
@@ -222,13 +178,5 @@ namespace UpdatedParty.Controllers
         //    return this.Json(list, JsonRequestBehavior.AllowGet);
 
         //}
-
-        public ActionResult MyBarView()
-        {
-            var bar = _db.Bars.FirstOrDefault(c => c.Email.Equals(User.Identity.Name));
-            if (bar != null) return RedirectToAction("BarDetails", new { id = bar.BarID });
-            else
-                return View();
-        }
     }
 }

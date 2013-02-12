@@ -1,4 +1,5 @@
-﻿@model PagedList.IPagedList<UpdatedParty.Models.StayUP>
+﻿@using UpdatedParty.Helpers
+@model PagedList.IPagedList<UpdatedParty.Models.StayUP>
 @{
     ViewBag.Title = "Updated Party";
     
@@ -103,7 +104,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId, Name = item.Bar.BarName}, new { style = "color:#FFFF00;" })
+                    <th>@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId, Name = item.Bar.BarName.ToSeoUrl() }, new { style = "color:#FFFF00;" })
                     </th>
                     <td>
                         <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
@@ -126,7 +127,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -138,7 +139,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
         </div>
     </div>
 </div>
@@ -162,7 +163,7 @@
                     </div>
                 </div>
                 <script id="searchTemplate" type="text/x-jquery-tmpl">
-                    <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}" }))'>${BarName}</a></div>
+                    <div style="float:left; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}", Name = "${BarName}" }))'>${BarName}</a></div>
                 </script>
             </div>
         </div>
