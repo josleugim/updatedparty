@@ -9,8 +9,8 @@ select * from galleries
 select * from Complains
 Select * from Newsletters
 
-update StayUPs
-Set EventDate = '2013-12-02 00:00:00.000'
+--update StayUPs
+--Set EventDate = '2013-12-02 00:00:00.000'
 --where BarID = 20
 --where StayUPID = 7
 
@@ -41,7 +41,7 @@ AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
-where EventDate = '2013-02-08 00:00:00.000'
+where EventDate = '2013-02-14 00:00:00.000'
 Select *
 from UserTypes
 Select *
