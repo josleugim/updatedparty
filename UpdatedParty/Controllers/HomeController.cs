@@ -299,6 +299,11 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        public ViewResult Bailamos()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Contacts the specified email.
         /// </summary>

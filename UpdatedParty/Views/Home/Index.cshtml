@@ -127,7 +127,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -139,7 +139,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
         </div>
     </div>
 </div>
@@ -527,30 +527,49 @@
         <div id="blog">
         </div>
         <div style="float: left; width: 345px; height: 195px;">
-            <img src="../../Content/images/whisky.jpg" alt="Whisky" />
+            <img src="../../Content/images/Bailar.jpg" alt="¿Bailamos?" />
         </div>
         <div style="float: left; width: 300px; height: 210px; text-align: justify">
             <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
-                ¿Whisky o whiskey?</p>
+                ¿Bailamos?</p>
             <p>
-            Tomando unos tragos en el Diente de Oro –un muy buen whisky/ey bar en la Condesa–
-            notamos que en algunas ocasiones la palabra whisky/ey aparece escrita con “e” y
-            en otras no. Si eres fanático de esta bebida, seguro ya sabes a qué se debe, pero
-            si no, ahora te lo decimos. @Html.ActionLink("Leer más", "Whiskey", null, new { style = "color: #66ffcc" })
+                A muchos nos encanta bailar y hacerlo bien tiene numerosas ventajas. Pero… por qué
+                lo hacemos. ¿Además de las sensaciones positivas que produce, existe alguna razón
+                biológica o evolutiva que nos mueve –casi instintivamente– al ritmo de la música?
+                @Html.ActionLink("Leer más", "Bailamos", null, new { style = "color: #66ffcc" })
+            </p>
         </div>
     </div>
     <div id="ArtRecientes">
     </div>
-    <div style="width: 100%">
-        <div id="headache">
+    <div style="width: 100%;">
+        <div style="padding: 2px; width: 335px; float: left">
+            <div style="width: 335px; height: 195px;">
+                <img src="../../Content/images/whisky.jpg" alt="Whisky" />
+            </div>
+            <div style="width: 300px; height: 210px; text-align: justify">
+                <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
+                    ¿Whisky o whiskey?</p>
+                <p>
+                    Tomando unos tragos en el Diente de Oro –un muy buen whisky/ey bar en la Condesa–
+                    notamos que en algunas ocasiones la palabra whisky/ey aparece escrita con “e” y
+                    en otras no. Si eres fanático de esta bebida, seguro ya sabes a qué se debe, pero
+                    si no, ahora te lo decimos. @Html.ActionLink("Leer más", "Whiskey", null, new { style = "color: #66ffcc" })
+                </p>
+            </div>
         </div>
-        <div style="float: left; width: 300px; height: 210px; text-align: justify">
-            <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
-                ¿Por qué duele la cabeza después de una borrachera?</p>
-            <p>
-            Si alguna vez se te han pasado los tragos seguramente los efectos de la resaca o
-            “cruda”, como decimos en México, te son familiares. Uno de los más terribles –tal
-            vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
+        <div style="padding: 2px; width: 335px; float: left">
+            <div id="headache">
+            </div>
+            <div style="width: 300px; height: 210px; text-align: justify">
+                <p style="font-size: 22px; font-family: bebasneue; color: #66ffcc">
+                    ¿Por qué duele la cabeza después de una borrachera?</p>
+                <p>
+                    Si alguna vez se te han pasado los tragos seguramente los efectos de la resaca o
+                    “cruda”, como decimos en México, te son familiares. Uno de los más terribles –tal
+                    vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
+                </p>
+            </div>
         </div>
     </div>
 </div>
