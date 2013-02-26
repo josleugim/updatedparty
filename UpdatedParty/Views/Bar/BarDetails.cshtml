@@ -83,7 +83,12 @@
             <br />
             <br />
             <p>
-                Sitio web: @Html.DisplayFor(model => model.WebSite)</p>
+                Sitio web:
+                @if (Model.WebSite != null)
+                {
+                    <a href="@Html.DisplayFor(model => model.WebSite)" target="_blank">@Html.DisplayFor(model => model.BarName)</a>
+                }
+            </p>
             <p>
                 Facebook: @Html.DisplayFor(model => model.Facebook)
             </p>
@@ -231,7 +236,6 @@
         </div>
     </div>
 </div>
-
 <div style="clear: both">
     <script type="text/javascript">
         $.getJSON("/Bar/JsonSearch/" + @Model.BarID, null, function (data) {

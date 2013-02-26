@@ -39,15 +39,16 @@ namespace UpdatedParty.Models
         public int? Price { get; set; }
 
         [DisplayName("Sitio Web")]
-        [MaxLength(100, ErrorMessage = "* 100 caracteres máximo")]
+        [MaxLength(250, ErrorMessage = "* 250 caracteres máximo.")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "Formato: http://www.updatedparty.com, copia y pega tu URL")]
         public string WebSite { get; set; }
 
         [DisplayName("Facebook")]
-        [MaxLength(30, ErrorMessage = "* 30 caracteres máximo, 'Nombre de la cuenta'")]
+        [MaxLength(250, ErrorMessage = "* 250 caracteres máximo")]
         public string Facebook { get; set; }
 
         [DisplayName("Twitter")]
-        [MaxLength(25, ErrorMessage = "* 25 caracteres máximo")]
+        [MaxLength(250, ErrorMessage = "* 250 caracteres máximo")]
         public string Twitter { get; set; }
 
         [DisplayName("Reseña")]
@@ -76,7 +77,7 @@ namespace UpdatedParty.Models
         public string Country { get; set; }
 
         [DisplayName("Promoción de cumpleaños")]
-        [MaxLength(140, ErrorMessage = "* 140 caracteres máximo")]
+        [MaxLength(200, ErrorMessage = "* 200 caracteres máximo")]
         public string BirthdayPromotion { get; set; }
 
         [DisplayName("De 18 a 23")]

@@ -1,1 +1,5 @@
-2013/02/18-20:18:01.162 784 Delete type=3 #1
+2013/02/19-23:12:48.435 1a5c Recovering log #3
+2013/02/19-23:12:48.439 1a5c Level-0 table #5: started
+2013/02/19-23:12:48.459 1a5c Level-0 table #5: 195087 bytes OK
+2013/02/19-23:12:48.467 1a5c Delete type=0 #3
+2013/02/19-23:12:48.467 1a5c Delete type=3 #2

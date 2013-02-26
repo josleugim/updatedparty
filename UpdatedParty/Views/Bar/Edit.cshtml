@@ -70,7 +70,7 @@
                         @Html.LabelFor(model => model.WebSite)
                     </div>
                     <div class="editor-field">
-                        @Html.EditorFor(model => model.WebSite)
+                        @Html.TextBoxFor(model => model.WebSite,new {style="width: 250px"})
                         @Html.ValidationMessageFor(model => model.WebSite)
                     </div>
                     <div class="editor-label">
@@ -89,13 +89,6 @@
                     </div>
                 </div>
             </div>
-            @*<div class="editor-label">
-                @Html.LabelFor(model => model.Country)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Country)
-                @Html.ValidationMessageFor(model => model.Country)
-            </div>*@
             <p style="color: red; font-size: 13px; clear: both">
                 * Esta información es muy importante, es la que te ubicara en el mapa.</p>
         </fieldset>
@@ -172,55 +165,7 @@
             </div>
         </fieldset>
         <fieldset>
-            <legend>Información adicional</legend>@*<div class="editor-label">
-            @Html.LabelFor(model => model.UserTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("UserTypeId")
-            @Html.ValidationMessageFor(model => model.UserTypeId)
-        </div>*@ @*<div class="editor-label">
-            @Html.LabelFor(model => model.StatusTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("StatusTypeId")
-            @Html.ValidationMessageFor(model => model.StatusTypeId)
-        </div>*@ @*<div class="editor-label">
-            @Html.LabelFor(model => model.UpUserTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.UpUserTypeId)
-            @Html.ValidationMessageFor(model => model.UpUserTypeId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StatusTypeId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.StatusTypeId)
-            @Html.ValidationMessageFor(model => model.StatusTypeId)
-        </div>*@ @*<div class="editor-label">
-            @Html.LabelFor(model => model.upUserName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.upUserName)
-            @Html.ValidationMessageFor(model => model.upUserName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.upUserEmail)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.upUserEmail)
-            @Html.ValidationMessageFor(model => model.upUserEmail)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.upUserPass)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.upUserPass)
-            @Html.ValidationMessageFor(model => model.upUserPass)
-        </div>*@
+            <legend>Información adicional</legend>
             <div style="width: 100%;">
                 <div class="editor-label">
                     @Html.LabelFor(model => model.PhoneNumber)
@@ -233,7 +178,7 @@
                     @Html.LabelFor(model => model.BirthdayPromotion)
                 </div>
                 <div class="editor-field">
-                    @Html.TextBoxFor(model => model.BirthdayPromotion, new { style = "width: 300px;" })
+                    @Html.TextBoxFor(model => model.BirthdayPromotion, new { style = "width: 490px;" })
                     @Html.ValidationMessageFor(model => model.BirthdayPromotion)
                 </div>
                 <p style="color: red; font-size: 13px">
@@ -264,13 +209,6 @@
             <div class="editor-label">
                 @Html.EditorFor(model => model.Parking) @Html.LabelFor(model => model.Parking) @Html.ValidationMessageFor(model => model.Parking)
             </div>
-            @*<div class="editor-label">
-                @Html.LabelFor(model => model.Price)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Price)
-                @Html.ValidationMessageFor(model => model.Price)
-            </div>*@
             <div class="editor-label">
                 @Html.LabelFor(model => model.Review)
             </div>
@@ -278,13 +216,6 @@
                 @Html.TextAreaFor(model => model.Review, new { style = "max-width: 500px; width: 490px; max-height: 200px; height: 190px" })
                 @Html.ValidationMessageFor(model => model.Review)
             </div>
-            @*<div class="editor-label">
-            @Html.LabelFor(model => model.RegisterDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RegisterDate)
-            @Html.ValidationMessageFor(model => model.RegisterDate)
-        </div>*@
             <p>
                 <input type="submit" value="Guardar" />
             </p>

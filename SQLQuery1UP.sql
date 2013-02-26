@@ -32,8 +32,7 @@ Select * from Newsletters
 --Delete from Galleries
 --Where GalleryID = 32
 
-select *
-from bars
+Select * from Bars
 where BarID =33
 Where Township = 'Alvaro Obregón'
 OR Cologne = ''
