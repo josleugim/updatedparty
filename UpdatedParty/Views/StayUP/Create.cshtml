@@ -3,68 +3,89 @@
     ViewBag.Title = "Stay Updated";
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
-<h2 style="color: yellow; font-family: bebasneue">
+<h2 style="color: yellow; font-family: bebas_neueregular">
     WHAT'S UP</h2>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <!-- DatePicker -->
-    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <script src="../../Scripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
-    <script src="../../Scripts/jquery.ui.core.js" type="text/javascript"></script>
-    <script src="../../Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
-    <script src="../../Scripts/jquery.ui.widget.js" type="text/javascript"></script>
-        <!-- DatePicker -->
-    <script type="text/javascript">
-        $(function () {
-            $("#from").datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 2,
-                onSelect: function (selectedDate) {
-                    $("#to").datepicker("option", "minDate", selectedDate);
-                }
-            });
+<script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery-ui-1.8.20.custom.min.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery.ui.core.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery.ui.datepicker.js" type="text/javascript"></script>
+<script src="../../Scripts/jquery.ui.widget.js" type="text/javascript"></script>
+<!-- DatePicker -->
+<script type="text/javascript">
+    $(function () {
+        $("#from").datepicker({
+            defaultDate: "+1w",
+            changeMonth: true,
+            numberOfMonths: 2,
+            onSelect: function (selectedDate) {
+                $("#to").datepicker("option", "minDate", selectedDate);
+            }
         });
-    </script>
-@using (Html.BeginForm())
+    });
+</script>
+@using (Html.BeginForm("Create", "StayUP", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
     <div class="LogInWrapper">
         <fieldset>
-            <legend>Información</legend>@*<div class="editor-label">
-            @Html.LabelFor(model => model.BarId, "Bar")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("BarId", String.Empty)
-            @Html.ValidationMessageFor(model => model.BarId)
-        </div>*@
-            <div class="editor-label">
-                @Html.LabelFor(model => model.EventDate)
+            <legend>Información del evento</legend>
+            <div style="width: 100%; margin: 0 auto;">
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventName) <span style="font-size: .8em; color: Yellow">
+                        * opcional</span></p>
+                    <p>@Html.TextBoxFor(model => model.EventName, new { style = "width: 300px" }) @Html.ValidationMessageFor(model => model.EventName)</p>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventDate)</p>
+                    <p>@Html.TextBoxFor(model => model.EventDate, new { id = "from", style = "width: 90px" })
+                        @Html.ValidationMessageFor(model => model.EventDate)</p>
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.EventDate, new { id = "from", style="width: 90px" })
-                @Html.ValidationMessageFor(model => model.EventDate)
+            <div style="width: 100%; margin: 0 auto;">
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.PromotionEvent)</p>
+                    <p>@Html.TextBoxFor(model => model.PromotionEvent, new { style = "width: 300px" }) @Html.ValidationMessageFor(model => model.PromotionEvent)</p>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventDescription) <span style="font-size: .8em;
+                        color: Yellow">* opcional</span></p>
+                    <p>@Html.TextAreaFor(model => model.EventDescription, new { style = "width: 300px; max-width: 350px; max-height: 110px" })
+                        @Html.ValidationMessageFor(model => model.EventDescription)</p>
+                </div>
             </div>
-            <div class="editor-label">
-                @Html.LabelFor(model => model.PromotionEvent)
+            <div style="width: 100%; margin: 0 auto;">
+                <p>@Html.LabelFor(model => model.EventBanner) <span style="font-size: .8em; color: Yellow">
+                    * opcional</span></p>
+                <p>
+                    <span style="color: #666666">Es opcional, pero te recomendamos subir una imagen alusiva
+                        al evento para tener un mayor impacto en tus clientes.</span></p>
+                <p>
+                    <input type="file" id="imagen" name="imagen" /></p>
             </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.PromotionEvent, new { style = "width: 300px" })
-                @Html.ValidationMessageFor(model => model.PromotionEvent)
+            <div style="width: 100%; margin: 0 auto;">
+                <p>@Html.LabelFor(model => model.PromotionBanner): <span style="font-size: .8em;
+                    color: Yellow">* opcional</span>
+                </p>
+                <p>
+                    <span style="color: #666666">Sube aquí una imagen con un descuento o promoción, para
+                        que tus clientes puedan presentarlo.</span></p>
+                <p>
+                    <input type="file" id="promo" name="promo" /></p>
             </div>
-            @*<div class="editor-label">
-            @Html.LabelFor(model => model.RegisterDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RegisterDate)
-            @Html.ValidationMessageFor(model => model.RegisterDate)
-        </div>*@
             <p>
-                <input type="submit" value="Crear" />
+                <input type="image" src="../../Content/images/crearevento.png" value="Crear" />
             </p>
+            <div style="clear: both"></div>
         </fieldset>
     </div>
 }
 <div>
-    @Html.ActionLink("Consulta tu calendario", "Index")
+    <p>
+        <img style="vertical-align: middle;" src="../../Content/images/calendar_icon.png"
+            alt="Calendario" />
+        @Html.ActionLink("Consulta tu calendario", "Index")
+    </p>
 </div>

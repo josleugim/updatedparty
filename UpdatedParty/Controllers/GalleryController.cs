@@ -9,7 +9,7 @@ using UpdatedParty.Models;
 using System.IO;
 
 namespace UpdatedParty.Controllers
-{ 
+{
     public class GalleryController : Controller
     {
         private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
@@ -47,7 +47,7 @@ namespace UpdatedParty.Controllers
                 };
 
             return View(model);
-        } 
+        }
 
         //
         // POST: /Gallery/Create
@@ -67,28 +67,28 @@ namespace UpdatedParty.Controllers
                     return View();
                 }
                 _db.Galleries.Add(gallery);
-                //var upuser = from u in _db.Bars
-                //             where u.Email == User.Identity.Name
-                //             select u;
+                var bar = (from u in _db.Bars
+                             where u.BarID == gallery.BarId
+                             select u).Single();
 
                 var reader = new StreamReader(imagen.InputStream);
-                imagen.SaveAs(Server.MapPath("/Content/gallery/") + imagen.FileName);
-                gallery.UrlImage = "../../Content/gallery/" + imagen.FileName;
+                imagen.SaveAs(Server.MapPath("/Content/gallery/") + bar.BarName + imagen.FileName);
+                gallery.UrlImage = "../../Content/gallery/" + bar.BarName + imagen.FileName;
                 gallery.IsActived = true;
                 gallery.RegisterDate = DateTime.Now;
-                //gallery.Bar = upuser.First();
+                
                 _db.SaveChanges();
 
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
             ViewBag.UPUserID = new SelectList(_db.Bars, "UPUserID", "upUserName", gallery.BarId);
             return View(gallery);
         }
-        
+
         //
         // GET: /Gallery/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Gallery gallery = _db.Galleries.Find(id);

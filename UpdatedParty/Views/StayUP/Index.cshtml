@@ -1,41 +1,67 @@
 ﻿@model IEnumerable<UpdatedParty.Models.StayUP>
-
 @{
     ViewBag.Title = "Listado";
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
-
 <div style="width: 100%; clear: both; margin: 0 auto;">
-    <h2>Calendario de eventos y promociones</h2>
-
-<p>
-    @Html.ActionLink("Crear nuevo evento", "Index", "Bar")
-</p>
-<table class="supSearch">
-    <tr>
-        <th>
-            Promoción y evento
-        </th>
-        <th>
-            Fecha del evento
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
-        </td>
-        <td>
-            <p>@Html.DisplayFor(modelItem => item.EventDate)</p>
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.StayUPID }) |
-            @*@Html.ActionLink("Borrar", "Delete", new { id=item.StayUPID })*@
-        </td>
-    </tr>
-}
-
-</table>
+    <h2>
+        Calendario de eventos y promociones</h2>
+    <p>
+        @Html.ActionLink("Crear nuevo evento", "Index", "Bar")
+    </p>
+    <table class="supSearch">
+        <tr>
+            <th>
+                Nombre del evento
+            </th>
+            <th>
+                Fecha del evento
+            </th>
+            <th>
+                Promoción del evento
+            </th>
+            <th>
+                Descripción
+            </th>
+            <th>
+                Banner del evento
+            </th>
+            <th>
+                Banner de promoción
+            </th>
+            <th>
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.EventName)</p>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.EventDate)</p>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.PromotionEvent)</p>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item.EventDescription)</p>
+                </td>
+                <td>
+                    @if (item.EventBanner != null)
+                    {
+                        <img src="@item.EventBanner" alt="Banner actual" style="max-height: 80px; max-width: 100px" />}
+                </td>
+                <td>
+                    @if (item.PromotionBanner != null)
+                    { 
+                        <img src="@item.PromotionBanner" alt="Banner actual" style="max-height: 80px; max-width: 100px" /> 
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.StayUPID }) | @*@Html.ActionLink("Borrar", "Delete", new { id=item.StayUPID })*@
+                </td>
+            </tr>
+        }
+    </table>
 </div>

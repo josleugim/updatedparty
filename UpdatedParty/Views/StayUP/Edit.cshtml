@@ -26,40 +26,85 @@
         });
     });
 </script>
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "StayUP", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.HiddenFor(model => model.StayUPID)
+    @Html.HiddenFor(model => model.BarId)
+    @Html.HiddenFor(model => model.RegisterDate)
+    @Html.HiddenFor(model => model.EventBanner)
+    @Html.HiddenFor(model => model.PromotionBanner)
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend style="color: white">Modificar</legend>
-        @Html.HiddenFor(model => model.StayUPID)
-        @Html.HiddenFor(model => model.BarId)
-        @Html.HiddenFor(model => model.RegisterDate)
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.BarId, "Bar")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("BarId", String.Empty)
-            @Html.ValidationMessageFor(model => model.BarId)
-        </div>*@
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PromotionEvent)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.PromotionEvent, new { style = "width: 300px; font-size: 18px" })
-            @Html.ValidationMessageFor(model => model.PromotionEvent)
-        </div>
-        <br/>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EventDate)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.EventDate, new { id = "from", style = "width: 90px; font-size: 18px" })
-            @Html.ValidationMessageFor(model => model.EventDate)
-        </div>
-        <p>
-            <input type="submit" value="Guardar" />
-        </p>
-    </fieldset>
+    <div class="LogInWrapper">
+        <fieldset>
+            <legend style="color: white">Modificar evento</legend>
+            <div style="width: 100%; margin: 0 auto;">
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventName) <span style="font-size: .8em; color: Yellow">
+                        * opcional</span></p>
+                    <p>@Html.TextBoxFor(model => model.EventName, new { style = "width: 300px" }) @Html.ValidationMessageFor(model => model.EventName)</p>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventDate)</p>
+                    <p>@Html.TextBoxFor(model => model.EventDate, new { id = "from", style = "width: 90px" })
+                        @Html.ValidationMessageFor(model => model.EventDate)</p>
+                </div>
+            </div>
+            <div style="width: 100%; margin: 0 auto;">
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.PromotionEvent)</p>
+                    <p>@Html.TextBoxFor(model => model.PromotionEvent, new { style = "width: 300px" }) @Html.ValidationMessageFor(model => model.PromotionEvent)</p>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <p>@Html.LabelFor(model => model.EventDescription) <span style="font-size: .8em;
+                        color: Yellow">* opcional</span></p>
+                    <p>@Html.TextAreaFor(model => model.EventDescription, new { style = "width: 300px; max-width: 350px; max-height: 110px" })
+                        @Html.ValidationMessageFor(model => model.EventDescription)</p>
+                </div>
+            </div>
+            <div style="width: 100%">
+                <div style="width: 50%; margin: 0 auto; float: left">
+                    <p>@Html.LabelFor(model => model.EventBanner) <span style="font-size: .8em; color: Yellow">
+                        * opcional</span></p>
+                    <p>
+                        <span style="color: #666666">Es opcional, pero te recomendamos subir una imagen alusiva
+                            al evento para tener un mayor impacto en tus clientes.</span></p>
+                    <p>
+                        <input type="file" id="imagen" name="imagen" /></p>
+                </div>
+                <div style="float: left; width: 50%">
+                    <p>
+                        Banner actual</p>
+                    <img src="@Model.EventBanner" alt="Imagen actual" style="max-height: 150px; max-width: 150px" />
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+            <div style="width: 100%">
+                <div style="width: 50%; margin: 0 auto; float: left">
+                    <p>@Html.LabelFor(model => model.PromotionBanner): <span style="font-size: .8em;
+                        color: Yellow">* opcional</span>
+                    </p>
+                    <p>
+                        <span style="color: #666666">Sube aquí una imagen con un descuento o promoción, para
+                            que tus clientes puedan presentarlo.</span></p>
+                    <p>
+                        <input type="file" id="promo" name="promo" /></p>
+                </div>
+                <div style="float: left; width: 50%">
+                    <p>
+                        Banner de descuento actual</p>
+                    @if (Model.PromotionBanner != null)
+                    {
+                        <img src="@Model.PromotionBanner" alt="Imagen actual" style="max-height: 150px; max-width: 150px" />}
+                </div>
+                <div style="clear: both">
+                </div>
+            </div>
+            <p>
+                <input type="image" src="../../Content/images/guardar.png" value="Guardar" />
+            </p>
+        </fieldset>
+    </div>
 }
 <div>
     @Html.ActionLink("Regresar", "Index")

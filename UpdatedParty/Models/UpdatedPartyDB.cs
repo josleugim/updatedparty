@@ -18,8 +18,8 @@ namespace UpdatedParty.Models
 
         public DbSet<TState> TStates { get; set; }
         public DbSet<Newsletter> Newsletters { get; set; }
-        public DbSet<ComplainType> ComplainTypes { get; set; }
-        public DbSet<Complain> Complains { get; set; }
+        //public DbSet<ComplainType> ComplainTypes { get; set; }
+        //public DbSet<Complain> Complains { get; set; }
         public DbSet<Bar> Bars { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<StayUP> stayUP { get; set; }

@@ -304,6 +304,11 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        public ViewResult AntroSustentable()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Contacts the specified email.
         /// </summary>

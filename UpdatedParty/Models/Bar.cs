@@ -20,6 +20,9 @@ namespace UpdatedParty.Models
         [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
         public string BarName { get; set; }
 
+        [DisplayName("Logo del bar")]
+        public string BarLogo { get; set; }
+
         [DisplayName("Email")]
         [Required(ErrorMessage = "El email es requerido")]
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Ingresa un email válido")]
@@ -45,10 +48,12 @@ namespace UpdatedParty.Models
 
         [DisplayName("Facebook")]
         [MaxLength(250, ErrorMessage = "* 250 caracteres máximo")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "Formato: http://www.updatedparty.com, copia y pega tu URL")]
         public string Facebook { get; set; }
 
         [DisplayName("Twitter")]
         [MaxLength(250, ErrorMessage = "* 250 caracteres máximo")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "Formato: http://www.updatedparty.com, copia y pega tu URL")]
         public string Twitter { get; set; }
 
         [DisplayName("Reseña")]
@@ -58,7 +63,7 @@ namespace UpdatedParty.Models
         public long? PhoneNumber { get; set; }
 
         //Dirección
-        [DisplayName("Calle")]
+        [DisplayName("Calle y número")]
         [MaxLength(30, ErrorMessage = "* 30 caracteres máximo")]
         public string Street { get; set; }
 
@@ -86,6 +91,9 @@ namespace UpdatedParty.Models
         public bool MidAge { get; set; }
         [DisplayName("De 30 +")]
         public bool OldAge { get; set; }
+
+        [DisplayName("Google Maps")]
+        public string googlemaps { get; set; }
 
         //
         //Giro

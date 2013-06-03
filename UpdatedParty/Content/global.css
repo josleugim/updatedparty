@@ -11,16 +11,16 @@
 #example {
 	width:600px;
 	/*height:350px;*/
-    height: 882px;
+    height: 482px;
 	position:relative;
 }
 
 #frame {
 	position:absolute;
 	z-index:0;
-	width:880px;
+	width:480px;
 	/*height:341px;*/
-    height: 600px;
+    height: 400px;
 	top:-3px;
 	left:-80px;
 }
@@ -50,6 +50,8 @@
 	display:none;
 }
 
+.slides_container img{max-height: 100%; overflow: hidden; margin: 0 auto}
+
 /*
 	Each slide
 	Important:
@@ -60,13 +62,12 @@
 
 .slides_container a {
 	width:570px;
-	height:882px;
+	height:400px;
 	display:block;
 }
 
 .slides_container a img {
 	display:block;
-    width: 570px;
 }
 
 /*
@@ -92,8 +93,9 @@
 */
 
 .pagination {
-	margin:26px auto 0;
+	margin: -30px auto 0;
 	width:100px;
+	visibility: hidden;
 }
 
 .pagination li {

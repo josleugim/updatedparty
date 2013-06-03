@@ -118,8 +118,10 @@
             }
         </div>
         <div class="upheader">
-            <div id="logo">
-            </div>
+            <a href="/" target="_self">
+                <div id="logo">
+                </div>
+            </a>
             <div id="slogan">
                 <h1 style="width: 280px; font-size: 38px">
                     ENTÉRATE <span style="font-size: 24px">EN</span> <span style="font-size: 30px">TIEMPO</span>
@@ -128,13 +130,6 @@
                         DE</span> <span style="font-size: 30px">TU CIUDAD</span>
                 </h1>
             </div>
-            <div id="register">
-                <a href="@Url.Action("Register", "Account")" target="_self">
-                    <img style="margin: 40px 40px 10px 40px" src="../../Content/images/registerbutton.png"
-                        alt="Imagen" /></a>
-                <p>@Html.Partial("_LogOnPartial")</p>
-            </div>
-            @*<h1 style="margin:0;">Updated Party !</h1>*@ @*@Html.ActionLink("Registro", "Register", "Account")*@
         </div>
         <div class="menu">
             <ul>
@@ -156,30 +151,53 @@
             </div>
         </div>
         @RenderBody()
-        @*<div class="page">
-        <header>
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-            <div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-            <nav>
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                </ul>
-            </nav>
-        </header>
-        <section id="main">
-            @RenderBody()
-        </section>
-        <footer>
-        </footer>
-    </div>*@
-        <footer>
-            @Html.ActionLink("Términos, Condiciones y Aviso de Privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: gray; font-size: 14px" })
-        </footer>
     </div>
+    <footer id="section4" style="background-color: #FFFFFF; width: 100%; font-size: 14px">
+        <br />
+            <div style="width: 100%; margin: 0 auto; color: #560787">
+             <div style="width: 30%; float: left;">
+             <p style="color: inherit"> Escríbenos a: <a style="color: #560787" href="mailto:contacto@updatedparty.com">contacto@updatedparty.com</a></p>
+                <p>@Html.ActionLink("Términos, condiciones y aviso de privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: #560787;" })</p>
+             </div>
+             <div style="width: 18%; float: left">
+              <p style="color: inherit; margin-left: 15px">
+                Contáctanos en:</p>
+            <a href="https://twitter.com/updatedparty" target="_blank" style="float: left">
+                <div id="twitter">
+                </div>
+            </a><a href="https://www.facebook.com/updatedparty?ref=ts&fref=ts" target="_blank" style="float: left">
+                <div id="facebook" onclick="">
+                </div>
+            </a>
+             </div>
+             <div style="width: 30%; float: left; color: #5E148D; position: relative;">
+              @using (Html.BeginForm("Suscribe", "Home", FormMethod.Post, new { name = "newsForm", onsubmit = "return validateForm()" }))
+              {
+            <div style="float: left; margin-left: 5px">
+                <p style="color: inherit; text-align: left; font-family: bebas_neueregular; font-size: 1.3em">Newsletter</p>
+                @Html.TextBox("newsletterEmail", null, new { style = "background-color: #5E148D; color: #FFFFFF; width: 250px; height:28px; font-size: 16px; text-align: center" })
+                
+                <p style="color: inherit"><span style="vertical-align: middle">Recibe eventos, promociones, artículos, recomendaciones y más.</span> <input style="position: absolute; right: 40px; vertical-align: middle" type="image" src="../../Content/images/boton-suscribete.png" value="Suscríbete" /></p>
+                
+            </div>
+              }
+              <div style="clear: both;">
+                </div>
+             </div>
+             <div style="width: 22%; height: 150px; float: right; position: relative">
+              <p style = "color: #560787; position: absolute; bottom: -15px; right: 0; font-family: bebas_neueregular; font-size: 1.5em; vertical-align: middle"><span style="font-size: 2.5em; color: #560787; vertical-align: middle">"</span>El único vicio es el exceso<span style="font-size: 2.5em; color: #560787; vertical-align: middle">"</span></p>
+             </div>
+            </div>
+            <div style="clear: both"></div>
+        </footer>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 </body>
 </html>

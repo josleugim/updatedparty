@@ -1,26 +1,41 @@
 ﻿body
 {
-    font-family: 'helveticaneueltstd-md-webfont';
+    font-family: 'helvetica_neue_lt_std65Md';
     margin: 0;
     background-color: #000;
 }
 
 @font-face
 {
-    font-family: 'bebasneue';
-    src: url(font/bebasneue-webfont.ttf);
+    font-family: 'bebas_neueregular';
+    src: url('bebasneue-webfont/bebasneue-webfont-webfont.eot');
+    src: url('bebasneue-webfont/bebasneue-webfont-webfont.eot?#iefix') format('embedded-opentype'), url('bebasneue-webfont/bebasneue-webfont-webfont.woff') format('woff'), url('bebasneue-webfont/bebasneue-webfont-webfont.ttf') format('truetype'), url('bebasneue-webfont/bebasneue-webfont-webfont.svg#bebas_neueregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
-
+/*
 @font-face
 {
     font-family: 'helveticaneueltstd-md-webfont';
     src: url(font/helveticaneueltstd-md-webfont.ttf);
 }
+*/
+@font-face
+{
+    font-family: 'helvetica_neue_lt_std65Md';
+    src: url('helveticaneueltstd-md/helveticaneueltstd-md-webfont-webfont.eot');
+    src: url('helveticaneueltstd-md/helveticaneueltstd-md-webfont-webfont.eot?#iefix') format('embedded-opentype'), url('helveticaneueltstd-md/helveticaneueltstd-md-webfont-webfont.woff') format('woff'), url('font/helveticaneueltstd-md-webfont.ttf') format('truetype'), url('helveticaneueltstd-md/helveticaneueltstd-md-webfont-webfont.svg#futuracondensed_medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face
 {
-    font-family: 'futura-condensed-medium';
-    src: url(font/futura-condensed-medium.ttf);
+    font-family: 'futuracondensed_medium';
+    src: url('futura-condensed-medium/futura-condensed-medium-webfont.eot');
+    src: url('futura-condensed-medium/futura-condensed-medium-webfont.eot?#iefix') format('embedded-opentype'), url('futura-condensed-medium/futura-condensed-medium-webfont.woff') format('woff'), url('futura-condensed-medium/futura-condensed-medium-webfont.ttf') format('truetype'), url('futura-condensed-medium/futura-condensed-medium-webfont.svg#futuracondensed_medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 a
@@ -49,7 +64,7 @@ p
 
 table
 {
-    background-color: #1C1C1C;
+    background-color: #000000;
 }
 table td
 {
@@ -75,11 +90,10 @@ table td
     margin: 50px 62px 0 62px;
     width: 300px;
     height: 144px;
-    font-family: futura-condensed-medium;
+    font-family: futuracondensed_medium;
     text-align: center;
     line-height: 24px;
-    font-weight: lighter;
-    /*background: #000 url('images/sprites-header.png') no-repeat 0px -232px !important;*/
+    font-weight: lighter; /*background: #000 url('images/sprites-header.png') no-repeat 0px -232px !important;*/
 }
 #register
 {
@@ -101,7 +115,7 @@ table td
 #antrosbares
 {
     float: left;
-    width: 300px;
+    width: 278px;
     height: 195px;
     background: #000 url('images/sprites-header.png') no-repeat 0px -748px !important;
 }
@@ -152,7 +166,7 @@ table td
 #newsLetter
 {
     float: left;
-    margin-left: 60px;
+    margin-left: 10px;
     width: 147px;
     height: 57px;
     background: #000 url('images/sprites-contact.png') no-repeat 0px -70px !important;
@@ -160,20 +174,18 @@ table td
 
 #facebook
 {
-    float: left;
-    margin-left: 50px;
+    margin-left: 5px;
     width: 84px;
     height: 80px;
-    background: #000 url('images/sprites-contact.png') no-repeat 0px -135px !important;
+    background: transparent url('images/sprites-contact.png') no-repeat 0px -135px !important;
 }
 
 #twitter
 {
-    float: left;
-    margin-left: 10px;
-    width: 84px;
-    height: 80px;
-    background: #000 url('images/sprites-contact.png') no-repeat 0px -225px !important;
+    margin-left: 5px;
+    width: 80px;
+    height: 84px;
+    background: transparent url('images/sprites-contact.png') no-repeat 0px -225px !important;
 }
 
 #advancedSearch
@@ -218,6 +230,7 @@ table td
 {
     background-color: transparent;
 }
+
 .tAdvancedSearch td
 {
     border: 1px solid #000;
@@ -239,7 +252,7 @@ table td
     color: White;
     font-size: 30px;
     text-align: center;
-    font-family: bebasneue;
+    font-family: bebas_neueregular;
     z-index: 1000;
 }
 .menu ul
@@ -263,6 +276,16 @@ table td
     color: yellow;
 }
 
+.menu h2
+{
+    font-size: 30px;
+    font-weight: lighter;
+    margin: 0;
+    padding: 0;
+    line-height: inherit;
+    display: inline;
+}
+
 .asideMenu
 {
     float: left;
@@ -270,6 +293,7 @@ table td
     border-bottom: 1px solid #cccccc;
     font-size: 14px;
     height: auto;
+    background-color: #000000;
 }
 
 .asideMenu ul
@@ -311,11 +335,32 @@ table td
     clear: both;
     margin: 0 auto;
     width: 100%;
-    height: 1080px;
+    height: auto;
     background-color: #000;
     color: White;
     text-align: center;
     border-bottom: 2px dotted #C1C4C9;
+    overflow: hidden;
+}
+#section2
+{
+    width: 100%;
+    height: auto;
+    border-bottom: 2px dotted #C1C4C9;
+}
+
+#section4
+{
+    background-color: #FFFFFF;
+    width: 100%;
+    font-size: 14px;
+}
+
+#footerWrap
+{
+    width: 100%;
+    margin: 0 auto;
+    color: #560787;
 }
 
 .supSearch
@@ -339,11 +384,13 @@ table td
 {
     font-family: "lucida grande" ,lucida,tahoma,helvetica,arial,sans-serif !important;
     font-weight: lighter;
+    margin: 0;
+    line-height: 20px;
 }
 
 .criterion
 {
-    width: 200px;
+    width: 170px;
     height: 20px;
     position: relative;
 }
@@ -398,6 +445,11 @@ table td
     background: url(images/ddlarrow.png) no-repeat right #000000;
 }
 
+.styled-select option
+{
+    background-color: #000000;
+}
+
 /*antros y bares township*/
 #antrosbares-select select
 {
@@ -419,9 +471,15 @@ table td
     background: url(images/ddlarrow.png) no-repeat right #000000;
 }
 
+#antrosbares-select option
+{
+    background-color: #000000;
+}
+
 .LogInWrapper
 {
     color: white;
+    background-color: #000000;
 }
 
 .LogInWrapper span
@@ -437,51 +495,9 @@ table td
 
 /*Twitter Customization*/
 
-.twtr-widget
+.tweetWrapp
 {
-    float: left;
-    width: 300px; /* this is important if you want to make any positioning */
-    margin: 10px 0 0 10px;
-    padding: 0 0 15px; /* background: #fafafa url(../../Content/images/stressed_linen.png); our cute background */ /*** cross browser box shadow ***/
-    background: #000;
-    -moz-box-shadow: 0 0 2px #000;
-    -webkit-box-shadow: 0 0 2px #000;
-    -ms-filter: 'progid:DXImageTransform.Microsoft.Glow(color=#000000,strength=3)';
-    filter: progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=0,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=90,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=180,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=270,strength=3);
-    box-shadow: 0 0 2px #000000; /*** kind of cross browser rounded corner ***/
-    -webkit-border-radius: 3px;
-    -khtml-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-.twtr-hd
-{
-    /*** cross browser rgba ***/
-    background-color: transparent; /*background-color: rgba(255,255,0,0.9);*/
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#30ffffff);
-    -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#30ffffff,endColorstr=#30ffffff)'; /*visibility:hidden;*/
-}
-.twtr-widget .twtr-bd .twtr-tweet
-{
-    /* they have 2 classes in default, do we have to use 3 */
-    margin: 5px 0 0;
-    padding: 0 0 5px;
-    border-bottom: 1px solid #000;
-}
-.twtr-tweet:before
-{
-    display: block;
-    float: left;
-    margin: -5px 0 0 5px;
-    font-size: 50px; /* let's make it a big quote! */
-    content: url(../../Content/images/elementos-amarillos-laterales-der.png);
-    color: #FFF;
-    text-shadow: 0 1px 1px #000;
-    font-family: times new roman serif;
-}
-.twtr-ft
-{
-    display: none;
+    width: 340px;
 }
 
 /*Rating*/
@@ -568,4 +584,36 @@ label
     text-transform: uppercase;
     display: block;
     float: left;
+}
+.voyair
+{
+    -moz-box-shadow: inset 0px 0px 0px 0px #f9eca0;
+    -webkit-box-shadow: inset 0px 0px 0px 0px #f9eca0;
+    box-shadow: inset 0px 0px 0px 0px #f9eca0;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #666666), color-stop(1, #333333) );
+    background: -moz-linear-gradient( center top, #666666 5%, #333333 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#333333');
+    background-color: #666666;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid Yellow;
+    display: inline-block;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 35px;
+    text-decoration: none;
+}
+.voyair:hover
+{
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #333333), color-stop(1, #666666) );
+    background: -moz-linear-gradient( center top, #333333 5%, #666666 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#666666');
+    background-color: #f2ab1e;
+}
+.voyair:active
+{
+    position: relative;
+    top: 1px;
 }
