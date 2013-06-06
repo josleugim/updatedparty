@@ -14,18 +14,25 @@ namespace UpdatedParty.Controllers
         private readonly UpdatedPartyDB _db = new UpdatedPartyDB();
 
 
-        public ViewResult Index(string sortOrder, string coloniaUp, string delegacion, int? page)
+        public ViewResult Index(string sortOrder, string coloniaUp, string delegacion, int? page, int? next)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
-            //ViewBag.DateSortParm = sortOrder == "Date" ? "Date desc" : "Date";
-            DateTime datenow = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+
+            DateTime nextDay;
+
+            if (next != null)
+            {
+                nextDay = Convert.ToDateTime(DateTime.Now.AddDays(Convert.ToDouble(next)).ToShortDateString());
+            }
+            else
+                nextDay = Convert.ToDateTime(DateTime.Now.ToShortDateString());
 
             if (Request.HttpMethod != "GET")
                 page = 1;
 
 
             var stayup = from u in _db.stayUP
-                         where EntityFunctions.TruncateTime(u.EventDate) == datenow
+                         where EntityFunctions.TruncateTime(u.EventDate) == nextDay
                          select u;
 
             if (!String.IsNullOrEmpty(delegacion))
@@ -69,6 +76,9 @@ namespace UpdatedParty.Controllers
             var del = new List<string> { "Todas", "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
             "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
             ViewBag.delegacion = new SelectList(del);
+
+            ViewBag.NextDay = nextDay.ToString("dddd") + " " + nextDay.Day + " " + nextDay.ToString("MMMM");
+            ViewBag.Next = next;
 
             const int pageSize = 10;
             int pageNumber = (page ?? 1);
