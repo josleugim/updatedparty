@@ -3,6 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
+    <meta name="description" content="Entérate en tiempo real de la vida noctura de tu ciudad">
+    <!-- Dublin Core Metadata for SEO and Usability -->
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.title" content="Updated Party">
+	<meta name="DC.identifier" content="http://www.updatedparty.com/">
+	<meta name="DC.description" content="Entérate en tiempo real de la vida noctura de tu ciudad">
+	<meta name="DC.subject" content="Antros y Bares, antros y bares df, Vida nocturna, vida nocturna df">
+	<meta name="DC.language" scheme="ISO639-1" content="es">
+	<meta name="DC.creator" content="www.josleugim.com">
+	<meta name="DC.contributor" content="Imanol Ramírez">
+	<meta name="DC.publisher" content="José Miguel Ramírez">
+	<meta name="DC.type" scheme="DCMITYPE" content="http://purl.org/dc/dcmitype/Dataset">
+	<meta name="DC.type" scheme="DCMITYPE" content="http://purl.org/dc/dcmitype/Image">
+	<meta name="DC.type" scheme="DCMITYPE" content="http://purl.org/dc/dcmitype/Service">
+	<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+	<meta name="DCTERMS.created" scheme="ISO8601" content="2013-01-15">
+	
     <!-- Facebook meta tags -->
     <meta property="og:title" content="Entérate en tiempo real de la vida noctura de tu ciudad" />
     <meta property="og:type" content="article" />
@@ -15,7 +32,6 @@
     <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-    @*<script type="text/javascript" src="../../Scripts/jquery.easing.1.3.js"></script>*@
     <script type="text/javascript" src="../../Scripts/jsonScript.js"></script>
     <script type="text/javascript" src="../../Scripts/jQuery.tmpl.min.js"></script>
     <script type="text/javascript">
@@ -114,13 +130,12 @@
     </script>
 </head>
 <body>
-    <div style="position: absolute; top: 0; left: 0;">
+    <div id="Beta">
         <embed src="http://updatedparty.com/Content/images/BetaRibbon.svg" width="130" height="132"
             type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install" />
     </div>
-    <div class="mainWrapper">
-        <div style="position: fixed; top: 0; right: 50px; background-color: transparent;
-            line-height: 5px">
+    <div lang="es" class="mainWrapper">
+        <div id="Adjust">
             @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
             {
                 <p>
@@ -141,11 +156,15 @@
                         DE</span> <span style="font-size: 30px">TU CIUDAD</span>
                 </h1>
             </div>
-            <div id="register">
-                <a href="@Url.Action("Register", "Account")" target="_self">
-                    <img style="margin: 40px 40px 10px 40px; border: none" src="../../Content/images/registerbutton.png"
-                        alt="Regístrate" /></a>
-                <p>@Html.ActionLink("Iniciar sesión", "Logon", "Account")</p>
+            <div id="Suscribe">
+                <br />
+                <p style="font-size: .8em">
+                    <a style="font-size: 1.6em; text-decoration: underline blink; text-transform: uppercase;
+                        color: Yellow; font-family: bebas_neueregular;" href="#section4">Suscríbete</a>
+                    a nuestro Newsletter y recibe eventos, promociones, artículos, recomendaciones y
+                    más.</p>
+                <br />
+                <p>@Html.ActionLink("Iniciar sesión", "Logon", "Account", null, new { style = "text-transform: uppercase; color: Yellow; font-family: bebas_neueregular;" })</p>
             </div>
         </div>
         <div class="menu">
@@ -153,7 +172,7 @@
                 <li><span id="leftArrow"></span></li>
                 <li><a href="#section1">What's UP</a></li>
                 <li>
-                    <img src="../../Content/images/Bbolita-blanca.png" /></li>
+                    <img src="../../Content/images/Bbolita-blanca.png" alt="dot" /></li>
                 <li>
                     <h2>
                         <a href="#section2">Antros y Bares</a></h2>
@@ -162,45 +181,27 @@
                 <li></li>
                 <li><a href="#section3">Blog</a></li>
                 <li>
-                    <img src="../../Content/images/Bbolita-blanca.png" /></li>
+                    <img src="../../Content/images/Bbolita-blanca.png" alt="dot" /></li>
                 <li><a href="#section4">Contacto</a></li>
                 <li><span id="rightArrow"></span></li>
             </ul>
-            <div style="clear: both; width: 100%; height: 18px; background-color: #000; background-image: url('../Content/images/menuribbon.png');
-                background-repeat: repeat-x">
+            <div id="MenuRibbon">
             </div>
         </div>
         @RenderBody()
-        @*<div class="page">
-        <header>
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-            <div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-            <nav>
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                </ul>
-            </nav>
-        </header>
-        <section id="main">
-            @RenderBody()
-        </section>
-    </div>*@
     </div>
     <br />
     <br />
-    <footer id="section4">
-        <br />
+    <footer lang="es" id="section4">
             <div id="footerWrap">
-             <div style="width: 30%; float: left;">
+            <br />
+             <div id="fColum1">
+             <p>@Html.ActionLink("Registra tu bar", "Register", "Account", null, new { style = "color: #560787" })</p>
+             <p style="color: inherit">Acerca de nosotros</p>
              <p style="color: inherit"> Escríbenos a: <a style="color: #560787" href="mailto:contacto@updatedparty.com">contacto@updatedparty.com</a></p>
                 <p>@Html.ActionLink("Términos, condiciones y aviso de privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: #560787;" })</p>
              </div>
-             <div style="width: 18%; float: left">
+             <div id="fColum2">
               <p style="color: inherit; margin-left: 15px">
                 Contáctanos en:</p>
             <a href="https://twitter.com/updatedparty" target="_blank" style="float: left">
@@ -211,21 +212,22 @@
                 </div>
             </a>
              </div>
-             <div style="width: 30%; float: left; color: #5E148D; position: relative;">
+             <div id="fColum3">
               @using (Html.BeginForm("Suscribe", "Home", FormMethod.Post, new { name = "newsForm", onsubmit = "return validateForm()" }))
               {
-            <div style="float: left; margin-left: 5px">
+            <div style="float: left; margin-left: 5px; position: relative;">
                 <p style="color: inherit; text-align: left; font-family: bebas_neueregular; font-size: 1.3em">Newsletter</p>
-                @Html.TextBox("newsletterEmail", null, new { style = "background-color: #5E148D; color: #FFFFFF; width: 250px; height:28px; font-size: 16px; text-align: center" })
+                @Html.TextBox("newsletterEmail", null, new { style = "background-color: #5E148D; color: #FFFFFF; width: 250px; height:28px; font-size: 16px; text-align: center", placeholder = "email@domain.com", type = "email" })
                 
-                <p style="color: inherit"><span style="vertical-align: middle">Recibe eventos, promociones, artículos, recomendaciones y más.</span> <input style="position: absolute; right: 40px; vertical-align: middle" type="image" src="../../Content/images/boton-suscribete.png" value="Suscríbete" /></p>
+                <p style="color: inherit"><span style="vertical-align: middle">Recibe eventos, promociones, artículos, recomendaciones y más.</span> 
+                <input style="position: absolute; right: 40px; vertical-align: middle" type="image" src="../../Content/images/boton-suscribete.png" alt="Suscríbete" /></p>
                 
             </div>
               }
               <div style="clear: both;">
                 </div>
              </div>
-             <div style="width: 22%; height: 150px; float: right; position: relative">
+             <div id="fColum4">
               <p style = "color: #560787; position: absolute; bottom: -15px; right: 0; font-family: bebas_neueregular; font-size: 1.5em; vertical-align: middle"><span style="font-size: 2.5em; color: #560787; vertical-align: middle">"</span>El único vicio es el exceso<span style="font-size: 2.5em; color: #560787; vertical-align: middle">"</span></p>
              </div>
              <div style="clear: both"></div>

@@ -16,7 +16,7 @@
         </div>
         <div class="tweetWrapp">
             <div style="width: 100%;">
-                <img src="../../Content/images/twitter.jpg" />
+                <img src="../../Content/images/twitter.jpg" alt="Twitter" />
             </div>
             <a class="twitter-timeline" href="https://twitter.com/updatedparty" data-widget-id="339452167284985857"
                 data-chrome="nofooter transparent" height="500px">Tweets by @@updatedparty</a>
@@ -54,14 +54,14 @@
                     @Html.TextBox("coloniaUP", null, new { style = "background-color: black; border: 1px solid #2F2F2F; color: yellow; height:25px; font-size: 16px; text-align: center" })
                 </div>
                 <div style="float: left; margin-left: 15px">
-                    <input type="image" src="../../Content/images/buscar.png" value="buscar" /></div>
+                    <input type="image" src="../../Content/images/buscar.png" alt="Enviar" /></div>
             </div>
             <br />
         }
         <br />
         <table class="supSearch">
             <tr style="background-color: #000; border-bottom: 1px solid #FFF;">
-                <th colspan="2" style="background-color: #000; border-bottom: 1px solid #FFF;">
+                <th colspan="3" style="background-color: #000; border-bottom: 1px solid #FFF;">
                     <span style="font-size: 1.3em">@Html.ActionLink("<<", "Index", new { next = Convert.ToInt32(ViewBag.Next) - 1 })</span>
                     <span style="font-weight: lighter; font-family: 'bebas_neueregular'; color: yellow;
                         font-size: 22px">Cartelera</span> <span style="font-weight: lighter; font-family: 'bebas_neueregular';
@@ -73,16 +73,16 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td rowspan="5" style="text-align: left" id="svgfile" width="180px" height="150px">
+                    <td rowspan="5" style="text-align: left; width: 180px; height: 150px">
                         <br />
                         <a href="@item.EventBanner" target="_blank">
                             <svg width="200px" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
                         <defs>
-                            <pattern id="@item.BarId" patternUnits="userSpaceOnUse" width="200px" height="200px">
+                            <pattern id="@item.BarId-Evento" patternUnits="userSpaceOnUse" width="200px" height="200px">
                                 <image xlink:href="@item.EventBanner" x="-20" y="0" width="140px" height="120px"></image>
                             </pattern>
                         </defs>
-                        <circle cx="50" cy="50" r="45" fill= "url(#@item.BarId)"; stroke="Yellow" stroke-width="2"  />
+                        <circle cx="50" cy="50" r="45" fill= "url(#@item.BarId-Evento)" stroke="Yellow" stroke-width="2"  />
                         </svg>
                         </a>
                     </td>
@@ -116,6 +116,17 @@
                     </td>
                     <td>
                         <p>
+                            @if (!String.IsNullOrEmpty(item.Bar.Twitter))
+                            {
+                                var tAccount = item.Bar.Twitter.Substring(20);
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @item.EventName en @@@tAccount el @ViewBag.NextDay. Más información en ">
+                                    Tweet</a>
+                            }
+                            else
+                            { 
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @item.EventName en @item.Bar.BarName el @ViewBag.NextDay. Más información en ">
+                                    Tweet</a>
+                            }
                             <a class="voyair" href="https://www.facebook.com/dialog/feed?app_id=479842812074467&link=@Html.Raw("http://www.updatedparty.com/" + item.EventBanner)&picture=@Html.Raw("http://www.updatedparty.com/" + item.EventBanner)&name=Voy a ir a @item.EventName en @item.Bar.BarName&caption=Promoci%C3%B3n: @item.PromotionEvent&description=Descripción: @item.EventDescription-@Convert.ToString(item.EventDate.Value.ToShortDateString())&redirect_uri=http://www.updatedparty.com/"
                                 target="_blank">Voy a ir</a></p>
                     </td>
@@ -137,7 +148,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -149,7 +160,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
         </div>
     </div>
     <div style="clear: both">
@@ -175,7 +186,7 @@
                 <div style="float: left">
                     <p style="margin: 0 0 0 10px">
                         @Html.TextBox("colonia", null, new { style = "vertical-align: middle" })
-                        <input type="image" src="../../Content/images/boton-enviar.png" value="buscar" style="vertical-align: middle" />
+                        <input type="image" src="../../Content/images/boton-enviar.png" alt="Enviar" style="vertical-align: middle" />
                     </p>
                 </div>
                 <div style="clear: both">
@@ -574,7 +585,7 @@
         <div id="blog">
         </div>
         <div style="float: left; width: 345px;">
-            <img src="../../Content/images/Energy Floors_small.jpg" alt="Energy floors" />
+            <img src="../../Content/images/energyfloors-small.jpg" alt="Energy floors" />
         </div>
         <div style="float: left; width: 335px; height: 210px; text-align: justify">
             <p style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
@@ -658,3 +669,5 @@
         }
     }
 </script>
+<!-- Twitter share button -->
+<script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>

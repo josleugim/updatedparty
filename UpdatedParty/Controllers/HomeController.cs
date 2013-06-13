@@ -20,7 +20,7 @@ namespace UpdatedParty.Controllers
 
             DateTime nextDay;
 
-            if (next != null)
+            if (next != null && next > 0)
             {
                 nextDay = Convert.ToDateTime(DateTime.Now.AddDays(Convert.ToDouble(next)).ToShortDateString());
             }
@@ -35,7 +35,7 @@ namespace UpdatedParty.Controllers
                          where EntityFunctions.TruncateTime(u.EventDate) == nextDay
                          select u;
 
-            if (!String.IsNullOrEmpty(delegacion))
+            if (!String.IsNullOrEmpty(delegacion) && delegacion != "Todas")
             {
                 stayup = stayup.Where(s => s.Bar.Township == delegacion
                     && !String.IsNullOrEmpty(s.Bar.Cologne)
@@ -44,18 +44,10 @@ namespace UpdatedParty.Controllers
 
             if (delegacion == "Todas")
             {
-                stayup = stayup.Where(s => s.Bar.Township == delegacion
+                stayup = stayup.Where(s => s.Bar.Township != null
                     && !String.IsNullOrEmpty(s.Bar.Cologne)
                     && s.Bar.Cologne.Contains(coloniaUp));
             }
-
-            //var quote = _db.UPUsers.OrderBy(q => _db.GetNewId()).First();
-
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    stayup = stayup.Where(s => s.BarEvent.ToUpper().Contains(searchString.ToUpper())
-            //                           || s.Promotion.ToUpper().Contains(searchString.ToUpper()));
-            //}
 
             switch (sortOrder)
             {
@@ -73,8 +65,7 @@ namespace UpdatedParty.Controllers
                     break;
             }
 
-            var del = new List<string> { "Todas", "Alvaro Obregón", "Azcapotzalco", "Benito Juárez", "Coyoacán", "Cuajimalpa", "Cuauhtémoc", "Gustavo A. Madero",
-            "Iztacalco", "Iztapalapa", "Magdalena Contreras", "Miguel Hidalgo", "Milpa Alta", "Tláhuac", "Tlalpan", "Venustiano Carranza", "Xochimilco"};
+            var del = new List<string> { "Todas", "Alvaro Obregón", "Benito Juárez", "Cuauhtémoc" };
             ViewBag.delegacion = new SelectList(del);
 
             ViewBag.NextDay = nextDay.ToString("dddd") + " " + nextDay.Day + " " + nextDay.ToString("MMMM");

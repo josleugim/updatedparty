@@ -84,19 +84,19 @@
             <br />
             <p>
                 Sitio web:
-                @if (Model.WebSite != null)
+                @if (!String.IsNullOrEmpty(Model.WebSite))
                 {
                     <a href="@Html.DisplayFor(model => model.WebSite)" target="_blank" itemprop="url">@Html.DisplayFor(model => model.BarName)</a>
                 }
             </p>
-            @if (Model.Facebook != null)
+            @if (!String.IsNullOrEmpty(Model.Facebook))
             {
                 <a href="@Html.DisplayFor(model => model.Facebook)" target="_blank" style="float: left">
                     <div id="facebook">
                     </div>
                 </a>    
             }
-            @if (Model.Twitter != null)
+            @if (!string.IsNullOrEmpty(Model.Twitter))
             { 
                 <a href="@Html.DisplayFor(model => model.Twitter)" target="_blank" style="float: left">
                     <div id="twitter">

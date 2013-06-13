@@ -10,9 +10,9 @@ select * from Complains
 Select * from Newsletters
 
 --update StayUPs
---Set EventDate = '2013-25-05 00:00:00.000'
+--Set EventDate = '2013-13-06 00:00:00.000'
+--where StayUPID = 2
 --where BarID = 20
---where StayUPID = 7
 
 --update StayUPs
 --Set PromotionEvent = 'Sin promoción'
@@ -23,15 +23,15 @@ Select * from Newsletters
 --where BarID = 14
 
 --update Bars
---Set Email = 'imanolramirezmartinez76@gmail.com'
---where BarID = 12
+--Set WebSite = ''
+--where BarID = 16
 
 Select * from Bars
 where BarID > 32
 
 --update Bars
---Set Twitter = 'https://twitter.com/La_SantaDiabla'
---where BarID = 40
+--Set Facebook = ''
+--where BarID = 11
 
 --Delete from Galleries
 --Where BarID = 17
@@ -56,7 +56,7 @@ AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
-where EventDate = '2013-23-05 00:00:00.000'
+where EventDate = '2013-12-06 00:00:00.000'
 
 select *
 from Galleries

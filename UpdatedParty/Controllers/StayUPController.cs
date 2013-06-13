@@ -20,7 +20,9 @@ namespace UpdatedParty.Controllers
 
         public ViewResult Index()
         {
-            var stayup = _db.stayUP.Include(s => s.Bar).Where(b => b.Bar.Email == User.Identity.Name);
+            var dateToday = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+            var stayup = _db.stayUP.Include(s => s.Bar).Where(b => b.Bar.Email == User.Identity.Name
+                && EntityFunctions.TruncateTime(b.EventDate) >= dateToday);
             return View(stayup.ToList());
         }
 
