@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using UpdatedParty.Models;
 using System.Data.Objects;
 using System.IO;
+using UpdatedParty.Helpers;
 
 namespace UpdatedParty.Controllers
 {
@@ -21,9 +22,16 @@ namespace UpdatedParty.Controllers
         public ViewResult Index()
         {
             var dateToday = Convert.ToDateTime(DateTime.Now.ToShortDateString());
-            var stayup = _db.stayUP.Include(s => s.Bar).Where(b => b.Bar.Email == User.Identity.Name
-                && EntityFunctions.TruncateTime(b.EventDate) >= dateToday);
-            return View(stayup.ToList());
+            //var stayup = _db.stayUP.Include(s => s.Bar).Where(b => b.Bar.Email == User.Identity.Name
+            //    && EntityFunctions.TruncateTime(b.EventDate) >= dateToday);
+
+            var whatsup = (from w in _db.stayUP.Include(s => s.Bar)
+                           where w.Bar.Email.Equals(User.Identity.Name)
+                           && EntityFunctions.TruncateTime(w.EventDate) >= dateToday
+                           orderby w.EventDate ascending
+                           select w);
+
+            return View(whatsup.ToList());
         }
 
         //
@@ -67,6 +75,8 @@ namespace UpdatedParty.Controllers
                     if (!oldEvent.Any())
                     {
                         Bar bar = _db.Bars.FirstOrDefault(s => s.BarID.Equals(id));
+                        string expectedName = bar.BarName.ToSeoUrl();
+
                         _db.stayUP.Add(stayup);
                         stayup.RegisterDate = DateTime.Now;
                         stayup.Bar = bar;
@@ -77,8 +87,8 @@ namespace UpdatedParty.Controllers
                             if (imagen.ContentLength != 0)
                             {
                                 var reader = new StreamReader(imagen.InputStream);
-                                imagen.SaveAs(Server.MapPath("/Content/gallery/") + "b" + bar.BarName + imagen.FileName);
-                                stayup.EventBanner = "../../Content/gallery/" + "b" + bar.BarName + imagen.FileName;
+                                imagen.SaveAs(Server.MapPath("/Content/gallery/") + "b" + expectedName + imagen.FileName);
+                                stayup.EventBanner = "../../Content/gallery/" + "b" + expectedName + imagen.FileName;
                             }
                         }
 
@@ -86,8 +96,8 @@ namespace UpdatedParty.Controllers
                             if (promo.ContentLength != 0)
                             {
                                 var reader = new StreamReader(promo.InputStream);
-                                promo.SaveAs(Server.MapPath("/Content/gallery/") + "d" + bar.BarName + promo.FileName);
-                                stayup.PromotionBanner = "../../Content/gallery/" + "d" + bar.BarName + promo.FileName;
+                                promo.SaveAs(Server.MapPath("/Content/gallery/") + "d" + expectedName + promo.FileName);
+                                stayup.PromotionBanner = "../../Content/gallery/" + "d" + expectedName + promo.FileName;
                             }
 
                         _db.SaveChanges();
@@ -128,6 +138,7 @@ namespace UpdatedParty.Controllers
             if (ModelState.IsValid)
             {
                 var barname = _db.Bars.Find(stayup.BarId);
+                string expectedName = barname.BarName.ToSeoUrl();
 
                 _db.Entry(stayup).State = EntityState.Modified;
                 if (imagen != null)
@@ -135,8 +146,8 @@ namespace UpdatedParty.Controllers
                     if (imagen.ContentLength != 0)
                     {
                         var reader = new StreamReader(imagen.InputStream);
-                        imagen.SaveAs(Server.MapPath("/Content/gallery/") + "ban" + barname.BarName + imagen.FileName);
-                        stayup.EventBanner = "../../Content/gallery/" + "ban" + barname.BarName + imagen.FileName;
+                        imagen.SaveAs(Server.MapPath("/Content/gallery/") + "ban" + expectedName + imagen.FileName);
+                        stayup.EventBanner = "../../Content/gallery/" + "ban" + expectedName + imagen.FileName;
                     }
                 }
 
@@ -145,8 +156,8 @@ namespace UpdatedParty.Controllers
                     if (promo.ContentLength != 0)
                     {
                         var reader = new StreamReader(promo.InputStream);
-                        promo.SaveAs(Server.MapPath("/Content/gallery/") + "des" + barname.BarName + promo.FileName);
-                        stayup.PromotionBanner = "../../Content/gallery/" + "des" + barname.BarName + promo.FileName;
+                        promo.SaveAs(Server.MapPath("/Content/gallery/") + "des" + expectedName + promo.FileName);
+                        stayup.PromotionBanner = "../../Content/gallery/" + "des" + expectedName + promo.FileName;
                     }
 
                 _db.SaveChanges();

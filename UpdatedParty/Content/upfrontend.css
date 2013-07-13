@@ -481,6 +481,7 @@ table td
 {
     color: white;
     background-color: #000000;
+    font-family: 'helvetica_neue_lt_std65Md';
 }
 
 .LogInWrapper span
@@ -627,3 +628,42 @@ label
 #fColum2{width: 15%; float: left; border-right: 2px dashed black}
 #fColum3{width: 20%; float: left; color: #5E148D; border-right: 2px dashed black}
 #fColum4{width: 20%; height: 150px; float: right; position: relative;}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+    font-family: 'helvetica_neue_lt_std65Md';
+}
+
+.field-validation-valid {
+    display: none;
+    font-family: 'helvetica_neue_lt_std65Md';
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+    font-family: 'helvetica_neue_lt_std65Md';
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+    font-family: 'helvetica_neue_lt_std65Md';
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+    font-family: 'helvetica_neue_lt_std65Md';
+}
