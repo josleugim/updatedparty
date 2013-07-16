@@ -1,17 +1,38 @@
 use UpdatedPartyDB
 go
 
-INSERT INTO TStates (StateName, StateAbbreviation, RegisterDate)
-Values('Distrito Federal', 'DF', getdate())
+--INSERT INTO TStates (StateName, StateAbbreviation, RegisterDate)
+--Values('Distrito Federal', 'DF', getdate())
+--INSERT INTO TStates (StateName, StateAbbreviation, RegisterDate)
+--Values('Hidalgo', 'HGO', getdate())
 
 select * from Tstates
 select * from galleries
-select * from Complains
+Where BarId = 11
+And IsActived = 1
 Select * from Newsletters
+Select * from BusinessTypes
+
+Select * from Bars
+where BusinessTypeId in(1, 3)
+
+--INSERT INTO BusinessTypes (TypeName)
+--Values('Antro')
+--INSERT INTO BusinessTypes (TypeName)
+--Values('Bar')
+--INSERT INTO BusinessTypes (TypeName)
+--Values('After')
+--INSERT INTO BusinessTypes (TypeName)
+--Values('Restaurant Bar')
+--INSERT INTO BusinessTypes (TypeName)
+--Values('Pub')
+
+--delete from Newsletters
+--where NewsletterId = 1
 
 --update StayUPs
---Set EventDate = '2013-13-06 00:00:00.000'
---where StayUPID = 2
+--Set EventDate = '2013-25-06 00:00:00.000'
+--where StayUPID = 6
 --where BarID = 20
 
 --update StayUPs
@@ -19,19 +40,16 @@ Select * from Newsletters
 --where StayUPID = 220
 
 --update galleries
---Set IsActived = 1
---where BarID = 14
+--Set UrlImage = '../../Content/gallery/PAR227BARGRILLCorte.JPG'
+--where GalleryID = 19
 
 --update Bars
 --Set WebSite = ''
 --where BarID = 16
 
-Select * from Bars
-where BarID > 32
-
 --update Bars
---Set Facebook = ''
---where BarID = 11
+--Set IsActived = 1
+--where BarID = 26
 
 --Delete from Galleries
 --Where BarID = 17
@@ -40,11 +58,14 @@ where BarID > 32
 --Where StayUpID = 209
 
 --Delete from Galleries
---Where GalleryID = 32
+--Where GalleryID = 16
+
+--Delete from Bars
+--Where BarID = 22
 
 --Update Bars
---SET googlemaps = '<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps/ms?msa=0&amp;msid=211842175062061943958.0004dd2c6e071e0b01d99&amp;ie=UTF8&amp;t=h&amp;z=17&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.com.mx/maps/ms?msa=0&amp;msid=211842175062061943958.0004dd2c6e071e0b01d99&amp;ie=UTF8&amp;t=h&amp;z=17&amp;source=embed" style="color:#0000FF;text-align:left">NUN Condesa</a> en un mapa ampliado</small>'
---Where BarID = 11
+--SET googlemaps = '<iframe width="580" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.mx/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=bar+berlin+insurgentes+sur+df&amp;aq=&amp;sll=19.412733,-99.172731&amp;sspn=0.004301,0.006968&amp;t=h&amp;ie=UTF8&amp;hq=bar+berlin&amp;hnear=Insurgentes+Sur,+Ciudad+de+M%C3%A9xico,+Distrito+Federal&amp;ll=19.37658,-99.178219&amp;spn=0.007085,0.012445&amp;z=16&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com.mx/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=bar+berlin+insurgentes+sur+df&amp;aq=&amp;sll=19.412733,-99.172731&amp;sspn=0.004301,0.006968&amp;t=h&amp;ie=UTF8&amp;hq=bar+berlin&amp;hnear=Insurgentes+Sur,+Ciudad+de+M%C3%A9xico,+Distrito+Federal&amp;ll=19.37658,-99.178219&amp;spn=0.007085,0.012445&amp;z=16" style="color: yellow;text-align:left">Ver mapa más grande</a></small>'
+--Where BarID = 2
 
 Select Distinct Township, Cologne from Bars
 
@@ -56,7 +77,7 @@ AND(BarType = 1 OR [After] = 1)
 
 Select *
 from StayUPs
-where EventDate = '2013-12-06 00:00:00.000'
+where EventDate > '2013-07-07 00:00:00.000'
 
 select *
 from Galleries

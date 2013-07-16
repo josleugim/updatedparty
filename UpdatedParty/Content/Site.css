@@ -241,6 +241,7 @@ table th {
 
 .error {
     color: Red;
+    font-family: 'helvetica_neue_lt_std65Md';
 }
 
 nav, 
@@ -281,6 +282,7 @@ div#title {
 -----------------------------------------------------------*/
 .field-validation-error {
     color: #ff0000;
+    font-family: 'helvetica_neue_lt_std65Md';
 }
 
 .field-validation-valid {
@@ -295,13 +297,14 @@ div#title {
 .validation-summary-errors {
     font-weight: bold;
     color: #ff0000;
+    font-family: 'helvetica_neue_lt_std65Md';
 }
 
 .validation-summary-valid {
     display: none;
 }
-
-/* Styles for editor and display helpers
+/*
+ Styles for editor and display helpers
 ----------------------------------------------------------*/
 .display-label, 
 .editor-label {

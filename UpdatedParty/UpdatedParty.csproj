@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="App_Data\MyMembershipProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CarteleraController.cs" />
+    <Compile Include="Controllers\BarDetailsController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StayUPController.cs" />
@@ -76,6 +76,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\BusinessType.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\Newsletter.cs" />
     <Compile Include="Models\StayUP.cs" />
@@ -86,7 +87,7 @@
     <Compile Include="Models\Bar.cs" />
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\Cartelera.cs" />
+    <Compile Include="ViewModels\BarDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bebasneue-webfont\bebasneue-webfont-demo.html" />
@@ -115,6 +116,8 @@
     <Content Include="Content\futura-condensed-medium\stylesheet.css" />
     <Content Include="Content\images\BetaRibbon.png" />
     <Content Include="Content\images\BetaRibbon.svg" />
+    <Content Include="Content\images\Borrar.png" />
+    <Content Include="Content\images\calendar.png" />
     <Content Include="Content\images\calendar_icon.png" />
     <Content Include="Content\images\buscar.png" />
     <Content Include="Content\images\crearevento.png" />
@@ -134,6 +137,8 @@
     <Content Include="Content\images\corazon-prendido.png" />
     <Content Include="Content\images\Energy Floors_small.jpg" />
     <Content Include="Content\images\Entrar.png" />
+    <Content Include="Content\images\file delete.png" />
+    <Content Include="Content\images\file plus.png" />
     <Content Include="Content\images\guardar.png" />
     <Content Include="Content\images\headacheUP_med.jpg" />
     <Content Include="Content\images\loading.gif" />
@@ -141,6 +146,7 @@
     <Content Include="Content\images\menuribbon.png" />
     <Content Include="Content\images\paginationup.png" />
     <Content Include="Content\images\Par227BarAndGrill_small.jpg" />
+    <Content Include="Content\images\picture.png" />
     <Content Include="Content\images\recomendados.png" />
     <Content Include="Content\images\registerbutton.png" />
     <Content Include="Content\images\registrar.png" />
@@ -270,7 +276,6 @@
     <Content Include="Views\StayUP\Delete.cshtml" />
     <Content Include="Views\Shared\_Articles.cshtml" />
     <Content Include="Views\Home\Headache.cshtml" />
-    <Content Include="Views\Bar\BarDetails.cshtml" />
     <Content Include="Views\Home\Suscribe.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\SuscribeExist.cshtml" />
@@ -278,11 +283,11 @@
     <Content Include="Views\Home\AvisoPrivacidad.cshtml" />
     <Content Include="Views\Home\Whiskey.cshtml" />
     <Content Include="Views\Home\Bailamos.cshtml" />
-    <Content Include="Views\Cartelera\Index.cshtml" />
     <None Include="Content\futura-condensed-medium\futura-condensed-medium-webfont.eot" />
     <None Include="Content\futura-condensed-medium\futura-condensed-medium-webfont.ttf" />
     <None Include="Content\futura-condensed-medium\futura-condensed-medium-webfont.woff" />
     <Content Include="Views\Home\AntroSustentable.cshtml" />
+    <Content Include="Views\BarDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\gallery\" />

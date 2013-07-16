@@ -28,7 +28,7 @@ namespace UpdatedParty
             routes.MapRoute(
                 "BarsDetails", // Route name
                 "{Name}/{id}", // URL with parameters
-                new { controller = "Bar", action = "BarDetails"}, // Parameter defaults
+                new { controller = "BarDetails", action = "Index"}, // Parameter defaults
                 new { id = @"^\d+$" }
             );
 

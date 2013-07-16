@@ -1,0 +1,364 @@
+﻿@model UpdatedParty.ViewModels.BarDetails
+@{
+    ViewBag.Title = Model.Bar.BarName;
+    Layout = "~/Views/Shared/_Articles.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="../../Scripts/slides.min.jquery.js"></script>
+<script>
+    $(function () {
+        $('#slides').slides({
+            preload: true,
+            preloadImage: 'img/loading.gif',
+            play: 5000,
+            pause: 2500,
+            hoverPause: true
+        });
+    });
+</script>
+<div style="clear: both; width: 100%; color: white;">
+    <div style="width: 100%; margin-top: 20px; border-bottom: 2px dotted #C1C4C9;">
+        <div style="float: left; width: 340px">
+            <div style="width: 100%;" itemscope itemtype="http://data-vocabulary.org/Organization">
+                <h1 style="color: yellow; margin: 1px;">
+                    <span itemprop="name">@Html.DisplayFor(model => model.Bar.BarName)</span></h1>
+            </div>
+            <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"><span
+                itemprop="street-address">@Html.DisplayFor(model => model.Bar.Street)</span> <span
+                    itemprop="locality">
+                    <br />
+                    Col. @Html.DisplayFor(model => model.Bar.Cologne),
+                    <br />
+                    @Html.DisplayFor(model => model.Bar.Township)
+                    @Html.DisplayFor(model => model.Bar.TState.StateName).</span> </span>
+            <br />
+            <br />
+            <span>Sitio web:
+                <br />
+                @if (!String.IsNullOrEmpty(Model.Bar.WebSite))
+                {
+                    <a href="@Html.DisplayFor(model => model.Bar.WebSite)" target="_blank" itemprop="url">@Html.DisplayFor(model => model.Bar.WebSite)</a>
+                }
+            </span>
+            <p class="clear">
+                <a href="#cartelera" style="color: Yellow; font-size: 1.6em; text-transform: uppercase;
+                    font-weight: lighter; font-family: 'bebas_neueregular';"><span style="vertical-align: middle;">
+                        Cartelera</span>
+                    <img src="../../Content/images/calendar.png" alt="Calendario" style="vertical-align: middle" /></a>
+            </p>
+        </div>
+        <div style="float: left; width: 340px">
+            <br />
+            <br />
+            <span>Horarios:
+                <br />
+                @Html.DisplayFor(model => model.Bar.BarSchedule)</span>
+            <br />
+            <span itemprop="tel">Reserva al: @Html.DisplayFor(model => model.Bar.PhoneNumber)</span>
+            <br />
+            @{  
+                if (Model.Bar.Parking == true)
+                {
+                <span>Cuenta con valet parking</span>
+                }
+            }
+            <br />
+            <span>Edad:</span>
+            <br />
+            <ul style="list-style: none; margin-left: 25px; margin-top: 0; padding: 0">
+                @{
+                    if (Model.Bar.YoungAge)
+                    {
+                    <li>18-23</li>
+                    }
+                    if (Model.Bar.MidAge)
+                    {
+                    <li>24-29</li>
+                    }
+                    if (Model.Bar.OldAge)
+                    {
+                    <li>30 +</li>
+                    }
+                }
+            </ul>
+        </div>
+        <div style="float: left; width: 340px">
+            <br />
+            <br />
+            @if (!String.IsNullOrEmpty(Model.Bar.Facebook))
+            {
+                <a href="@Html.DisplayFor(model => model.Bar.Facebook)" target="_blank" style="float: left">
+                    <div id="facebook">
+                    </div>
+                </a>    
+            }
+            @if (!string.IsNullOrEmpty(Model.Bar.Twitter))
+            { 
+                <a href="@Html.DisplayFor(model => model.Bar.Twitter)" target="_blank" style="float: left">
+                    <div id="twitter">
+                    </div>
+                </a>
+            }
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+    <div style="clear: both; width: 100%;">
+        <div style="float: left; width: 40%">
+            <br />
+            <p style="color: Yellow">
+                Descripción del lugar</p>
+            <p style="text-align: justify">@Html.DisplayFor(model => model.Bar.Review)</p>
+            <p style="color: yellow">
+                Música:</p>
+            <ul>
+                @{
+                    if (Model.Bar.Alternative == true)
+                    {
+                    <li>Alternativo</li>
+                    }
+                    if (Model.Bar.Rock == true)
+                    {
+                    <li>Rock</li>
+                    }
+                    if (Model.Bar.Electronic == true)
+                    {
+                    <li>Electrónica</li>
+                    }
+                    if (Model.Bar.HipHop == true)
+                    {
+                    <li>Hip-Hop</li>
+                    }
+                    if (Model.Bar.JazzBlues == true)
+                    {
+                    <li>Jazz & Blues</li>
+                    }
+                    if (Model.Bar.Reggae == true)
+                    {
+                    <li>Reggae</li>
+                    }
+                    if (Model.Bar.Trova == true)
+                    {
+                    <li>Trova</li>
+                    }
+                    if (Model.Bar.Lounge == true)
+                    {
+                    <li>Lounge</li>
+                    }
+                    if (Model.Bar.Banda == true)
+                    {
+                    <li>Banda</li>
+                    }
+                    if (Model.Bar.Pop == true)
+                    {
+                    <li>Pop</li>
+                    }
+                    if (Model.Bar.Disco == true)
+                    {
+                    <li>Disco</li>
+                    }
+                    if (Model.Bar.Tropical == true)
+                    {
+                    <li>Tropical</li>
+                    }
+                    if (Model.Bar.Dj == true)
+                    {
+                    <li>Dj</li>
+                    }
+                }
+            </ul>
+            <p style="color: yellow">
+                Tipo:</p>
+            <ul>
+                @{
+                    if (Model.Bar.Cerveceria == true)
+                    {
+                    <li>Cerveceria</li>
+                    }
+                    if (Model.Bar.Pub == true)
+                    {
+                    <li>Pub</li>
+                    }
+                    if (Model.Bar.Karaoke == true)
+                    {
+                    <li>Karaoke</li>
+                    }
+                    if (Model.Bar.Botanero == true)
+                    {
+                    <li>Botanero</li>
+                    }
+                    if (Model.Bar.GayBar == true)
+                    {
+                    <li>Gay</li>
+                    }
+                    if (Model.Bar.Mezcaleria == true)
+                    {
+                    <li>Mezcalería</li>
+                    }
+                    if (Model.Bar.RestaurantBar == true)
+                    {
+                    <li>Restaurant bar</li>
+                    }
+                    if (Model.Bar.CervezaArtesanal == true)
+                    {
+                    <li>Cerveza artesanal</li>
+                    }
+                    if (Model.Bar.Billar == true)
+                    {
+                    <li>Billar</li>
+                    }
+                    if (Model.Bar.OpenBar == true)
+                    {
+                    <li>Al aire libre</li>
+                    }
+                    if (Model.Bar.SportsBar == true)
+                    {
+                    <li>Sports bar</li>
+                    }
+                    if (Model.Bar.DanceFloor == true)
+                    {
+                    <li>Dance bar</li>
+                    }
+                }
+            </ul>
+            @if (Model.Bar.BirthdayPromotion != null)
+            {
+                <p style="color: Yellow">
+                    Promoción de cumpleaños:</p>
+                <p>@Html.DisplayFor(model => Model.Bar.BirthdayPromotion)</p>
+            }
+        </div>
+        <div style="float: left; width: 60%; text-align: center">
+            <div id="container">
+                <div id="example">
+                    <div id="slides">
+                        <div class="slides_container">
+                            @for (int i = 0; i < ViewBag.Num; i++)
+                            {
+                                
+                                <a id="@("mytext" + i)"></a>
+                            }
+                        </div>
+                        <a href="#" class="prev">
+                            <img src="../../Content/images/arrow-prevup.png" width="24" height="43" alt="Arrow Prev"></a>
+                        <a href="#" class="next">
+                            <img src="../../Content/images/arrow-nextup.png" width="24" height="43" alt="Arrow Next"></a>
+                    </div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both">
+            </div>
+            <!-- Google maps 580px 350px-->
+            @Html.Raw(Model.Bar.googlemaps)
+        </div>
+        <div style="clear: both">
+        </div>
+    </div>
+</div>
+<div style="clear: both">
+    <script type="text/javascript">
+        $.getJSON("/BarDetails/JsonSearch/" + @Model.Bar.BarID, null, function (data) {
+
+            $.each(data, function (index, barimg) {
+
+                $("#mytext" + index).append($("<a>",
+                {
+                    href: barimg,
+                    html: $("<img>", { src: barimg })
+                }));
+
+            });
+
+        });
+    </script>
+</div>
+<div style="clear: both">
+    @{
+        <table class="supSearch">
+            <tr style="background-color: #000; border-bottom: 1px solid #FFF;">
+                <th colspan="4" style="background-color: #000; border-bottom: 1px solid #FFF;">
+                    <span id="cartelera" style="font-weight: lighter; font-family: 'bebas_neueregular';
+                        color: yellow; font-size: 2.2em; vertical-align: middle">Cartelera</span>
+                    <img src="../../Content/images/calendar.png" alt="Calendario" style="vertical-align: middle" />
+                </th>
+            </tr>
+            @foreach (var whatsup in Model.Evento)
+            {
+                <tr>
+                    <td rowspan="6" style="text-align: left; width: 180px; height: 150px">
+                        <br />
+                        <a href="@whatsup.EventBanner" target="_blank">
+                            <svg width="200px" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs>
+                            <pattern id="@whatsup.EventDate.ToString().Replace(" ", "")" patternUnits="userSpaceOnUse" width="200px" height="200px">
+                                <image xlink:href="@whatsup.EventBanner" x="-20" y="0" width="140px" height="120px"></image>
+                            </pattern>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill= "url(#@whatsup.EventDate.ToString().Replace(" ", ""))" stroke="Yellow" stroke-width="2"  />
+                        </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: left">
+                        <br />
+                        <p>
+                            <span style="font-size: 1em; color: #666666">Evento:</span> @Html.DisplayFor(modelItem => whatsup.EventName)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: left">
+                        <p>
+                            <span style="font-size: 1em; color: #666666">Promoción:</span> @Html.DisplayFor(modelItem => whatsup.PromotionEvent)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: left">
+                        <p>
+                            <span style="font-size: 1em; color: #666666">Descripción:</span> @Html.DisplayFor(modelItem => whatsup.EventDescription)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <p>
+                            <span style="font-size: 1em; color: #666666">Fecha del evento:</span> <span style="color: Red;
+                                text-transform: capitalize">@String.Format("{0:dddd, MMMM d}", whatsup.EventDate)</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @if (whatsup.PromotionBanner != null)
+                        {
+                            <a class="voyair" href="@whatsup.PromotionBanner" target="_blank">Descuento</a>
+                        }
+                    </td>
+                    <td>
+                        @if (!String.IsNullOrEmpty(whatsup.Bar.Twitter))
+                        {
+                            var tAccount = whatsup.Bar.Twitter.Substring(20);
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @whatsup.EventName en @@@tAccount el @ViewBag.NextDay. Más información en ">
+                                Tweet</a>
+                        }
+                        else
+                        { 
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @whatsup.EventName en @whatsup.Bar.BarName el @ViewBag.NextDay. Más información en ">
+                                Tweet</a>
+                        }
+                    </td>
+                    <td>
+                        <a class="voyair" href="https://www.facebook.com/dialog/feed?app_id=479842812074467&link=@Html.Raw("http://www.updatedparty.com/" + whatsup.EventBanner)&picture=@Html.Raw("http://www.updatedparty.com/" + whatsup.EventBanner)&name=Voy a ir a @whatsup.EventName en @whatsup.Bar.BarName&caption=Promoci%C3%B3n: @whatsup.PromotionEvent&description=Descripción: @whatsup.EventDescription-@Convert.ToString(whatsup.EventDate.Value.ToShortDateString())&redirect_uri=http://www.updatedparty.com/"
+                                target="_blank">Voy a ir</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<p>
+    <a style="color: yellow" href="javascript:history.back(1)">Regresar</a>
+</p>
+<!-- Twitter share button -->
+<script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>

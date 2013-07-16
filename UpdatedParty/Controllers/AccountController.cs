@@ -43,7 +43,7 @@ namespace UpdatedParty.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "El usuario o contraseña son incorrectos");
                 }
             }
 

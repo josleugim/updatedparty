@@ -7,8 +7,10 @@ using PagedList;
 
 namespace UpdatedParty.ViewModels
 {
-    public class Cartelera
+    public class BarDetails
     {
+        public int BarId { get; set; }
         public List<StayUP> Evento { get; set; }
+        public virtual Bar Bar { get; set; }
     }
 }

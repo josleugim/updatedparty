@@ -11,11 +11,12 @@ namespace UpdatedParty.Models
     public class Bar
     {
         public int BarID { get; set; }
-        //public int UserTypeId { get; set; }
-        //public int StatusTypeId { get; set; }
+
         public int TStateId { get; set; }
 
-        [DisplayName("Nombre de usuario")]
+        public int BusinessTypeId { get; set; }
+
+        [DisplayName("Nombre del bar")]
         [Required(ErrorMessage = "El nombre es requerido")]
         [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
         public string BarName { get; set; }
@@ -35,7 +36,7 @@ namespace UpdatedParty.Models
         public string Pass { get; set; }
 
         [DisplayName("Horario")]
-        [MaxLength(50, ErrorMessage = "* 50 caracteres máximo")]
+        [MaxLength(140, ErrorMessage = "* 140 caracteres máximo")]
         public string BarSchedule { get; set; }
 
         [DisplayName("Precio")]
@@ -57,6 +58,7 @@ namespace UpdatedParty.Models
         public string Twitter { get; set; }
 
         [DisplayName("Reseña")]
+        [DataType(DataType.MultilineText)]
         public string Review { get; set; }
 
         [DisplayName("Teléfono de reservación")]
@@ -93,21 +95,25 @@ namespace UpdatedParty.Models
         public bool OldAge { get; set; }
 
         [DisplayName("Google Maps")]
+        [DataType(DataType.MultilineText)]
         public string googlemaps { get; set; }
 
         //
         //Giro
-        [DisplayName("Bar")]
-        public bool BarType { get; set; }
+        //[DisplayName("Bar")]
+        //public bool BarType { get; set; }
 
-        [DisplayName("Antro")]
-        public bool Antro { get; set; }
+        //[DisplayName("Antro")]
+        //public bool Antro { get; set; }
+
+        [DisplayName("Tipo de negocio")]
+        public virtual BusinessType BusinessType { get; set; }
 
         [DisplayName("Valet parking")]
         public bool Parking { get; set; }
 
-        [DisplayName("After")]
-        public bool After { get; set; }
+        //[DisplayName("After")]
+        //public bool After { get; set; }
 
         //
         //Giro

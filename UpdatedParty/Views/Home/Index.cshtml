@@ -12,7 +12,22 @@
         </div>
         <div id="whatsup">
         </div>
-        <div style="width: 100%; height: 60px">
+        <div style="width: 100%;">
+            <p style="font-size: .9em; text-align: justify">
+                ¿Te ha pasado que no encuentras información relevante de <span style="font-weight: lighter;
+                    font-family: 'bebas_neueregular'; color: yellow; font-size: 1.2em">antros y bares</span>
+                para irte de fiesta? Y terminas en el mismo lugar o en uno que no fue de tu agrado.
+                A nosotros sí, por eso creamos esta sección. En What’s UP encontraras una <span style="font-weight: lighter;
+                    font-family: 'bebas_neueregular'; font-size: 1.2em">Cartelera</span> de <span style="font-weight: lighter;
+                        font-family: 'bebas_neueregular'; color: yellow; font-size: 1.2em">eventos</span>
+                y <span style="font-weight: lighter; font-family: 'bebas_neueregular'; color: yellow;
+                    font-size: 1.2em">promociones</span> de la vida nocturna por el momento D.f.
+                Tu puedes elegir qué fecha del calendario quieres consultar solo tienes que moverte
+                con las flechas << >>. También puedes ver la información por delegación y buscar
+                por colonia. Con esta información ya solo tendrás que elegir a qué lugar le caes
+                dependiendo del <span style="font-weight: lighter; font-family: 'bebas_neueregular';
+                    color: yellow; font-size: 1.2em">mood</span> con el que andes.
+            </p>
         </div>
         <div class="tweetWrapp">
             <div style="width: 100%;">
@@ -86,7 +101,7 @@
                         </svg>
                         </a>
                     </td>
-                    <th style="text-align: left">@Html.ActionLink(item.Bar.BarName, "BarDetails", "Bar", new { id = item.BarId, Name = item.Bar.BarName.ToSeoUrl() }, new { style = "color:#FFFF00;" })
+                    <th style="text-align: left">@Html.ActionLink(item.Bar.BarName, "Index", "BarDetails", new { id = item.BarId, Name = item.Bar.BarName.ToSeoUrl() }, new { style = "color:#FFFF00;" })
                     </th>
                 </tr>
                 <tr>
@@ -119,7 +134,7 @@
                             @if (!String.IsNullOrEmpty(item.Bar.Twitter))
                             {
                                 var tAccount = item.Bar.Twitter.Substring(20);
-                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @item.EventName en @@@tAccount el @ViewBag.NextDay. Más información en ">
+                                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.updatedparty.com/" data-count="none" data-via="updatedparty" data-lang="es" data-text="Voy a ir a @item.EventName en @tAccount el @ViewBag.NextDay. Más información en ">
                                     Tweet</a>
                             }
                             else
@@ -148,7 +163,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -160,7 +175,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
         </div>
     </div>
     <div style="clear: both">
@@ -199,13 +214,21 @@
                             ¿DE QUÉ TRAES GANAS?</p>
                     </td>
                     <td>
-                        <div class="criterion">
+                        @*<div class="criterion">
                             <p>
                                 Estacionamiento
                             </p>
                             <input type="checkbox" id="checkbox_1_5" class="regular-checkbox" name="estacionamiento"
                                 disabled="disabled" />
                             <label for="checkbox_1_5">
+                            </label>
+                        </div>*@
+                        <div class="criterion">
+                            <p>
+                                Evento
+                            </p>
+                            <input type="checkbox" id="checkbox_1_4" class="regular-checkbox" name="evento" disabled="disabled" />
+                            <label for="checkbox_1_4">
                             </label>
                         </div>
                     </td>
@@ -231,20 +254,21 @@
                     <td>
                         <div class="criterion">
                             <p>
-                                Bar
+                                Antro
                             </p>
-                            <input type="checkbox" id="checkbox_1_1" class="regular-checkbox" name="bar" />
-                            <label for="checkbox_1_1">
+                            <input type="checkbox" id="checkbox_1_2" class="regular-checkbox" name="antro" />
+                            <label for="checkbox_1_2">
                             </label>
                         </div>
                     </td>
                     <td>
                         <div class="criterion">
                             <p>
-                                Pub
+                                Promoción
                             </p>
-                            <input type="checkbox" id="checkbox_1_7" class="regular-checkbox" name="pub" disabled="disabled" />
-                            <label for="checkbox_1_7">
+                            <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion"
+                                disabled="disabled" />
+                            <label for="checkbox_1_3">
                             </label>
                         </div>
                     </td>
@@ -275,10 +299,9 @@
                     <td>
                         <div class="criterion">
                             <p>
-                                Antro
-                            </p>
-                            <input type="checkbox" id="checkbox_1_2" class="regular-checkbox" name="antro" />
-                            <label for="checkbox_1_2">
+                                After</p>
+                            <input type="checkbox" id="checkbox_1_6" class="regular-checkbox" name="after" />
+                            <label for="checkbox_1_6">
                             </label>
                         </div>
                     </td>
@@ -318,9 +341,10 @@
                     <td>
                         <div class="criterion">
                             <p>
-                                After</p>
-                            <input type="checkbox" id="checkbox_1_6" class="regular-checkbox" name="after" />
-                            <label for="checkbox_1_6">
+                                Bar
+                            </p>
+                            <input type="checkbox" id="checkbox_1_1" class="regular-checkbox" name="bar" />
+                            <label for="checkbox_1_1">
                             </label>
                         </div>
                     </td>
@@ -358,11 +382,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="background-color: transparent">
+                    <td>
                         <div class="criterion">
-                            <p style="color: White; margin: 5px 1px 5px 1px;">
-                                ---------------------------
+                            <p>
+                                Pub
                             </p>
+                            <input type="checkbox" id="checkbox_1_7" class="regular-checkbox" name="pub" />
+                            <label for="checkbox_1_7">
+                            </label>
                         </div>
                     </td>
                     <td>
@@ -401,10 +428,10 @@
                     <td>
                         <div class="criterion">
                             <p>
-                                Evento
+                                Restaurant Bar
                             </p>
-                            <input type="checkbox" id="checkbox_1_4" class="regular-checkbox" name="evento" disabled="disabled" />
-                            <label for="checkbox_1_4">
+                            <input type="checkbox" id="checkbox_1_25" class="regular-checkbox" name="restaurant" />
+                            <label for="checkbox_1_25">
                             </label>
                         </div>
                     </td>
@@ -443,15 +470,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td style="background-color: transparent">
                         <div class="criterion">
-                            <p>
-                                Promoción
+                            <p style="color: White; margin: 5px 1px 5px 1px;">
+                                ---------------------------
                             </p>
-                            <input type="checkbox" id="checkbox_1_3" class="regular-checkbox" name="promocion"
-                                disabled="disabled" />
-                            <label for="checkbox_1_3">
-                            </label>
                         </div>
                     </td>
                     <td>
@@ -486,6 +509,14 @@
         <div style="clear: both">
         </div>
     </div>
+    <p style="font-size: .9em; text-align: justify">
+        Esta sección te ayudara a encontrar <span style="font-weight: lighter; font-family: 'bebas_neueregular';
+            color: red; font-size: 1.2em">antros, bares</span> y <span style="font-weight: lighter;
+                font-family: 'bebas_neueregular'; color: red; font-size: 1.2em">afters</span>
+        con características que tú buscas. Simplemente selecciona los checkbox y te mostraremos
+        opciones que cumplan con estas características. Cuando tú seleccionas un antro,
+        bar o after te mostramos información relevante, como la dirección, el género musical,
+        horarios, promociones y próximos eventos etc.</p>
     <div id="advancedSearch">
     </div>
     <div style="float: left; width: 100%;">
@@ -495,7 +526,7 @@
                 </div>
             </div>
             <script id="searchTemplate" type="text/x-jquery-tmpl">
-                    <div style="float:left; width:100%; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("BarDetails", "Bar", new { id = "${BarID}", Name = "${BarName}" }))'>${BarName}</a></div>
+                    <div style="float:left; width:100%; margin:10px; background: url(../../Content/images/Bbolita-blanca.png) no-repeat left top 7px;"><a style='margin-left:14px; color: red' href='@HttpUtility.UrlDecode(Url.Action("Index", "BarDetails", new { id = "${BarID}", Name = "${BarName}" }))'>${BarName}</a></div>
             </script>
         </div>
         <div style="clear: both">
@@ -513,13 +544,13 @@
     <div style="width: 1024px; height: 380px">
         <div style="width: 336px; float: left">
             <div style="width: 100%; text-align: center">
-                <a href="http://www.updatedparty.com/iu-condesa/41" target="_self">
+                <a href="http://www.updatedparty.com/iu-condesa/32" target="_self">
                     <img src="../../Content/Promoted/iuPrincipal.jpg" alt="UI Condesa" style="border: solid 2px white;
                         max-width: 336px; max-height: 219px;" /></a>
             </div>
             <div style="width: 100%; text-align: justify; color: white">
                 <p style="font-family: bebas_neueregular; font-size: 22px; margin-top: 0;">
-                    <a href="http://www.updatedparty.com/iu-condesa/41" target="_self" style="color: red">
+                    <a href="http://www.updatedparty.com/iu-condesa/32" target="_self" style="color: red">
                         IU Condesa</a></p>
                 <p>
                     Este pequeño bar está próximo a cumplir 10 años en la colonia Condesa, se renueva
@@ -533,13 +564,13 @@
         </div>
         <div style="width: 336px; margin-left: 5px; float: left">
             <div style="width: 100%; text-align: center">
-                <a href="http://www.updatedparty.com/sal-n-malafama/37" target="_self">
+                <a href="http://www.updatedparty.com/sal-n-malafama/28" target="_self">
                     <img src="../../Content/Promoted/promotedmalafama.jpg" alt="Salón Malafama" style="max-width: 336px;
                         max-height: 219px; border: 2px solid white" /></a>
             </div>
             <div style="width: 100%; text-align: justify; color: white">
                 <p style="font-family: bebas_neueregular; font-size: 22px; margin-top: 0;">
-                    <a href="http://www.updatedparty.com/sal-n-malafama/37" target="_self" style="color: red">
+                    <a href="http://www.updatedparty.com/sal-n-malafama/28" target="_self" style="color: red">
                         Salón Malafama</a></p>
                 <p>
                     Bar-billar ubicado en el corazón de la Condesa. Es un espacio agradable para pasar
@@ -553,13 +584,13 @@
         </div>
         <div style="width: 336px; margin-left: 5px; float: left">
             <div style="width: 100%; text-align: center">
-                <a href="http://updatedparty.com/black-horse/30" target="_self">
+                <a href="http://updatedparty.com/black-horse/22" target="_self">
                     <img src="../../Content/Promoted/promotedblackhorse.jpg" alt="Black Horse" style="max-width: 336px;
                         max-height: 223px" /></a>
             </div>
             <div style="width: 100%; text-align: justify; color: white">
                 <p style="font-family: bebas_neueregular; font-size: 22px; margin-top: 0;">
-                    <a href="http://updatedparty.com/black-horse/30" target="_self" style="color: red">Black
+                    <a href="http://updatedparty.com/black-horse/22" target="_self" style="color: red">Black
                         Horse</a></p>
                 <p>
                     Sin rodeos, nos gusta este pub estilo inglés por su música, ambiente y promociones.

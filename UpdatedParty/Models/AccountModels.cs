@@ -23,7 +23,7 @@ namespace UpdatedParty.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "El password anterior y el de confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -63,7 +63,7 @@ namespace UpdatedParty.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar contraseña")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "El password anterior y el de confirmación no son iguales.")]
         public string ConfirmPassword { get; set; }
     }
 }

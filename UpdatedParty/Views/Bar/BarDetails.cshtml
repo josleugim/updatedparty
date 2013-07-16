@@ -21,47 +21,45 @@
     <div style="width: 100%; margin-top: 20px; border-bottom: 2px dotted #C1C4C9;">
         <div style="float: left; width: 340px">
             <div style="width: 100%;" itemscope itemtype="http://data-vocabulary.org/Organization">
-                @{
-                    if (Model.BarType == true)
-                    {
-                    <h2 style="color: yellow; margin-bottom: 1px;">
-                        Bar</h2>
-                    }
-                    else if (Model.Antro == true)
-                    {
-                    <h2 style="color: yellow; margin-bottom: 1px;">
-                        Antro</h2>
-                    }
-                    else if (Model.After == true)
-                    {
-                    <h2 style="color: yellow; margin-bottom: 1px;">
-                        After</h2>
-                    }
-                }
                 <h1 style="color: yellow; margin: 1px;">
                     <span itemprop="name">@Html.DisplayFor(model => model.BarName)</span></h1>
             </div>
             <span itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address"><span
                 itemprop="street-address">@Html.DisplayFor(model => model.Street)</span> <span itemprop="locality">
-                    Col. @Html.DisplayFor(model => model.Cologne), @Html.DisplayFor(model => model.Township)
+                    <br />
+                    Col. @Html.DisplayFor(model => model.Cologne),
+                    <br />
+                    @Html.DisplayFor(model => model.Township)
                     @Html.DisplayFor(model => model.TState.StateName).</span> </span>
             <br />
+            <br />
+            <span>Sitio web:
+                <br />
+                @if (!String.IsNullOrEmpty(Model.WebSite))
+                {
+                    <a href="@Html.DisplayFor(model => model.WebSite)" target="_blank" itemprop="url">@Html.DisplayFor(model => model.WebSite)</a>
+                }
+            </span>
         </div>
         <div style="float: left; width: 340px">
             <br />
             <br />
-            @{
-                <span itemprop="tel">Reserva al: @Html.DisplayFor(model => model.PhoneNumber)</span>
-                <p>
-                    Horarios: @Html.DisplayFor(model => model.BarSchedule)</p>
+            <span>Horarios:
+                <br />
+                @Html.DisplayFor(model => model.BarSchedule)</span>
+            <br />
+            <span itemprop="tel">Reserva al: @Html.DisplayFor(model => model.PhoneNumber)</span>
+            <br />
+            @{  
                 if (Model.Parking == true)
                 {
-                <p>
-                    Valet parking</p>
+                <span>
+                    Cuenta con valet parking</span>
                 }
             }
-            <p>
-                Edad:</p>
+            <br />
+            <span>Edad:</span>
+            <br />
             <ul style="list-style: none; margin-left: 25px; margin-top: 0; padding: 0">
                 @{
                     if (Model.YoungAge == true)
@@ -82,13 +80,6 @@
         <div style="float: left; width: 340px">
             <br />
             <br />
-            <p>
-                Sitio web:
-                @if (!String.IsNullOrEmpty(Model.WebSite))
-                {
-                    <a href="@Html.DisplayFor(model => model.WebSite)" target="_blank" itemprop="url">@Html.DisplayFor(model => model.BarName)</a>
-                }
-            </p>
             @if (!String.IsNullOrEmpty(Model.Facebook))
             {
                 <a href="@Html.DisplayFor(model => model.Facebook)" target="_blank" style="float: left">
@@ -109,6 +100,9 @@
     </div>
     <div style="clear: both; width: 100%;">
         <div style="float: left; width: 40%">
+            <br />
+            <p style="color: Yellow">
+                Descripción del lugar</p>
             <p style="text-align: justify">@Html.DisplayFor(model => model.Review)</p>
             <p style="color: yellow">
                 Música:</p>
@@ -224,8 +218,9 @@
             </ul>
             @if (Model.BirthdayPromotion != null)
             {
-                <p>
-                    Promoción de cumpleaños: @Html.DisplayFor(model => model.BirthdayPromotion)</p>
+                <p style="color: Yellow">
+                    Promoción de cumpleaños:</p>
+                <p>@Html.DisplayFor(model => model.BirthdayPromotion)</p>
             }
         </div>
         <div style="float: left; width: 60%; text-align: center">
@@ -250,7 +245,7 @@
             </div>
             <div style="clear: both">
             </div>
-            <!-- Google maps -->
+            <!-- Google maps 580px 350px-->
             @Html.Raw(Model.googlemaps)
         </div>
         <div style="clear: both">
@@ -273,6 +268,9 @@
 
         });
     </script>
+</div>
+<div style="clear: both">
+ 
 </div>
 <p>
     <a style="color: yellow" href="javascript:history.back(1)">Regresar</a>

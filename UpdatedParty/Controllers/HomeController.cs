@@ -20,6 +20,9 @@ namespace UpdatedParty.Controllers
 
             DateTime nextDay;
 
+            if (next == 31)
+                next = 0;
+
             if (next != null && next > 0)
             {
                 nextDay = Convert.ToDateTime(DateTime.Now.AddDays(Convert.ToDouble(next)).ToShortDateString());
@@ -78,208 +81,56 @@ namespace UpdatedParty.Controllers
             return View(stayup.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult JsonSearch(string delegacion, string colonia, string bar, string antro, string promocion, string evento,
-            string estacionamiento, string after, string pub, string karaoke, string botanero, string gaybar, string mezcaleria,
-            string cerveceria, string alternativo, string rock, string electro, string hiphop, string jazzblues, string reggae,
-            string trova, string lounge, string banda, string pop, string disco, string tropical)
+        public ActionResult JsonSearch(string delegacion, string colonia, string antro, string after, string bar, string pub, string restaurant)
         {
-            //Convert string to bool
-            var bBar = false;
-            var bAntro = false;
-            var bEstac = false;
-            var bAfter = false;
-            var bPub = false;
-            var bKaraoke = false;
-            var bBotanero = false;
-            var bGaybar = false;
-            var bMezcaleria = false;
-            var bCerve = false;
-            var bAlter = false;
-            var bRock = false;
-            var bElectro = false;
-            var bHipH = false;
-            var bJazzB = false;
-            var bReggae = false;
-            var bTrova = false;
-            var bLounge = false;
-            var bBanda = false;
-            var bPop = false;
-            var bDisco = false;
-            var bTropical = false;
-
-            //
-            //Change value to true
-            //if (!String.IsNullOrEmpty(bar))
-            //    bBar = true;
-            //if (!String.IsNullOrEmpty(antro))
-            //    bAntro = true;
-            //if (!String.IsNullOrEmpty(after))
-            //    bAfter = true;
-            if (!String.IsNullOrEmpty(estacionamiento))
-                bEstac = true;
+            var businessType = new List<string>();
+            if (!String.IsNullOrEmpty(antro))
+                businessType.Add("Antro");
+            if (!String.IsNullOrEmpty(after))
+                businessType.Add("After");
+            if (!String.IsNullOrEmpty(bar))
+                businessType.Add("Bar");
             if (!String.IsNullOrEmpty(pub))
-                bPub = true;
-            if (!String.IsNullOrEmpty(karaoke))
-                bKaraoke = true;
-            if (!String.IsNullOrEmpty(botanero))
-                bBotanero = true;
-            if (!String.IsNullOrEmpty(gaybar))
-                bGaybar = true;
-            if (!String.IsNullOrEmpty(mezcaleria))
-                bMezcaleria = true;
-            if (!String.IsNullOrEmpty(cerveceria))
-                bCerve = true;
-            if (!String.IsNullOrEmpty(alternativo))
-                bAlter = true;
-            if (!String.IsNullOrEmpty(rock))
-                bRock = true;
-            if (!String.IsNullOrEmpty(electro))
-                bElectro = true;
-            if (!String.IsNullOrEmpty(hiphop))
-                bHipH = true;
-            if (!String.IsNullOrEmpty(jazzblues))
-                bJazzB = true;
-            if (!String.IsNullOrEmpty(reggae))
-                bReggae = true;
-            if (!String.IsNullOrEmpty(trova))
-                bTrova = true;
-            if (!String.IsNullOrEmpty(lounge))
-                bLounge = true;
-            if (!String.IsNullOrEmpty(banda))
-                bBanda = true;
-            if (!String.IsNullOrEmpty(pop))
-                bPop = true;
-            if (!String.IsNullOrEmpty(disco))
-                bDisco = true;
-            if (!String.IsNullOrEmpty(tropical))
-                bTropical = true;
-
-            //var results = from b in _db.Bars
-            //              where !String.IsNullOrEmpty(b.Cologne)
-            //              && b.Cologne.Contains(colonia)
-            //              select b;
-            //if (bBar)
-            //{
-            //    results = results.Where(b => b.BarType.Equals(true));
-            //}
-
-            //Solo busca bares
-            if (!String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(after))
+                businessType.Add("Pub");
+            if (!String.IsNullOrEmpty(restaurant))
+                businessType.Add("Restaurant Bar");
+            if(String.IsNullOrEmpty(antro) && string.IsNullOrEmpty(after) && string.IsNullOrEmpty(bar) && string.IsNullOrEmpty(pub) && string.IsNullOrEmpty(restaurant))
             {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && u.BarType.Equals(true))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-            //Solo busca antros
-            if (!String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(after))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && u.Antro.Equals(true))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-            //Busca antros y bares
-            if (!String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(bar) && String.IsNullOrEmpty(after))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && (u.BarType.Equals(true) || u.Antro.Equals(true)))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-
-            //Solo busca afters
-            if (String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && u.After.Equals(true))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-
-            //Busca after y bares
-            if (String.IsNullOrEmpty(antro) && !String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && (u.BarType.Equals(true) || u.After.Equals(true)))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-
-            //Busca antros y after
-            if (!String.IsNullOrEmpty(antro) && String.IsNullOrEmpty(bar) && !String.IsNullOrEmpty(after))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && !String.IsNullOrEmpty(u.Cologne)
-                                         && u.Cologne.Contains(colonia)
-                                         && (u.After.Equals(true) || u.Antro.Equals(true)))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
-            }
-
-            if (!String.IsNullOrEmpty(colonia))
-            {
-                var results2 = _db.Bars
-                             .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
-                                         && u.Cologne.Contains(colonia))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-                return Json(results2, JsonRequestBehavior.AllowGet);
+                businessType.Add("Antro");
+                businessType.Add("After");
+                businessType.Add("Bar");
+                businessType.Add("Pub");
+                businessType.Add("Restaurant Bar");
             }
 
             //Buscatodo
-            var results = _db.Bars
-                             .Where(u => u.Township.ToUpper().Equals(delegacion.ToUpper()))
-                                         .Select(r => new
-                                         {
-                                             r.BarID,
-                                             r.BarName
-                                         });
-            return Json(results, JsonRequestBehavior.AllowGet);
+            if (delegacion == "Todas")
+            {
+                var results = _db.Bars
+                                 .Where(b => b.IsActived
+                                 && b.Cologne.Contains(colonia)
+                                 && businessType.Contains(b.BusinessType.TypeName))
+                                             .Select(r => new
+                                             {
+                                                 r.BarID,
+                                                 r.BarName
+                                             });
+                return Json(results, JsonRequestBehavior.AllowGet);
+            }
+            //Por delegación
+            var results2 = _db.Bars
+                         .Where(u => u.Township.ToUpper().Contains(delegacion.ToUpper())
+                                     && !String.IsNullOrEmpty(u.Cologne)
+                                     && u.Cologne.Contains(colonia)
+                                     && businessType.Contains(u.BusinessType.TypeName))
+                                     .Select(r => new
+                                     {
+                                         r.BarID,
+                                         r.BarName
+                                     });
+
+
+            return Json(results2, JsonRequestBehavior.AllowGet);
         }
 
         //[HttpPost]

@@ -1,33 +1,32 @@
 ﻿@model IEnumerable<UpdatedParty.Models.Gallery>
-
 @{
     ViewBag.Title = "Listado";
     Layout = "~/Views/Shared/_Interior.cshtml";
 }
-
-<h2>Listado de imágenes</h2>
-
+<h2>
+    Listado de imágenes</h2>
 <p>
-    @Html.ActionLink("Nueva imagen", "Create")
+    <img src="../../Content/images/file plus.png" alt="Nueva imagen" style="vertical-align: middle" />
+    @Html.ActionLink("Nueva imagen", "Create", null, new { style = "vertical-align: middle" })
 </p>
 <table>
     <tr>
         <th>
             Imagen
         </th>
-        <th></th>
+        <th>
+        </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.UrlImage)*@
-            <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="Imagen" style="width: 150px" />
-        </td>
-        <td>
-            @Html.ActionLink("Borrar", "Delete", new { id=item.GalleryID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.UrlImage)" alt="Imagen" style="width: 150px" />
+            </td>
+            <td>
+                @Html.ActionLink("Borrar", "Delete", new { id = item.GalleryID }, new { style = "vertical-align: middle" })
+                <img src="../../Content/images/file delete.png" alt="Borrar" style="vertical-align: middle" />
+            </td>
+        </tr>
+    }
 </table>

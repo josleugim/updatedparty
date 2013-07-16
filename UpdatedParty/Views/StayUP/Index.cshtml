@@ -7,7 +7,8 @@
     <fieldset>
         <legend>Calendario de eventos y promociones</legend>
         <p>
-            @Html.ActionLink("Crear nuevo evento", "Index", "Bar")
+            <img src="../../Content/images/file plus.png" alt="Nuevo evento" style="vertical-align: middle" />
+            @Html.ActionLink("Crear nuevo evento", "Index", "Bar", null, new { style = "vertical-align: middle" })
         </p>
         <table class="supSearch">
             <tr>

@@ -36,10 +36,12 @@ namespace UpdatedParty.Models
                 TState state = db.TStates.Find(1);
                 user.TState = state;
                 user.Country = "";
-                user.BarType = false;
-                user.Antro = false;
+                BusinessType type = db.BusinessTypes.Find(1);
+                user.BusinessType = type;
+                //user.BarType = false;
+                //user.Antro = false;
                 user.Parking = false;
-                user.After = false;
+                //user.After = false;
                 user.CervezaArtesanal = false;
                 user.Pub = false;
                 user.Karaoke = false;

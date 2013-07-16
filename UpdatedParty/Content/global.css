@@ -11,7 +11,7 @@
 #example {
 	width:600px;
 	/*height:350px;*/
-    height: 482px;
+    height: 432px;
 	position:relative;
 }
 
@@ -77,7 +77,7 @@
 #slides .next,#slides .prev {
 	position:absolute;
 	top:107px;
-	left:-39px;
+	left:-24px;
 	width:24px;
 	height:43px;
 	display:block;
