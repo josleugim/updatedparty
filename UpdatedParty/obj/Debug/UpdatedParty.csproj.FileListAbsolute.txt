@@ -47,6 +47,6 @@ C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\bin\EntityFramewor
 C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\bin\PagedList.dll
 C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\bin\EntityFramework.xml
 C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\bin\PagedList.xml
-C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\obj\Debug\UpdatedParty.dll
 C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\obj\Debug\UpdatedParty.pdb
+C:\Users\josleugim\Documents\GitHub\updatedparty\UpdatedParty\obj\Debug\UpdatedParty.csprojResolveAssemblyReference.cache

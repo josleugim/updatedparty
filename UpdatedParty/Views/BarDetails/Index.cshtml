@@ -100,6 +100,10 @@
                     </div>
                 </a>
             }
+            @if (!string.IsNullOrEmpty(Model.Bar.FoursquareVenue))
+            { 
+                <p id="herenow"><a href="@Model.Bar.FoursquareVenue" target="_blank"><img src="../../Content/images/foursquare-logo.png" alt="Foursquare" /></a> <img width="12px" src="../../Content/images/icon-herenow.png" /> <span>Aquí ahora</span> </p>
+            }
         </div>
         <div style="clear: both">
         </div>
@@ -362,3 +366,19 @@
 </p>
 <!-- Twitter share button -->
 <script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+<script type="text/javascript">
+    var venue = '@Model.FoursquareVenue';
+    if (venue) {
+        $.ajax({
+            type: 'GET',
+            url: 'https://api.foursquare.com/v2/venues/' + venue + '/herenow?oauth_token=P11HCGDLKYS5XUZ3YCVEXHKYRGXZKUJMCGMWJPMZ2UMWYKSW&v=20130904',
+            data: { get_param: 'value' },
+            dataType: 'json',
+            success: function (data) {
+                $.each(data.response, function (index, element) {
+                    $("#herenow").append("<span style='color: red; font-size: 1.2em'>" + this.count + "</span>");
+                });
+            }
+        });
+    }
+</script>

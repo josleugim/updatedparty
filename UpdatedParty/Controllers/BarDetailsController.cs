@@ -38,7 +38,8 @@ namespace UpdatedParty.Controllers
             var viewmodel = new BarDetails
             {
                 Bar = bar,
-                Evento = GetStayUpItems(id)
+                Evento = GetStayUpItems(id),
+                FoursquareVenue = GetVenue(bar.FoursquareVenue)
             };
 
             return View(viewmodel);
@@ -58,6 +59,18 @@ namespace UpdatedParty.Controllers
                            select u).ToList();
 
             return WhatsUp;
+        }
+
+        public string GetVenue(string url) {
+            if (!String.IsNullOrEmpty(url))
+            {
+                var n = url.LastIndexOf("/");
+                var venue = url.Substring(n + 1);
+
+                return venue;
+            }
+
+            return "";
         }
 
         public JsonResult JsonSearch(int id)

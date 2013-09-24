@@ -90,6 +90,9 @@
     <Compile Include="ViewModels\BarDetails.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Banners\aserrin-canelo.jpg" />
+    <Content Include="Content\Banners\bambata-canelo.jpg" />
+    <Content Include="Content\Banners\hydefiestamexicana.jpg" />
     <Content Include="Content\bebasneue-webfont\bebasneue-webfont-demo.html" />
     <Content Include="Content\bebasneue-webfont\bebasneue-webfont-webfont.svg" />
     <Content Include="Content\bebasneue-webfont\generator_config.txt" />
@@ -98,6 +101,7 @@
     <Content Include="Content\bebasneue-webfont\specimen_files\grid_12-825-55-15.css" />
     <Content Include="Content\bebasneue-webfont\specimen_files\specimen_stylesheet.css" />
     <Content Include="Content\bebasneue-webfont\stylesheet.css" />
+    <Content Include="Content\images\foursquare-logo.png" />
     <Content Include="Content\helveticaneueltstd-md\generator_config.txt" />
     <Content Include="Content\helveticaneueltstd-md\helveticaneueltstd-md-webfont-demo.html" />
     <Content Include="Content\helveticaneueltstd-md\helveticaneueltstd-md-webfont-webfont.svg" />
@@ -141,6 +145,7 @@
     <Content Include="Content\images\file plus.png" />
     <Content Include="Content\images\guardar.png" />
     <Content Include="Content\images\headacheUP_med.jpg" />
+    <Content Include="Content\images\icon-herenow.png" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\margaritas-sunset.jpg" />
     <Content Include="Content\images\menuribbon.png" />

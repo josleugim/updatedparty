@@ -667,3 +667,18 @@ label
     color: Red;
     font-family: 'helvetica_neue_lt_std65Md';
 }
+
+/* Bar details-------------------------------------*/
+#herenow {
+    clear: both;
+}
+
+#herenow img,
+#herenow span {
+    vertical-align:middle;
+}
+
+#herenow span {
+    color: Yellow;
+    font-size: 0.7em;
+}

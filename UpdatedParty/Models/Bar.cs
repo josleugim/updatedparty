@@ -98,6 +98,11 @@ namespace UpdatedParty.Models
         [DataType(DataType.MultilineText)]
         public string googlemaps { get; set; }
 
+        [DisplayName("foursquare Venue")]
+        [MaxLength(250, ErrorMessage = "* 250 caracteres máximo")]
+        [RegularExpression(@"^http(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$", ErrorMessage = "Formato: http://www.updatedparty.com, copia y pega tu URL")]
+        public string FoursquareVenue { get; set; }
+
         //
         //Giro
         //[DisplayName("Bar")]

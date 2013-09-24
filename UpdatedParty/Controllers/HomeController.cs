@@ -64,7 +64,7 @@ namespace UpdatedParty.Controllers
                 //    stayup = stayup.OrderByDescending(s => s.RegisterDate);
                 //    break;
                 default:
-                    stayup = stayup.OrderBy(s => s.Bar.BarID);
+                    stayup = stayup.OrderByDescending(s => s.Bar.BarID);
                     break;
             }
 
@@ -74,7 +74,7 @@ namespace UpdatedParty.Controllers
             ViewBag.NextDay = nextDay.ToString("dddd") + " " + nextDay.Day + " " + nextDay.ToString("MMMM");
             ViewBag.Next = next;
 
-            const int pageSize = 10;
+            const int pageSize = 18;
             int pageNumber = (page ?? 1);
 
             //return View(stayup.ToList().Take(10));

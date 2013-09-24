@@ -146,7 +146,7 @@
 
     </script>
 </head>
-<body>
+<body onload="bannerSlider()">
     <div id="Beta">
         <embed src="http://updatedparty.com/Content/images/BetaRibbon.svg" width="130" height="132"
             type="image/svg+xml" codebase="http://www.adobe.com/svg/viewer/install" />
@@ -173,7 +173,7 @@
                         DE</span> <span style="font-size: 30px">TU CIUDAD</span>
                 </h1>
             </div>
-            <div id="Suscribe">
+            @*<div id="Suscribe">
                 <br />
                 <p style="font-size: .8em">
                     <a style="font-size: 1.6em; text-decoration: underline blink; text-transform: uppercase;
@@ -182,7 +182,7 @@
                     más.</p>
                 <br />
                 <p>@Html.ActionLink("Iniciar sesión", "Logon", "Account", null, new { style = "text-transform: uppercase; color: Yellow; font-family: bebas_neueregular;" })</p>
-            </div>
+            </div>*@
         </div>
         <div class="menu">
             <ul>
@@ -213,9 +213,9 @@
             <div id="footerWrap">
             <br />
              <div id="fColum1">
-             <p>@Html.ActionLink("Registra tu bar", "Register", "Account", null, new { style = "color: #560787" })</p>
+             @*<p>@Html.ActionLink("Registra tu bar", "Register", "Account", null, new { style = "color: #560787" })</p>*@
              <p style="color: inherit">Acerca de nosotros</p>
-             <p style="color: inherit"> Escríbenos a: <a style="color: #560787" href="mailto:contacto@updatedparty.com">contacto@updatedparty.com</a></p>
+             @*<p style="color: inherit"> Escríbenos a: <a style="color: #560787" href="mailto:contacto@updatedparty.com">contacto@updatedparty.com</a></p>*@
                 <p>@Html.ActionLink("Términos, condiciones y aviso de privacidad", "AvisoPrivacidad", "Home", null, new { style = "color: #560787;" })</p>
              </div>
              <div id="fColum2">
@@ -261,4 +261,34 @@
     <br />
     <br />
 </body>
+@*<script type="text/javascript">
+    NewImg = new Array(
+		"Content/Banners/hydefiestamexicana.jpg",
+		"Content/Banners/bambata-canelo.jpg",
+        "Content/Banners/aserrin-canelo.jpg"
+		);
+
+    var ImgNum = 0;
+    var ImgLength = NewImg.length - 1;
+    //Time delay between Slides in milliseconds
+    var delay = 6000;
+    var run;
+    function chgImg(direction) {
+
+        if (document.images) {
+            ImgNum = ImgNum + direction;
+            if (ImgNum > ImgLength) {
+                ImgNum = 0;
+            }
+            if (ImgNum < 0) {
+                ImgNum = ImgLength;
+            }
+            document.slideshow.src = NewImg[ImgNum];
+        }
+    }
+
+    function bannerSlider() {
+        run = setInterval("chgImg(1)", delay);
+    }
+</script>*@
 </html>
