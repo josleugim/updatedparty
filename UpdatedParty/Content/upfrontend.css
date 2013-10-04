@@ -412,12 +412,32 @@ table td
     border-bottom: 2px dotted #C1C4C9;
     font-family: georgia;
     font-weight: lighter;
+    overflow: hidden;
 }
+
+.Article h3
+{
+    font-size: 1.5em;
+    color: Yellow;
+}
+
 .Article p
 {
     margin: 8px;
     line-height: 1.8em;
 }
+
+.Article a
+{
+    color: #66FFCC;
+    text-decoration: underline;
+}
+
+.Article img
+{
+    max-width: 1024px;
+}
+
 .headache
 {
     float: left;
@@ -620,65 +640,123 @@ label
     top: 1px;
 }
 
-#Beta {position: absolute; top: 0; left: 0;}
-#Adjust {position: fixed; top: 0; right: 50px; background-color: transparent; line-height: 5px}
-#Suscribe{float: left; margin-top: 50px; width: 300px; height: 147px; text-align: center;}
-#MenuRibbon {clear: both; width: 100%; height: 18px; background-color: #000; background-image: url('../Content/images/menuribbon.png'); background-repeat: repeat-x}
-#fColum1{width: 20%; float: left; border-right: 2px dashed black}
-#fColum2{width: 15%; float: left; border-right: 2px dashed black}
-#fColum3{width: 20%; float: left; color: #5E148D; border-right: 2px dashed black}
-#fColum4{width: 20%; height: 150px; float: right; position: relative;}
+#Beta
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#Adjust
+{
+    position: fixed;
+    top: 0;
+    right: 50px;
+    background-color: transparent;
+    line-height: 5px;
+}
+#Suscribe
+{
+    float: left;
+    margin-top: 50px;
+    width: 300px;
+    height: 147px;
+    text-align: center;
+}
+#MenuRibbon
+{
+    clear: both;
+    width: 100%;
+    height: 18px;
+    background-color: #000;
+    background-image: url('../Content/images/menuribbon.png');
+    background-repeat: repeat-x;
+}
+#fColum1
+{
+    width: 20%;
+    float: left;
+    border-right: 2px dashed black;
+}
+#fColum2
+{
+    width: 15%;
+    float: left;
+    border-right: 2px dashed black;
+}
+#fColum3
+{
+    width: 20%;
+    float: left;
+    color: #5E148D;
+    border-right: 2px dashed black;
+}
+#fColum4
+{
+    width: 20%;
+    height: 150px;
+    float: right;
+    position: relative;
+}
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
-.field-validation-error {
+.field-validation-error
+{
     color: #ff0000;
     font-family: 'helvetica_neue_lt_std65Md';
 }
 
-.field-validation-valid {
+.field-validation-valid
+{
     display: none;
     font-family: 'helvetica_neue_lt_std65Md';
 }
 
-.input-validation-error {
+.input-validation-error
+{
     border: 1px solid #ff0000;
     background-color: #ffeeee;
     font-family: 'helvetica_neue_lt_std65Md';
 }
 
-.validation-summary-errors {
+.validation-summary-errors
+{
     font-weight: bold;
     color: #ff0000;
     font-family: 'helvetica_neue_lt_std65Md';
 }
 
-.validation-summary-valid {
+.validation-summary-valid
+{
     display: none;
 }
 
 /* MISC  
 ----------------------------------------------------------*/
-.clear {
+.clear
+{
     clear: both;
 }
 
-.error {
+.error
+{
     color: Red;
     font-family: 'helvetica_neue_lt_std65Md';
 }
 
 /* Bar details-------------------------------------*/
-#herenow {
+#herenow
+{
     clear: both;
 }
 
-#herenow img,
-#herenow span {
-    vertical-align:middle;
+#herenow img, #herenow span
+{
+    vertical-align: middle;
 }
 
-#herenow span {
+#herenow span
+{
     color: Yellow;
     font-size: 0.7em;
 }

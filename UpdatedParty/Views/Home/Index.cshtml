@@ -163,7 +163,7 @@
                 @:<<
         @Html.Raw(" ");
                 @:Anterior |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
             @if (Model.HasNextPage)
             {
                 @Html.ActionLink("Siguiente", "Index", new { page = Model.PageNumber + 1 })
@@ -175,7 +175,7 @@
                 @:| Siguiente
         @Html.Raw(" ");
                 @:>>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }
         </div>
     </div>
     <div style="clear: both">
@@ -616,17 +616,15 @@
         <div id="blog">
         </div>
         <div style="float: left; width: 345px;">
-            <img src="../../Content/images/energyfloors-small.jpg" alt="Energy floors" />
+            <img style="width: 345px" src="../../Content/images/oktoberfest.jpg" alt="Oktoberfest" />
         </div>
         <div style="float: left; width: 335px; height: 210px; text-align: justify">
-            <p style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
-                Antros Sustentables</p>
+            <h2 style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc; margin-left: 5px;">
+                Oktoberfest</h2>
             <p>
-                La posibilidad de salir de antro y ser al mismo tiempo amigable con el ambiente
-                aumenta cada día gracias a la piezoelectricidad. Con ella se crean pistas de baile
-                con las que los antros pueden autoabastecerse de energía limpia para encender la
-                música y luces del lugar hasta que la gente pare de bailar.
-                @Html.ActionLink("Leer más", "AntroSustentable", null, new { style = "color: #66ffcc" })
+                Es una celebración anual donde la cerveza es el protagonista, empezando el 21 de
+                septiembre y terminado el primer fin de semana de octubre en Alemania.
+                @Html.ActionLink("Leer más", "Oktoberfest", null, new { style = "color: #66ffcc" })
             </p>
         </div>
         <div style="clear: both">
@@ -637,11 +635,27 @@
     <div style="width: 100%;">
         <div style="padding: 2px; width: 335px; float: left">
             <div style="float: left; width: 345px; height: 195px;">
+                <img style="width: 335px; height: 195px;" src="http://farm9.staticflickr.com/8477/8263365439_ecb3d476bb.jpg"
+                    alt="Antros sustentables" />
+            </div>
+            <div style="float: left; width: 300px; height: 210px; text-align: justify">
+                <h2 style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
+                    Antros sustentables</h2>
+                <p>
+                    La posibilidad de salir de antro y ser al mismo tiempo amigable con el ambiente
+                    aumenta cada día gracias a la piezoelectricidad. Con ella se crean pistas de baile
+                    con las que los antros pueden autoabastecerse de energía limpia... 
+                    @Html.ActionLink("Leer más", "AntroSustentable", null, new { style = "color: #66ffcc" })
+                </p>
+            </div>
+        </div>
+        <div style="padding: 2px; width: 335px; float: left">
+            <div style="float: left; width: 345px; height: 195px;">
                 <img src="../../Content/images/Bailar.jpg" alt="¿Bailamos?" />
             </div>
             <div style="float: left; width: 300px; height: 210px; text-align: justify">
-                <p style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
-                    ¿Bailamos?</p>
+                <h2 style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
+                    ¿Bailamos?</h2>
                 <p>
                     A muchos nos encanta bailar y hacerlo bien tiene numerosas ventajas. Pero… por qué
                     lo hacemos. ¿Además de las sensaciones positivas que produce, existe alguna razón
@@ -655,8 +669,8 @@
                 <img src="../../Content/images/whisky.jpg" alt="Whisky" />
             </div>
             <div style="width: 300px; height: 210px; text-align: justify">
-                <p style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
-                    ¿Whisky o whiskey?</p>
+                <h2 style="font-size: 22px; font-family: bebas_neueregular; color: #66ffcc">
+                    ¿Whisky o whiskey?</h2>
                 <p>
                     Tomando unos tragos en el Diente de Oro –un muy buen whisky/ey bar en la Condesa–
                     notamos que en algunas ocasiones la palabra whisky/ey aparece escrita con “e” y
@@ -665,7 +679,7 @@
                 </p>
             </div>
         </div>
-        <div style="padding: 2px; width: 335px; float: left">
+        @*<div style="padding: 2px; width: 335px; float: left">
             <div id="headache">
             </div>
             <div style="width: 300px; height: 210px; text-align: justify">
@@ -677,7 +691,7 @@
                     vez el más terrible solo detrás de la cruda moral– es el dolor de cabeza. @Html.ActionLink("Leer más", "Headache", null, new { style = "color: #66ffcc" })
                 </p>
             </div>
-        </div>
+        </div>*@
     </div>
     <div style="clear: both">
     </div>
@@ -700,6 +714,5 @@
         }
     }
 </script>
-
 <!-- Twitter share button -->
 <script>    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>

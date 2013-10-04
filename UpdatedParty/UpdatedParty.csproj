@@ -166,6 +166,7 @@
     <Content Include="Content\images\upfavicon.ico" />
     <Content Include="Content\images\whisky.jpg" />
     <Content Include="Content\images\whisky_med.jpg" />
+    <Content Include="Content\images\oktoberfest.jpg" />
     <Content Include="Content\Promoted\iuPrincipal.jpg" />
     <Content Include="Content\jquery-ui-1.8.22.custom.css" />
     <Content Include="Content\jquery.ui.datepicker.css" />
@@ -293,6 +294,7 @@
     <None Include="Content\futura-condensed-medium\futura-condensed-medium-webfont.woff" />
     <Content Include="Views\Home\AntroSustentable.cshtml" />
     <Content Include="Views\BarDetails\Index.cshtml" />
+    <Content Include="Views\Home\Oktoberfest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\gallery\" />

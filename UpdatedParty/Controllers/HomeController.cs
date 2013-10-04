@@ -161,6 +161,11 @@ namespace UpdatedParty.Controllers
             return View();
         }
 
+        public ViewResult Oktoberfest()
+        {
+            return View();
+        }
+
         /// <summary>
         /// Contacts the specified email.
         /// </summary>
